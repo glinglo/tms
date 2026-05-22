@@ -32,15 +32,11 @@ export default function Hero({ query, setQuery, onSearch }: HeroProps) {
         </div>
 
         <h1 className="font-display font-extrabold leading-none tracking-[-0.03em] text-ink mb-6" style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}>
-          Find any business.
-          <br />
-          <span className="text-brand">Export in seconds.</span>
+          Build prospect lists from Google Maps in minutes.
         </h1>
 
         <p className="font-sans text-lg font-normal leading-relaxed text-ink-muted mb-5">
-          Type a business type and location. Get a clean CSV of real leads
-          <br />
-          with phone numbers, addresses, and websites — no spreadsheets needed.
+          Search any business type, any location. Download a clean CSV with phone, address, and website — ready for outreach.
         </p>
 
         <p className="font-sans text-[13px] font-normal text-ink-faint mb-7">
