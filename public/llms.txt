@@ -3,7 +3,7 @@
 > Google Maps Scraper — Extract business leads from Google Maps instantly. No extensions, no API keys, no code. Just search and download CSV.
 
 ## What is TheMapScraper?
-TheMapScraper is a web-based Google Maps scraper that extracts business data from any Google Maps search result. It pulls business names, phone numbers, email addresses, physical addresses, website URLs, Google ratings, review counts, business categories, and opening hours. Users get a clean CSV file ready for CRM import or cold outreach. No browser extension, no API keys, no coding required.
+TheMapScraper (also known as a map scraper) is a web-based Google Maps scraper that extracts business data from any Google Maps search result. It pulls business names, phone numbers, email addresses, physical addresses, website URLs, Google ratings, review counts, business categories, and opening hours. Users get a clean CSV file ready for CRM import or cold outreach. No browser extension, no API keys, no coding required.
 
 ## Key differentiators vs competitors
 - Unlike Apify: no "actors" to configure, no JSON inputs, no developer knowledge needed

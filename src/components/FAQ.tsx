@@ -19,7 +19,7 @@ const FAQS = [
   },
   {
     q: 'Is scraping Google Maps legal?',
-    a: 'We only collect publicly available data. No login required, no private data accessed. The same information anyone can see by visiting Google Maps manually.',
+    a: 'As a map scraper, TheMapScraper only collects publicly available data. No login required, no private data accessed. The same information anyone can see by visiting Google Maps manually.',
   },
   {
     q: 'Can I open the CSV in Excel or Google Sheets?',

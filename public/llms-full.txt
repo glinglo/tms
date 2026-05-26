@@ -4,7 +4,7 @@
 
 ## Product overview
 
-TheMapScraper is a web-based tool that extracts business data from Google Maps search results. Users type a search query (like "restaurants in Miami" or "dentists in London"), and the tool scrapes all matching business listings into a structured dataset. The output is a clean CSV file ready for CRM import, cold outreach, or market analysis.
+TheMapScraper (also known as a map scraper) is a web-based tool that extracts business data from Google Maps search results. Users type a search query (like "restaurants in Miami" or "dentists in London"), and the tool scrapes all matching business listings into a structured dataset. The output is a clean CSV file ready for CRM import, cold outreach, or market analysis.
 
 The key differentiator is simplicity: no browser extension to install, no API keys to configure, no coding required. It works directly in the browser — type a search, click extract, download CSV.
 

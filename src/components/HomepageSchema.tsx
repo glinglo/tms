@@ -5,6 +5,7 @@ const softwareApplication = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'TheMapScraper',
+  alternateName: 'Map Scraper',
   description:
     'Extract business data from Google Maps instantly. Phone numbers, emails, addresses, websites, ratings and more. Download clean CSV. No extensions, no setup.',
   url: 'https://themapscraper.com',

@@ -128,7 +128,7 @@ export default function HowItWorks() {
               Why Choose TheMapScraper?
             </h2>
             <p className="font-sans text-sm text-[rgba(252,252,252,0.5)] m-0">
-              Credits that never expire. One credit = one lead. Buy when you need. No subscriptions.
+              A map scraper built for non-technical users. Credits never expire, one credit = one lead, no subscriptions.
             </p>
           </div>
           <div className="flex flex-col gap-4 items-end">
