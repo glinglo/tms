@@ -48,6 +48,8 @@ export default function PreviewSection({ query, searchState, leads, errorMsg }: 
   const [contentState, setContentState] = useState<SearchState>(searchState)
   const [loadingMsg, setLoadingMsg] = useState('')
   const timersRef = useRef<ReturnType<typeof setTimeout>[]>([])
+  // Track whether user has triggered a search — skip entrance animations on initial default render
+  const hasUserSearched = useRef(false)
 
   useEffect(() => {
     if (searchState !== 'idle' && !visible) {
@@ -63,6 +65,8 @@ export default function PreviewSection({ query, searchState, leads, errorMsg }: 
   useEffect(() => {
     timersRef.current.forEach(clearTimeout)
     timersRef.current = []
+
+    if (searchState === 'loading') hasUserSearched.current = true
 
     if (searchState !== 'loading') {
       setLoadingMsg('')
@@ -110,7 +114,7 @@ export default function PreviewSection({ query, searchState, leads, errorMsg }: 
         id="preview-section"
         className="bg-cream px-6 pb-24"
         style={{
-          animation: visible ? 'sectionSlideUp 0.45s cubic-bezier(0.22,1,0.36,1) forwards' : 'none',
+          animation: (visible && hasUserSearched.current) ? 'sectionSlideUp 0.45s cubic-bezier(0.22,1,0.36,1) forwards' : 'none',
           opacity: visible ? undefined : 0,
         }}
       >
@@ -118,7 +122,7 @@ export default function PreviewSection({ query, searchState, leads, errorMsg }: 
 
           <div className="mb-5">
             <h2 className="font-display font-bold leading-[1.15] tracking-[-0.02em] text-ink m-0 mb-1" style={{ fontSize: 'clamp(22px, 3vw, 28px)' }}>
-              Preview —{' '}
+              Preview:{' '}
               <span className="text-ink-muted font-semibold">
                 {business} in {location}
               </span>
@@ -130,7 +134,7 @@ export default function PreviewSection({ query, searchState, leads, errorMsg }: 
                   {loadingMsg || 'Connecting to Google Maps...'}
                 </span>
               )}
-              {contentState === 'results' && total > 0 && <>Hundreds of results found — showing a preview</>}
+              {contentState === 'results' && total > 0 && <>Hundreds of results found. Showing a preview.</>}
               {contentState === 'results' && total === 0 && 'No results found. Try a different search.'}
               {contentState === 'error' && (
                 <span className="text-brand">
@@ -162,7 +166,7 @@ export default function PreviewSection({ query, searchState, leads, errorMsg }: 
               )}
 
               {contentState === 'results' && total > 0 && (
-                <div style={{ animation: 'resultsFadeIn 0.35s ease forwards' }}>
+                <div style={{ animation: hasUserSearched.current ? 'resultsFadeIn 0.35s ease forwards' : 'none' }}>
                   {visibleRows.map((lead, i) => (
                     <div
                       key={i}
@@ -191,7 +195,7 @@ export default function PreviewSection({ query, searchState, leads, errorMsg }: 
                           {cleanWebsite(lead.website)}
                         </a>
                       ) : (
-                        <span className="font-sans text-[13px] text-[#bbbbbb]">—</span>
+                        <span className="font-sans text-[13px] text-ink-faint">—</span>
                       )}
                     </div>
                   ))}

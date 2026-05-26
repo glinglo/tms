@@ -6,21 +6,21 @@ const STEPS = [
     number: '01',
     title: 'Type a business type\nand location',
     description:
-      'Enter any business category — dentists, roofers, gyms, lawyers — and a city, state, or country. Be as specific or broad as you like.',
+      'Enter any business category (dentists, roofers, gyms, lawyers) and a city, state, or country. Be as specific or broad as you like.',
     code: 'business: "Dentists"\nlocation: "Austin, TX"',
   },
   {
     number: '02',
     title: 'Preview real results\nbefore signing up',
     description:
-      'See 3 live results instantly — real business names, phone numbers, addresses, and ratings. No fake demo data.',
+      'See 3 live results instantly: real business names, phone numbers, addresses, and ratings. No fake demo data.',
     code: '✓ Sunrise Dental Group\n✓ Austin Family Dentistry\n✓ Capitol Smiles\n  + 244 more...',
   },
   {
     number: '03',
     title: 'Download your CSV\nwith one click',
     description:
-      'Unlock all results with credits. Your CSV arrives immediately with phone, address, email, website, and more — ready to open in Excel.',
+      'Unlock all results with credits. Your CSV arrives immediately with phone, address, email, website, and more. Ready to open in Excel.',
     code: 'name,phone,address,website\n"Sunrise Dental",+1 512...\n"Austin Family",+1 512...',
   },
 ]

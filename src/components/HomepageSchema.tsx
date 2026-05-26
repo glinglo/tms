@@ -35,7 +35,7 @@ const organization = {
   url: 'https://themapscraper.com',
   logo: 'https://themapscraper.com/logo.png',
   description:
-    'Google Maps Lead Scraper — Extract business data from Google Maps instantly.',
+    'Google Maps Lead Scraper. Extract business data from Google Maps instantly.',
   sameAs: [],
 }
 

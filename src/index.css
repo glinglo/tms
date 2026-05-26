@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Self-hosted Geist variable font — eliminates jsDelivr round-trip */
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   * {
     box-sizing: border-box;

@@ -32,11 +32,11 @@ export default function Hero({ query, setQuery, onSearch }: HeroProps) {
         </div>
 
         <h1 className="font-display font-extrabold leading-none tracking-[-0.03em] text-ink mb-6" style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}>
-          Google Maps Scraper — Extract Business Leads Instantly
+          Google Maps Scraper to Extract Business Leads
         </h1>
 
         <p className="font-sans text-lg font-normal leading-relaxed text-ink-muted mb-5">
-          Search any business type, any location. Download a clean CSV with phone, address, and website — ready for outreach.
+          Search any business type, any location. Download a clean CSV with phone, address, and website. Ready for outreach.
         </p>
 
         <p className="font-sans text-[13px] font-normal text-ink-faint mb-7">
@@ -84,7 +84,7 @@ export default function Hero({ query, setQuery, onSearch }: HeroProps) {
         </form>
 
         <div className="flex flex-nowrap gap-[6px] justify-center items-center overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] pb-[2px]">
-          <span className="font-sans text-xs font-normal text-[#bbbbbb] shrink-0">
+          <span className="font-sans text-xs font-normal text-ink-faint shrink-0">
             Try:
           </span>
           {EXAMPLE_PILLS.map((pill) => (

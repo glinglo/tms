@@ -340,7 +340,7 @@ export default function SearchPage() {
                       {cleanWebsite(lead.website)}
                     </a>
                   ) : (
-                    <span className="font-sans text-[13px] text-[#bbbbbb]">—</span>
+                    <span className="font-sans text-[13px] text-ink-faint">—</span>
                   )}
                 </div>
               ))}

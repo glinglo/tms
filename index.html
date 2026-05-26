@@ -5,11 +5,11 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Google Maps Scraper — Extract Leads Instantly | TheMapScraper</title>
+    <title>Google Maps Scraper to Extract Business Leads | TheMapScraper</title>
     <meta name="description" content="Scrape Google Maps in seconds. Extract phone numbers, emails, addresses &amp; websites from any business. Download clean CSV. No extension, no code. Free to start." />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Google Maps Scraper — Extract Business Leads Instantly" />
+    <meta property="og:title" content="Google Maps Scraper to Extract Business Leads" />
     <meta property="og:description" content="Scrape any business from Google Maps. Get phone numbers, emails, addresses &amp; websites in a clean CSV. No setup required." />
     <meta property="og:image" content="https://themapscraper.com/og-image.png" />
     <meta property="og:url" content="https://themapscraper.com/" />
@@ -17,7 +17,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Google Maps Scraper — Extract Business Leads Instantly" />
+    <meta name="twitter:title" content="Google Maps Scraper to Extract Business Leads" />
     <meta name="twitter:description" content="Scrape any business from Google Maps. Get phone numbers, emails, addresses &amp; websites in a clean CSV. No setup required." />
     <meta name="twitter:image" content="https://themapscraper.com/og-image.png" />
 
@@ -26,18 +26,16 @@
     <!-- Preconnect to font origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
 
     <!-- Vercel Analytics (consent-gated, loaded after user accepts) -->
     <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
 
-    <!-- Google Fonts: Bricolage Grotesque (display headings) + JetBrains Mono (code) -->
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <!-- Geist (body font) — self-hosted, preload critical woff2 -->
+    <link rel="preload" href="/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Geist (body font) — loaded non-blocking to avoid render delay -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.css" /></noscript>
+    <!-- Google Fonts: Bricolage Grotesque + JetBrains Mono — non-blocking -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
   </head>
   <body>
     <div id="root"></div>

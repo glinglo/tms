@@ -10,7 +10,7 @@ export default {
         'brand-dark': '#c01f00',
         ink: '#202020',
         'ink-muted': '#575757',
-        'ink-faint': '#8d8d8d',
+        'ink-faint': '#6a6a6a',
         'border-subtle': 'rgba(32,32,32,0.12)',
       },
       fontFamily: {

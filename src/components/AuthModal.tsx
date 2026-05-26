@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { supabase } from '../lib/supabase'
 import { useAuthContext } from '../context/AuthContext'
 
 type Mode = 'signup' | 'login'
@@ -32,6 +31,8 @@ export default function AuthModal() {
     e.preventDefault()
     setStatus('loading')
     setErrorMsg('')
+
+    const { supabase } = await import('../lib/supabase')
 
     if (mode === 'signup') {
       const { error } = await supabase.auth.signUp({ email, password })
