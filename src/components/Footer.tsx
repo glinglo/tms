@@ -7,15 +7,34 @@ export default function Footer() {
     <footer className="bg-black py-12 px-6 pb-8">
       <div className="max-w-[1080px] mx-auto">
 
-        <div className="mb-10">
-          <a href="/" className="no-underline inline-block mb-[10px]">
-            <span className="font-display text-xl font-bold text-[#fcfcfc] tracking-[-0.5px]">
-              the<span className="text-brand">map</span>scraper
-            </span>
-          </a>
-          <p className="font-sans text-sm font-normal leading-relaxed text-[rgba(252,252,252,0.35)] m-0">
-            Google Maps lead scraper for sales teams, agencies, and cold callers.
-          </p>
+        <div className="mb-10 flex flex-wrap gap-x-16 gap-y-8">
+          <div>
+            <a href="/" className="no-underline inline-block mb-[10px]">
+              <span className="font-display text-xl font-bold text-[#fcfcfc] tracking-[-0.5px]">
+                the<span className="text-brand">map</span>scraper
+              </span>
+            </a>
+            <p className="font-sans text-sm font-normal leading-relaxed text-[rgba(252,252,252,0.35)] m-0">
+              Google Maps lead scraper for sales teams, agencies, and cold callers.
+            </p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="font-sans text-[11px] font-semibold text-[rgba(252,252,252,0.3)] uppercase tracking-[0.06em] m-0 mb-1">
+              Tools
+            </p>
+            {[
+              { label: 'Google Maps Lead Extractor', to: '/google-maps-lead-extractor/' },
+              { label: 'Extract Emails from Google Maps', to: '/extract-emails-google-maps/' },
+            ].map(({ label, to }) => (
+              <Link
+                key={to}
+                to={to}
+                className="font-sans text-sm text-[rgba(252,252,252,0.4)] no-underline transition-colors duration-150 hover:text-[#fcfcfc]"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div className="border-t border-[rgba(255,255,255,0.10)] pt-6 flex items-center justify-between flex-wrap gap-3">

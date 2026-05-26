@@ -18,6 +18,8 @@ import type { Lead } from './types/lead'
 const Privacy = lazy(() => import('./pages/Privacy'))
 const Terms = lazy(() => import('./pages/Terms'))
 const Pricing = lazy(() => import('./pages/Pricing'))
+const GoogleMapsLeadExtractor = lazy(() => import('./pages/GoogleMapsLeadExtractor'))
+const ExtractEmailsGoogleMaps = lazy(() => import('./pages/ExtractEmailsGoogleMaps'))
 const DashboardLayout = lazy(() => import('./components/DashboardLayout'))
 const SearchPage = lazy(() => import('./pages/dashboard/SearchPage'))
 const ExportsPage = lazy(() => import('./pages/dashboard/ExportsPage'))
@@ -125,6 +127,8 @@ function AppInner() {
           <Route path="/privacy-policy" element={<Privacy />} />
           <Route path="/terms-of-service" element={<Terms />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/google-maps-lead-extractor/" element={<GoogleMapsLeadExtractor />} />
+          <Route path="/extract-emails-google-maps/" element={<ExtractEmailsGoogleMaps />} />
           <Route
             path="/dashboard"
             element={
