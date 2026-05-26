@@ -23,19 +23,11 @@
 
     <link rel="canonical" href="https://themapscraper.com/" />
 
-    <!-- Preconnect to font origins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <!-- Vercel Analytics (consent-gated, loaded after user accepts) -->
     <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
 
-    <!-- Geist (body font) — self-hosted, preload critical woff2 -->
-    <link rel="preload" href="/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
-
-    <!-- Google Fonts: Bricolage Grotesque + JetBrains Mono — non-blocking -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
+    <!-- Preload LCP font (H1 uses Bricolage Bold/ExtraBold) — self-hosted, no external hop -->
+    <link rel="preload" href="/fonts/BricolageGrotesque-Bold.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <div id="root"></div>
