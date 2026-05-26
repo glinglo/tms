@@ -2,94 +2,42 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Map Scraper — Google Maps Lead Scraper</title>
-    <meta name="description" content="Extract any business from Google Maps and download a clean CSV instantly. Phone numbers, addresses, websites and more. No extensions, no setup. Just leads." />
-    <meta property="og:title" content="The Map Scraper — Google Maps Lead Scraper" />
-    <meta property="og:description" content="Extract any business from Google Maps and download a clean CSV instantly. No extensions, no setup. Just leads." />
-    <meta property="og:url" content="https://themapscraper.com" />
+
+    <title>Google Maps Scraper — Extract Leads Instantly | TheMapScraper</title>
+    <meta name="description" content="Scrape Google Maps in seconds. Extract phone numbers, emails, addresses &amp; websites from any business. Download clean CSV. No extension, no code. Free to start." />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Google Maps Scraper — Extract Business Leads Instantly" />
+    <meta property="og:description" content="Scrape any business from Google Maps. Get phone numbers, emails, addresses &amp; websites in a clean CSV. No setup required." />
+    <meta property="og:image" content="https://themapscraper.com/og-image.png" />
+    <meta property="og:url" content="https://themapscraper.com/" />
     <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="The Map Scraper — Google Maps Lead Scraper" />
-    <meta name="twitter:description" content="Extract any business from Google Maps and download a clean CSV instantly. No extensions, no setup. Just leads." />
-    <link rel="canonical" href="https://themapscraper.com" />
+    <meta name="twitter:title" content="Google Maps Scraper — Extract Business Leads Instantly" />
+    <meta name="twitter:description" content="Scrape any business from Google Maps. Get phone numbers, emails, addresses &amp; websites in a clean CSV. No setup required." />
+    <meta name="twitter:image" content="https://themapscraper.com/og-image.png" />
+
+    <link rel="canonical" href="https://themapscraper.com/" />
+
+    <!-- Preconnect to font origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+
+    <!-- Vercel Analytics (consent-gated, loaded after user accepts) -->
+    <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
+
+    <!-- Google Fonts: Bricolage Grotesque (display headings) + JetBrains Mono (code) -->
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.css" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Do the credits expire?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Credits never expire. Buy once, use whenever you need."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How fresh is the data?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Results are scraped in real time when you search. Not from a cached database."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What fields are included in the CSV?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Business name, phone, address, website, star rating, review count, email (when available), coordinates, and Google Maps URL."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is scraping Google Maps legal?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We only collect publicly available data. No login required, no private data accessed. The same information anyone can see by visiting Google Maps manually."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I open the CSV in Excel or Google Sheets?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, directly. No formatting or conversion needed."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What if my search returns fewer results than expected?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You are only charged credits for the leads actually returned, never more."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you offer refunds?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Credits are non-refundable but they never expire, so they're never wasted."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I scrape businesses in any country?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Google Maps data is available worldwide. Just type any city, region, or country in the location field."
-        }
-      }
-    ]
-  }
-  </script>
+
+    <!-- Geist (body font) — loaded non-blocking to avoid render delay -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.css" /></noscript>
   </head>
   <body>
     <div id="root"></div>

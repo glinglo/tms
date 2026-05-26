@@ -35,3 +35,6 @@ Free tier available with limited monthly extractions. Paid plans for higher volu
 - Website: https://themapscraper.com
 - Blog: https://themapscraper.com/blog/
 - Pricing: https://themapscraper.com/pricing/
+
+## More information
+For detailed product documentation, comparisons, and use cases, see: https://themapscraper.com/llms-full.txt

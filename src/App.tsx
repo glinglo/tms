@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -8,16 +8,19 @@ import FAQ from './components/FAQ'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import AuthModal from './components/AuthModal'
-import Privacy from './pages/Privacy'
-import Terms from './pages/Terms'
-import Pricing from './pages/Pricing'
-import DashboardLayout from './components/DashboardLayout'
-import SearchPage from './pages/dashboard/SearchPage'
-import ExportsPage from './pages/dashboard/ExportsPage'
 import { AuthProvider, useAuthContext } from './context/AuthContext'
 import CookieBanner from './components/CookieBanner'
+import HomepageSchema from './components/HomepageSchema'
 import { DEFAULT_QUERY, defaultResults } from './data/defaultResults'
 import type { Lead } from './types/lead'
+
+// Route-level code splitting — these pages are never shown on the homepage
+const Privacy = lazy(() => import('./pages/Privacy'))
+const Terms = lazy(() => import('./pages/Terms'))
+const Pricing = lazy(() => import('./pages/Pricing'))
+const DashboardLayout = lazy(() => import('./components/DashboardLayout'))
+const SearchPage = lazy(() => import('./pages/dashboard/SearchPage'))
+const ExportsPage = lazy(() => import('./pages/dashboard/ExportsPage'))
 
 type SearchState = 'idle' | 'loading' | 'results' | 'error'
 
@@ -92,6 +95,7 @@ function HomePage() {
 
   return (
     <>
+      <HomepageSchema />
       <Hero query={query} setQuery={setQuery} onSearch={handleSearch} />
       <PreviewSection
         query={query}
@@ -115,23 +119,25 @@ function AppInner() {
     <div style={{ backgroundColor: '#f9f7f3', minHeight: '100vh' }}>
       <ScrollToTop />
       {!hideChrome && <Navbar />}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/privacy-policy" element={<Privacy />} />
-        <Route path="/terms-of-service" element={<Terms />} />
-        <Route path="/pricing" element={<Pricing />} />
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <DashboardLayout />
-            </ProtectedRoute>
-          }
-        >
-          <Route index element={<SearchPage />} />
-          <Route path="exports" element={<ExportsPage />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/privacy-policy" element={<Privacy />} />
+          <Route path="/terms-of-service" element={<Terms />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <DashboardLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<SearchPage />} />
+            <Route path="exports" element={<ExportsPage />} />
+          </Route>
+        </Routes>
+      </Suspense>
       {!hideChrome && <Footer />}
       <AuthModal />
       <CookieBanner />

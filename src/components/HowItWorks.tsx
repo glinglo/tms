@@ -45,7 +45,7 @@ export default function HowItWorks() {
             className="font-display font-bold leading-none tracking-[-0.025em] text-[#fcfcfc] m-0 mb-4"
             style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}
           >
-            How it works
+            How It Works
           </h2>
           <p className="font-sans text-lg font-normal leading-[1.56] text-[rgba(252,252,252,0.6)] m-0 max-w-[480px]">
             Three steps from search to spreadsheet. No technical skills required.
@@ -85,7 +85,35 @@ export default function HowItWorks() {
           ))}
         </div>
 
-        <div className="mt-16 flex justify-center">
+        {/* Data fields section */}
+        <div className="mt-16 pt-12 border-t border-[rgba(255,255,255,0.08)]">
+          <h2
+            className="font-display font-bold tracking-[-0.02em] text-[#fcfcfc] m-0 mb-2"
+            style={{ fontSize: 'clamp(20px, 2.5vw, 26px)' }}
+          >
+            What Data Can You Extract from Google Maps?
+          </h2>
+          <p className="font-sans text-sm text-[rgba(252,252,252,0.5)] m-0 mb-5">
+            Every field exported to CSV, ready for your CRM or outreach tool.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {[
+              'Business name', 'Phone number', 'Email address', 'Physical address',
+              'Website URL', 'Google rating', 'Review count', 'Business category',
+              'Opening hours', 'Coordinates', 'Google Maps URL',
+            ].map((field) => (
+              <span
+                key={field}
+                className="font-sans text-xs font-semibold text-[rgba(252,252,252,0.7)] bg-[#2a2a2a] border border-[rgba(255,255,255,0.1)] rounded-pill px-3 py-[5px]"
+              >
+                {field}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Social proof + Why Choose */}
+        <div className="mt-12 flex justify-center">
           <span className="font-sans text-[13px] font-normal text-[rgba(252,252,252,0.35)]">
             ✦{'  '}3,200+ businesses scraped this week{'  '}·{'  '}94,000+ leads exported
           </span>
@@ -96,11 +124,11 @@ export default function HowItWorks() {
           className="mt-8 border-t border-[rgba(255,255,255,0.1)] pt-12 flex items-center justify-between flex-wrap gap-6"
         >
           <div>
-            <p className="font-display text-[22px] font-bold text-[#fcfcfc] m-0 mb-[6px] tracking-[-0.02em]">
-              Credits that never expire.
-            </p>
+            <h2 className="font-display text-[22px] font-bold text-[#fcfcfc] m-0 mb-[6px] tracking-[-0.02em]">
+              Why Choose TheMapScraper?
+            </h2>
             <p className="font-sans text-sm text-[rgba(252,252,252,0.5)] m-0">
-              One credit = one lead. Buy when you need. No subscriptions.
+              Credits that never expire. One credit = one lead. Buy when you need. No subscriptions.
             </p>
           </div>
           <div className="flex flex-col gap-4 items-end">

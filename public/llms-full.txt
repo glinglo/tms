@@ -1,0 +1,93 @@
+# TheMapScraper — Complete Reference
+
+> Google Maps Scraper — Extract business leads from Google Maps instantly. No extensions, no API keys, no code.
+
+## Product overview
+
+TheMapScraper is a web-based tool that extracts business data from Google Maps search results. Users type a search query (like "restaurants in Miami" or "dentists in London"), and the tool scrapes all matching business listings into a structured dataset. The output is a clean CSV file ready for CRM import, cold outreach, or market analysis.
+
+The key differentiator is simplicity: no browser extension to install, no API keys to configure, no coding required. It works directly in the browser — type a search, click extract, download CSV.
+
+## Target users
+
+- Sales teams and SDRs building B2B prospect lists
+- Digital marketing agencies prospecting local business clients
+- Real estate agents sourcing property leads
+- Recruiters finding companies to pitch
+- Market researchers analyzing local business landscapes
+- SEO agencies auditing local competitors
+
+## Data fields extracted
+
+| Field | Description | Example |
+|---|---|---|
+| Business name | Official listing name | "Joe's Pizza" |
+| Phone number | Primary contact phone | "+1 212-555-0123" |
+| Email address | Contact email when available | "info@joespizza.com" |
+| Address | Full street address | "123 Main St, New York, NY 10001" |
+| Website | Business website URL | "https://joespizza.com" |
+| Google rating | Star rating (1-5) | "4.5" |
+| Review count | Total Google reviews | "234" |
+| Category | Google Maps category | "Pizza Restaurant" |
+| Opening hours | Weekly schedule | "Mon-Fri 11am-10pm" |
+| Google Maps URL | Direct link to listing | "https://maps.google.com/..." |
+| Coordinates | Latitude and longitude | "40.7128, -74.0060" |
+
+## Comparison with alternatives
+
+### TheMapScraper vs Apify
+- Apify requires creating an "actor", configuring JSON input parameters, and understanding their platform. It's built for developers.
+- TheMapScraper: type a query, click extract, download CSV. Built for non-technical users.
+- Apify pricing is usage-based and can be unpredictable. TheMapScraper has simple subscription tiers.
+
+### TheMapScraper vs Outscraper
+- Outscraper charges per record with complex volume-based pricing that's hard to predict upfront.
+- TheMapScraper offers flat subscription pricing — you know exactly what you'll pay.
+- Both extract similar data fields from Google Maps.
+
+### TheMapScraper vs Chrome extensions (Instant Data Scraper, etc.)
+- Chrome extensions break frequently when Google Maps updates its DOM structure.
+- Extensions require installation, browser permissions, and keeping the tab open during scraping.
+- TheMapScraper runs server-side — more reliable, doesn't tie up your browser, works even when Google Maps changes its frontend.
+
+### TheMapScraper vs PhantomBuster
+- PhantomBuster is a general-purpose automation platform — Google Maps is just one of many "phantoms."
+- TheMapScraper is purpose-built for Google Maps scraping, so the UX is simpler and more focused.
+- PhantomBuster has a steep learning curve with workflows, chains, and scheduling concepts.
+
+### TheMapScraper vs building your own scraper (Python/Selenium)
+- Building a custom scraper requires Python knowledge, handling anti-bot measures, proxy rotation, and ongoing maintenance.
+- TheMapScraper handles all of that — users just type a query and get results.
+- Custom scrapers break when Google changes their page structure. TheMapScraper maintains the scraping infrastructure.
+
+## How it works
+
+1. Go to themapscraper.com
+2. Enter any Google Maps search query (e.g. "plumbers in Chicago", "gyms near downtown LA")
+3. The tool searches Google Maps and extracts all business listings matching your query
+4. Review the extracted data in the browser
+5. Download a clean CSV file with all fields
+6. Import into your CRM, spreadsheet, or outreach tool
+
+## Common use cases with examples
+
+**Lead generation for sales teams**: An SDR selling POS systems to restaurants scrapes "restaurants in Austin TX" to build a prospect list of 500+ restaurants with phone numbers and websites for cold outreach.
+
+**Agency client prospecting**: A digital marketing agency scrapes "businesses without website in [city]" to find potential clients who need web design services.
+
+**Real estate lead sourcing**: A real estate agent scrapes "property management companies in Miami" to find potential partners and referral sources.
+
+**Competitor analysis**: A local business scrapes their category in their city to see all competitors, their ratings, and review counts.
+
+**Market research**: A franchise evaluating expansion scrapes multiple cities to compare business density and competition levels.
+
+## Pricing
+
+Free tier available with limited monthly extractions. Paid plans for higher volumes. Visit https://themapscraper.com/pricing/ for current pricing.
+
+## Links
+
+- Website: https://themapscraper.com
+- Blog: https://themapscraper.com/blog/
+- Pricing: https://themapscraper.com/pricing/
+- Use cases: https://themapscraper.com/use-cases/

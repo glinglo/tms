@@ -51,7 +51,7 @@ export default function FAQ() {
             className="font-display font-bold leading-none tracking-[-0.025em] text-ink m-0 mb-3"
             style={{ fontSize: 'clamp(36px, 5vw, 56px)' }}
           >
-            Questions
+            Frequently Asked Questions
           </h2>
           <p className="font-sans text-base font-normal text-ink-faint m-0">
             Everything you need to know before buying credits.

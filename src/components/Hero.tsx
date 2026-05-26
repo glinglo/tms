@@ -32,7 +32,7 @@ export default function Hero({ query, setQuery, onSearch }: HeroProps) {
         </div>
 
         <h1 className="font-display font-extrabold leading-none tracking-[-0.03em] text-ink mb-6" style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}>
-          Build prospect lists from Google Maps in minutes.
+          Google Maps Scraper — Extract Business Leads Instantly
         </h1>
 
         <p className="font-sans text-lg font-normal leading-relaxed text-ink-muted mb-5">
