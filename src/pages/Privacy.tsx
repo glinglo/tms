@@ -1,3 +1,5 @@
+import Canonical from '../components/Canonical'
+
 const LAST_UPDATED = 'May 2026'
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
@@ -26,6 +28,8 @@ const UL = ({ items }: { items: string[] }) => (
 
 export default function Privacy() {
   return (
+    <>
+    <Canonical path="/privacy-policy/" />
     <main className="bg-cream px-6 pt-20 pb-24">
       <div className="max-w-[680px] mx-auto">
 
@@ -180,5 +184,6 @@ export default function Privacy() {
 
       </div>
     </main>
+    </>
   )
 }

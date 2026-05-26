@@ -117,8 +117,8 @@ function AppInner() {
       {!hideChrome && <Navbar />}
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy-policy" element={<Privacy />} />
+        <Route path="/terms-of-service" element={<Terms />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route
           path="/dashboard"

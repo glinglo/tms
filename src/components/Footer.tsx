@@ -23,7 +23,7 @@ export default function Footer() {
             © {year} themapscraper.com. Not affiliated with Google.
           </p>
           <div className="flex items-center gap-[6px]">
-            {[{ label: 'Privacy', to: '/privacy' }, { label: 'Terms', to: '/terms' }].map(({ label, to }, i) => (
+            {[{ label: 'Privacy', to: '/privacy-policy' }, { label: 'Terms', to: '/terms-of-service' }].map(({ label, to }, i) => (
               <>
                 {i > 0 && (
                   <span key={`dot-${i}`} className="text-[rgba(252,252,252,0.2)] text-xs">·</span>

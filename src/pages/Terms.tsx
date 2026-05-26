@@ -1,3 +1,5 @@
+import Canonical from '../components/Canonical'
+
 const LAST_UPDATED = 'May 2026'
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
@@ -26,6 +28,8 @@ const UL = ({ items }: { items: string[] }) => (
 
 export default function Terms() {
   return (
+    <>
+    <Canonical path="/terms-of-service/" />
     <main className="bg-cream px-6 pt-20 pb-24">
       <div className="max-w-[680px] mx-auto">
 
@@ -114,7 +118,7 @@ export default function Terms() {
         <Section title="Data and privacy">
           <P>
             Our use of your personal data is described in our{' '}
-            <a href="/privacy" className="text-brand no-underline">
+            <a href="/privacy-policy" className="text-brand no-underline">
               Privacy Policy
             </a>
             . By using the service, you confirm you have read and understood it.
@@ -192,5 +196,6 @@ export default function Terms() {
 
       </div>
     </main>
+    </>
   )
 }

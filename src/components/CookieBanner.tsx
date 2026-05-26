@@ -44,7 +44,7 @@ export default function CookieBanner() {
       <div className="max-w-2xl mx-auto bg-cream border border-border-subtle rounded-[16px] shadow-[0_-2px_16px_rgba(32,32,32,0.08),0_4px_24px_rgba(32,32,32,0.10)] px-5 py-4 flex flex-col sm:flex-row sm:items-center gap-4 pointer-events-auto">
         <p className="font-sans text-sm text-ink-muted m-0 flex-1 leading-relaxed">
           We use analytics cookies to understand how you use our site and improve your experience.{' '}
-          <Link to="/privacy" className="text-brand underline underline-offset-2 hover:text-brand-dark">
+          <Link to="/privacy-policy" className="text-brand underline underline-offset-2 hover:text-brand-dark">
             Privacy Policy
           </Link>
         </p>

@@ -2,7 +2,14 @@
   "buildCommand": "vite build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "redirects": [
+    { "source": "/privacy", "destination": "/privacy-policy/", "permanent": true },
+    { "source": "/privacy/", "destination": "/privacy-policy/", "permanent": true },
+    { "source": "/terms", "destination": "/terms-of-service/", "permanent": true },
+    { "source": "/terms/", "destination": "/terms-of-service/", "permanent": true }
+  ],
   "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    { "source": "/sitemap.xml", "destination": "/api/sitemap" },
+    { "source": "/((?!api/)[^.]*)", "destination": "/index.html" }
   ]
 }
