@@ -20,6 +20,8 @@ const Terms = lazy(() => import('./pages/Terms'))
 const Pricing = lazy(() => import('./pages/Pricing'))
 const GoogleMapsLeadExtractor = lazy(() => import('./pages/GoogleMapsLeadExtractor'))
 const ExtractEmailsGoogleMaps = lazy(() => import('./pages/ExtractEmailsGoogleMaps'))
+const GoogleMapsDataScraperCsv = lazy(() => import('./pages/GoogleMapsDataScraperCsv'))
+const GoogleMapsBusinessScraperFree = lazy(() => import('./pages/GoogleMapsBusinessScraperFree'))
 const DashboardLayout = lazy(() => import('./components/DashboardLayout'))
 const SearchPage = lazy(() => import('./pages/dashboard/SearchPage'))
 const ExportsPage = lazy(() => import('./pages/dashboard/ExportsPage'))
@@ -129,6 +131,8 @@ function AppInner() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/google-maps-lead-extractor/" element={<GoogleMapsLeadExtractor />} />
           <Route path="/extract-emails-google-maps/" element={<ExtractEmailsGoogleMaps />} />
+          <Route path="/google-maps-data-scraper-csv/" element={<GoogleMapsDataScraperCsv />} />
+          <Route path="/google-maps-business-scraper-free/" element={<GoogleMapsBusinessScraperFree />} />
           <Route
             path="/dashboard"
             element={

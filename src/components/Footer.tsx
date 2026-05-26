@@ -23,8 +23,10 @@ export default function Footer() {
               Tools
             </p>
             {[
-              { label: 'Google Maps Lead Extractor', to: '/google-maps-lead-extractor/' },
-              { label: 'Extract Emails from Google Maps', to: '/extract-emails-google-maps/' },
+              { label: 'Google Maps Lead Extractor',       to: '/google-maps-lead-extractor/' },
+              { label: 'Extract Emails from Google Maps',  to: '/extract-emails-google-maps/' },
+              { label: 'Google Maps Data Scraper to CSV',  to: '/google-maps-data-scraper-csv/' },
+              { label: 'Free Google Maps Scraper',         to: '/google-maps-business-scraper-free/' },
             ].map(({ label, to }) => (
               <Link
                 key={to}

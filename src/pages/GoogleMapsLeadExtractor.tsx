@@ -240,21 +240,21 @@ export default function GoogleMapsLeadExtractor() {
         </div>
       </section>
 
-      {/* Internal links */}
+      {/* Related tools */}
       <section className="bg-white py-10 px-6 border-t border-border-subtle">
-        <div className="max-w-[720px] mx-auto flex flex-wrap gap-x-8 gap-y-3">
-          <Link
-            to="/extract-emails-google-maps/"
-            className="font-sans text-sm font-semibold text-brand no-underline hover:underline"
-          >
-            Looking for email extraction? Extract Emails from Google Maps →
-          </Link>
-          <Link
-            to="/"
-            className="font-sans text-sm font-semibold text-ink-muted no-underline hover:text-ink"
-          >
-            ← Back to Google Maps Scraper
-          </Link>
+        <div className="max-w-[720px] mx-auto">
+          <p className="font-sans text-xs font-semibold text-ink-faint uppercase tracking-[0.06em] m-0 mb-3">Related tools</p>
+          <div className="flex flex-wrap gap-x-8 gap-y-3">
+            {[
+              { label: 'Extract Emails from Google Maps',   to: '/extract-emails-google-maps/' },
+              { label: 'Google Maps Data Scraper to CSV',   to: '/google-maps-data-scraper-csv/' },
+              { label: 'Free Google Maps Business Scraper', to: '/google-maps-business-scraper-free/' },
+            ].map(({ label, to }) => (
+              <Link key={to} to={to} className="font-sans text-sm font-semibold text-brand no-underline hover:underline">
+                {label} →
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
