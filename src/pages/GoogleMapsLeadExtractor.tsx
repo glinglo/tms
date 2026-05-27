@@ -61,18 +61,22 @@ const USE_CASES = [
   {
     title: 'Sales Teams',
     desc: 'Build prospect lists of local businesses for cold outreach campaigns',
+    to: null,
   },
   {
     title: 'Marketing Agencies',
     desc: 'Find potential clients who need digital marketing services',
+    to: '/use-cases/marketing-agencies/',
   },
   {
     title: 'Real Estate Agents',
     desc: 'Source property-related leads from agents, investors, and managers',
+    to: '/use-cases/real-estate/',
   },
   {
     title: 'Recruiters',
     desc: 'Discover companies in specific industries and locations for talent placement',
+    to: null,
   },
 ]
 
@@ -220,12 +224,26 @@ export default function GoogleMapsLeadExtractor() {
             Who Uses Google Maps Lead Extraction?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {USE_CASES.map((uc) => (
-              <div key={uc.title} className="bg-white border border-border-subtle rounded-[10px] p-6">
-                <h3 className="font-display font-bold text-[17px] tracking-[-0.02em] text-ink m-0 mb-2">{uc.title}</h3>
-                <p className="font-sans text-sm font-normal leading-relaxed text-ink-muted m-0">{uc.desc}</p>
-              </div>
-            ))}
+            {USE_CASES.map((uc) => {
+              const inner = (
+                <div className={`bg-white border border-border-subtle rounded-[10px] p-6 h-full${uc.to ? ' transition-shadow duration-150 hover:shadow-md' : ''}`}>
+                  <h3 className="font-display font-bold text-[17px] tracking-[-0.02em] text-ink m-0 mb-2">{uc.title}</h3>
+                  <p className="font-sans text-sm font-normal leading-relaxed text-ink-muted m-0">{uc.desc}</p>
+                  {uc.to && (
+                    <span className="inline-flex items-center gap-1 font-sans text-sm font-semibold text-brand mt-3">
+                      Learn more <span aria-hidden="true">→</span>
+                    </span>
+                  )}
+                </div>
+              )
+              return uc.to ? (
+                <Link key={uc.title} to={uc.to} className="no-underline flex">
+                  {inner}
+                </Link>
+              ) : (
+                <div key={uc.title}>{inner}</div>
+              )
+            })}
           </div>
         </div>
       </section>

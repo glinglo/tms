@@ -26,6 +26,9 @@ const Alternatives = lazy(() => import('./pages/Alternatives'))
 const ApifyAlternative = lazy(() => import('./pages/alternatives/ApifyAlternative'))
 const OutscraperAlternative = lazy(() => import('./pages/alternatives/OutscraperAlternative'))
 const ScrapIoAlternative = lazy(() => import('./pages/alternatives/ScrapIoAlternative'))
+const UseCases = lazy(() => import('./pages/UseCases'))
+const RealEstateUseCase = lazy(() => import('./pages/use-cases/RealEstateUseCase'))
+const MarketingAgenciesUseCase = lazy(() => import('./pages/use-cases/MarketingAgenciesUseCase'))
 const DashboardLayout = lazy(() => import('./components/DashboardLayout'))
 const SearchPage = lazy(() => import('./pages/dashboard/SearchPage'))
 const ExportsPage = lazy(() => import('./pages/dashboard/ExportsPage'))
@@ -140,6 +143,9 @@ function AppInner() {
           <Route path="/alternatives/apify/" element={<ApifyAlternative />} />
           <Route path="/alternatives/outscraper/" element={<OutscraperAlternative />} />
           <Route path="/alternatives/scrap-io/" element={<ScrapIoAlternative />} />
+          <Route path="/use-cases/" element={<UseCases />} />
+          <Route path="/use-cases/real-estate/" element={<RealEstateUseCase />} />
+          <Route path="/use-cases/marketing-agencies/" element={<MarketingAgenciesUseCase />} />
           <Route
             path="/dashboard"
             element={
