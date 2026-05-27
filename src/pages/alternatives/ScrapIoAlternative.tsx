@@ -154,7 +154,20 @@ export default function ScrapIoAlternative() {
         </div>
       </section>
 
-      <LandingFAQ faqs={FAQS} />
+      <section className="bg-cream px-6 py-20 border-t border-border-subtle">
+        <div className="max-w-[720px] mx-auto">
+          <h2
+            className="font-display font-bold leading-none tracking-[-0.025em] text-ink m-0 mb-3"
+            style={{ fontSize: 'clamp(26px, 4vw, 40px)' }}
+          >
+            Frequently Asked Questions
+          </h2>
+          <p className="font-sans text-base font-normal text-ink-faint m-0 mb-10">
+            Common questions about TheMapScraper vs Scrap.io.
+          </p>
+          <LandingFAQ faqs={FAQS} />
+        </div>
+      </section>
 
       {/* Other comparisons */}
       <section className="bg-cream px-6 py-16">

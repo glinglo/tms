@@ -1,10 +1,12 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext'
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { user, loading, signOut, openLogin, openSignUp } = useAuthContext()
+  const location = useLocation()
+  const hideHomeLinks = location.pathname.startsWith('/alternatives')
 
   return (
     <nav className="bg-cream border-b border-border-subtle h-[60px] sticky top-0 z-50">
@@ -15,20 +17,22 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <div className="hidden md:flex gap-8 items-center">
-          {[
-            { label: 'Pricing', href: '/#pricing' },
-            { label: 'How it works', href: '/#how-it-works' },
-          ].map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              className="font-sans text-sm font-semibold text-ink-muted no-underline transition-colors duration-150 hover:text-ink"
-            >
-              {label}
-            </a>
-          ))}
-        </div>
+        {!hideHomeLinks && (
+          <div className="hidden md:flex gap-8 items-center">
+            {[
+              { label: 'Pricing', href: '/#pricing' },
+              { label: 'How it works', href: '/#how-it-works' },
+            ].map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                className="font-sans text-sm font-semibold text-ink-muted no-underline transition-colors duration-150 hover:text-ink"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        )}
 
         <div className="flex items-center gap-3">
           {!loading && (
@@ -90,7 +94,7 @@ export default function Navbar() {
 
       {mobileOpen && (
         <div className="bg-cream border-b border-border-subtle px-6 py-4">
-          {[
+          {!hideHomeLinks && [
             { label: 'Pricing', href: '/#pricing' },
             { label: 'How it works', href: '/#how-it-works' },
           ].map(({ label, href }) => (

@@ -1,14 +1,23 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from '../../context/AuthContext'
 
 interface LandingHeroProps {
   h1: string
   subtitle: string
   ctaText: string
-  ctaHref: string
+  ctaHref?: string
   badge?: string
 }
 
-export default function LandingHero({ h1, subtitle, ctaText, ctaHref, badge }: LandingHeroProps) {
+export default function LandingHero({ h1, subtitle, ctaText, badge }: LandingHeroProps) {
+  const { user, openSignUp } = useAuthContext()
+  const navigate = useNavigate()
+
+  function handleCta() {
+    if (user) navigate('/dashboard')
+    else openSignUp()
+  }
+
   return (
     <section className="bg-cream px-6 pt-24 pb-20">
       <div className="max-w-[800px] mx-auto text-center">
@@ -30,12 +39,12 @@ export default function LandingHero({ h1, subtitle, ctaText, ctaHref, badge }: L
           {subtitle}
         </p>
 
-        <Link
-          to={ctaHref}
-          className="inline-flex items-center gap-2 bg-brand text-white font-sans text-[15px] font-semibold px-8 py-4 rounded-pill no-underline transition-colors duration-150 hover:bg-brand-dark"
+        <button
+          onClick={handleCta}
+          className="inline-flex items-center gap-2 bg-brand text-white font-sans text-[15px] font-semibold px-8 py-4 rounded-pill border-none cursor-pointer transition-colors duration-150 hover:bg-brand-dark"
         >
           {ctaText} <span aria-hidden="true">→</span>
-        </Link>
+        </button>
       </div>
     </section>
   )

@@ -1,13 +1,22 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from '../../context/AuthContext'
 
 interface LandingCTAProps {
   headline: string
   ctaText: string
-  ctaHref: string
+  ctaHref?: string
   subtext?: string
 }
 
-export default function LandingCTA({ headline, ctaText, ctaHref, subtext }: LandingCTAProps) {
+export default function LandingCTA({ headline, ctaText, subtext }: LandingCTAProps) {
+  const { user, openSignUp } = useAuthContext()
+  const navigate = useNavigate()
+
+  function handleCta() {
+    if (user) navigate('/dashboard')
+    else openSignUp()
+  }
+
   return (
     <section className="bg-ink py-24 px-6">
       <div className="max-w-[600px] mx-auto text-center">
@@ -17,12 +26,12 @@ export default function LandingCTA({ headline, ctaText, ctaHref, subtext }: Land
         >
           {headline}
         </h2>
-        <Link
-          to={ctaHref}
-          className="inline-flex items-center gap-2 bg-brand text-white font-sans text-[15px] font-semibold px-8 py-4 rounded-pill no-underline transition-colors duration-150 hover:bg-brand-dark"
+        <button
+          onClick={handleCta}
+          className="inline-flex items-center gap-2 bg-brand text-white font-sans text-[15px] font-semibold px-8 py-4 rounded-pill border-none cursor-pointer transition-colors duration-150 hover:bg-brand-dark"
         >
           {ctaText} <span aria-hidden="true">→</span>
-        </Link>
+        </button>
         {subtext && (
           <p className="font-sans text-sm text-[rgba(252,252,252,0.4)] m-0 mt-4">{subtext}</p>
         )}
