@@ -120,8 +120,7 @@ function HomePage() {
 function AppInner() {
   const location = useLocation()
   const isDashboard = location.pathname.startsWith('/dashboard')
-  const isPricing = location.pathname === '/pricing'
-  const hideChrome = isDashboard || isPricing
+  const hideChrome = isDashboard
 
   return (
     <div style={{ backgroundColor: '#f9f7f3', minHeight: '100vh' }}>

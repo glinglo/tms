@@ -134,6 +134,7 @@ export default function HowItWorks() {
           <div className="flex flex-col gap-4 items-end">
             <div className="flex gap-3 flex-wrap items-start">
               {[
+                { label: 'Free', price: '$0', leads: '50 leads/mo', featured: false },
                 { label: 'Starter', price: '€9', leads: '500 leads', featured: false },
                 { label: 'Growth', price: '€29', leads: '2,000 leads', featured: true },
                 { label: 'Pro', price: '€69', leads: '6,000 leads', featured: false },

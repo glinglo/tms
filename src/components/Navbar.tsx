@@ -6,7 +6,9 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { user, loading, signOut, openLogin, openSignUp } = useAuthContext()
   const location = useLocation()
-  const hideHomeLinks = location.pathname.startsWith('/alternatives')
+  const hideHomeLinks =
+    location.pathname.startsWith('/alternatives') ||
+    location.pathname === '/pricing'
 
   return (
     <nav className="bg-cream border-b border-border-subtle h-[60px] sticky top-0 z-50">
