@@ -4,10 +4,9 @@ import { useLocation } from 'react-router-dom'
 export default function ScrollToTop() {
   const { pathname } = useLocation()
   useLayoutEffect(() => {
-    // bypass scroll-behavior:smooth so navigation always jumps instantly
-    document.documentElement.style.scrollBehavior = 'auto'
-    window.scrollTo(0, 0)
-    document.documentElement.style.scrollBehavior = ''
+    // 'instant' overrides scroll-behavior:smooth at the call level,
+    // regardless of what CSS sets on html/body
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior })
   }, [pathname])
   return null
 }
