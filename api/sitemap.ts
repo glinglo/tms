@@ -17,6 +17,8 @@ interface UrlEntry {
 const STATIC_PAGES: UrlEntry[] = [
   { loc: '/', lastmod: TODAY, changefreq: 'weekly', priority: '1.0' },
   { loc: '/pricing/', lastmod: TODAY, changefreq: 'monthly', priority: '0.8' },
+  // Comparisons hub
+  { loc: '/alternatives/', lastmod: '2026-05-27', changefreq: 'monthly', priority: '0.8' },
   // Transactional landing pages
   { loc: '/google-maps-lead-extractor/', lastmod: '2025-05-01', changefreq: 'monthly', priority: '0.9' },
   { loc: '/extract-emails-google-maps/', lastmod: '2025-05-01', changefreq: 'monthly', priority: '0.9' },

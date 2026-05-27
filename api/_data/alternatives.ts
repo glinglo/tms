@@ -3,7 +3,10 @@ export interface ContentEntry {
   lastmod: string // YYYY-MM-DD
 }
 
-// Add new alternatives pages here — e.g. { slug: 'apify-alternative', lastmod: '2025-05-01' }
-const alternatives: ContentEntry[] = []
+const alternatives: ContentEntry[] = [
+  { slug: 'apify', lastmod: '2026-05-27' },
+  { slug: 'outscraper', lastmod: '2026-05-27' },
+  { slug: 'scrap-io', lastmod: '2026-05-27' },
+]
 
 export default alternatives

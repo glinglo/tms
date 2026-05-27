@@ -37,6 +37,25 @@ export default function Footer() {
               </Link>
             ))}
           </div>
+          <div className="flex flex-col gap-2">
+            <p className="font-sans text-[11px] font-semibold text-[rgba(252,252,252,0.3)] uppercase tracking-[0.06em] m-0 mb-1">
+              Comparisons
+            </p>
+            {[
+              { label: 'Alternatives Overview',        to: '/alternatives/' },
+              { label: 'TheMapScraper vs Apify',       to: '/alternatives/apify/' },
+              { label: 'TheMapScraper vs Outscraper',  to: '/alternatives/outscraper/' },
+              { label: 'TheMapScraper vs Scrap.io',    to: '/alternatives/scrap-io/' },
+            ].map(({ label, to }) => (
+              <Link
+                key={to}
+                to={to}
+                className="font-sans text-sm text-[rgba(252,252,252,0.4)] no-underline transition-colors duration-150 hover:text-[#fcfcfc]"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div className="border-t border-[rgba(255,255,255,0.10)] pt-6 flex items-center justify-between flex-wrap gap-3">

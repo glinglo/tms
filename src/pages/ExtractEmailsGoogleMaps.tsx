@@ -195,6 +195,7 @@ export default function ExtractEmailsGoogleMaps() {
               { label: 'Google Maps Lead Extractor',        to: '/google-maps-lead-extractor/' },
               { label: 'Google Maps Data Scraper to CSV',   to: '/google-maps-data-scraper-csv/' },
               { label: 'Free Google Maps Business Scraper', to: '/google-maps-business-scraper-free/' },
+              { label: 'Compare scraping tools',            to: '/alternatives/' },
             ].map(({ label, to }) => (
               <Link key={to} to={to} className="font-sans text-sm font-semibold text-brand no-underline hover:underline">
                 {label} →

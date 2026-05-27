@@ -66,6 +66,7 @@ const RELATED = [
   { label: 'Google Maps Lead Extractor',       to: '/google-maps-lead-extractor/' },
   { label: 'Extract Emails from Google Maps',  to: '/extract-emails-google-maps/' },
   { label: 'Free Google Maps Business Scraper', to: '/google-maps-business-scraper-free/' },
+  { label: 'Compare scraping tools',           to: '/alternatives/' },
 ]
 
 export default function GoogleMapsDataScraperCsv() {

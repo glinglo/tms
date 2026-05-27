@@ -201,6 +201,12 @@ export default function GoogleMapsLeadExtractor() {
               </tbody>
             </table>
           </div>
+          <p className="font-sans text-sm text-ink-muted text-center mt-6">
+            Want a deeper breakdown?{' '}
+            <Link to="/alternatives/" className="text-brand font-semibold no-underline hover:underline">
+              See our full comparison of Google Maps scraping tools →
+            </Link>
+          </p>
         </div>
       </section>
 

@@ -22,6 +22,10 @@ const GoogleMapsLeadExtractor = lazy(() => import('./pages/GoogleMapsLeadExtract
 const ExtractEmailsGoogleMaps = lazy(() => import('./pages/ExtractEmailsGoogleMaps'))
 const GoogleMapsDataScraperCsv = lazy(() => import('./pages/GoogleMapsDataScraperCsv'))
 const GoogleMapsBusinessScraperFree = lazy(() => import('./pages/GoogleMapsBusinessScraperFree'))
+const Alternatives = lazy(() => import('./pages/Alternatives'))
+const ApifyAlternative = lazy(() => import('./pages/alternatives/ApifyAlternative'))
+const OutscraperAlternative = lazy(() => import('./pages/alternatives/OutscraperAlternative'))
+const ScrapIoAlternative = lazy(() => import('./pages/alternatives/ScrapIoAlternative'))
 const DashboardLayout = lazy(() => import('./components/DashboardLayout'))
 const SearchPage = lazy(() => import('./pages/dashboard/SearchPage'))
 const ExportsPage = lazy(() => import('./pages/dashboard/ExportsPage'))
@@ -133,6 +137,10 @@ function AppInner() {
           <Route path="/extract-emails-google-maps/" element={<ExtractEmailsGoogleMaps />} />
           <Route path="/google-maps-data-scraper-csv/" element={<GoogleMapsDataScraperCsv />} />
           <Route path="/google-maps-business-scraper-free/" element={<GoogleMapsBusinessScraperFree />} />
+          <Route path="/alternatives/" element={<Alternatives />} />
+          <Route path="/alternatives/apify/" element={<ApifyAlternative />} />
+          <Route path="/alternatives/outscraper/" element={<OutscraperAlternative />} />
+          <Route path="/alternatives/scrap-io/" element={<ScrapIoAlternative />} />
           <Route
             path="/dashboard"
             element={
