@@ -132,31 +132,31 @@ export default function HowItWorks() {
             </p>
           </div>
           <div className="flex flex-col gap-4 items-end">
-            <div className="flex gap-3 flex-wrap items-start">
+            <div className="flex gap-2 flex-nowrap items-start">
               {[
-                { label: 'Free', price: '$0', leads: '50 leads/mo', featured: false },
-                { label: 'Starter', price: '€9', leads: '500 leads', featured: false },
-                { label: 'Growth', price: '€29', leads: '2,000 leads', featured: true },
-                { label: 'Pro', price: '€69', leads: '6,000 leads', featured: false },
+                { label: 'Free', price: '$0', leads: '50/mo', featured: false },
+                { label: 'Starter', price: '€9', leads: '500', featured: false },
+                { label: 'Growth', price: '€29', leads: '2,000', featured: true },
+                { label: 'Pro', price: '€69', leads: '6,000', featured: false },
               ].map((pack) => (
                 <div key={pack.label} className="flex flex-col items-center gap-[6px]">
-                  <div className="h-[22px] flex items-center">
+                  <div className="h-[20px] flex items-center">
                     {pack.featured && (
-                      <span className="font-sans text-[10px] font-bold text-brand bg-[rgba(234,40,4,0.12)] rounded-pill px-[9px] py-[3px] uppercase tracking-[0.05em]">
-                        Most popular
+                      <span className="font-sans text-[9px] font-bold text-brand bg-[rgba(234,40,4,0.12)] rounded-pill px-[8px] py-[3px] uppercase tracking-[0.05em] whitespace-nowrap">
+                        Popular
                       </span>
                     )}
                   </div>
                   <div
-                    className={`bg-[#2a2a2a] rounded-[10px] px-5 py-4 text-center min-w-[100px] ${pack.featured ? 'border-[1.5px] border-brand' : 'border border-[rgba(255,255,255,0.1)]'}`}
+                    className={`bg-[#2a2a2a] rounded-[10px] px-4 py-3 text-center w-[88px] ${pack.featured ? 'border-[1.5px] border-brand' : 'border border-[rgba(255,255,255,0.1)]'}`}
                   >
-                    <div className={`font-sans text-[11px] font-semibold mb-1 uppercase tracking-[0.05em] ${pack.featured ? 'text-brand' : 'text-[rgba(252,252,252,0.5)]'}`}>
+                    <div className={`font-sans text-[10px] font-semibold mb-1 uppercase tracking-[0.05em] ${pack.featured ? 'text-brand' : 'text-[rgba(252,252,252,0.5)]'}`}>
                       {pack.label}
                     </div>
-                    <div className="font-display text-2xl font-bold text-[#fcfcfc] tracking-[-0.02em]">
+                    <div className="font-display text-xl font-bold text-[#fcfcfc] tracking-[-0.02em]">
                       {pack.price}
                     </div>
-                    <div className="font-sans text-xs text-[rgba(252,252,252,0.4)] mt-[2px]">
+                    <div className="font-sans text-[11px] text-[rgba(252,252,252,0.4)] mt-[2px]">
                       {pack.leads}
                     </div>
                   </div>
