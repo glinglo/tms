@@ -29,7 +29,7 @@ Business name, phone number, email address, full address, website URL, Google ra
 4. Download a clean CSV file with all business data
 
 ## Pricing
-Free tier available with limited monthly extractions. Paid plans for higher volume.
+Free tier: 50 leads per month, no credit card required. Paid plans for higher volume.
 
 ## Links
 - Website: https://themapscraper.com

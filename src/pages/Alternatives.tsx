@@ -27,7 +27,7 @@ const SUMMARY_ROWS = [
   },
   {
     feature: 'Free tier',
-    tms: 'Yes',
+    tms: '50 leads/month, no credit card',
     apify: '$5 credit/month',
     outscraper: '500 records',
     scrapio: '7-day trial, 100 leads',

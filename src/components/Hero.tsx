@@ -27,7 +27,7 @@ export default function Hero({ query, setQuery, onSearch }: HeroProps) {
         <div className="inline-flex items-center gap-[6px] bg-white border border-border-subtle rounded-pill px-[14px] py-[5px] mb-8">
           <span className="w-[6px] h-[6px] rounded-full bg-[#2b9a66] inline-block" />
           <span className="font-sans text-xs font-semibold text-ink-muted">
-            Free map scraper · Google Maps leads as CSV
+            50 free leads/month · Google Maps leads as CSV
           </span>
         </div>
 

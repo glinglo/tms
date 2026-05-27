@@ -19,7 +19,7 @@ const ROWS = [
   },
   {
     feature: 'Pricing',
-    us: 'Simple subscription with free tier.',
+    us: 'Simple subscription. 50 leads/month free, no credit card. Paid plans for higher volumes.',
     them: 'Pay per result. ~$0.50/1K for basic data, up to $6/1K with email enrichment. Platform fee $29+/mo at scale.',
   },
   {
@@ -63,7 +63,7 @@ const FAQS = [
   {
     question: 'Is Apify free?',
     answer:
-      'Apify offers $5 in free monthly credits, which covers roughly 500-5,000 listings depending on the actor used. After that, pricing is usage-based. TheMapScraper also has a free tier with no credit card required.',
+      'Apify offers $5 in free monthly credits, which covers roughly 500-5,000 listings depending on the actor used. After that, pricing is usage-based. TheMapScraper offers 50 leads/month free with no credit card required.',
   },
   {
     question: 'Is Apify better than TheMapScraper?',

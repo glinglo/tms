@@ -15,7 +15,7 @@ const softwareApplication = {
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD',
-    description: 'Free tier available',
+    description: 'Free tier: 50 leads per month, no credit card required',
   },
   featureList: [
     'Google Maps business data extraction',
@@ -65,7 +65,7 @@ const faqPage = {
       name: 'Is TheMapScraper free?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. TheMapScraper offers a free tier that lets you extract leads without payment. Premium plans are available for higher volumes and additional features.',
+        text: 'Yes. TheMapScraper offers 50 free leads per month with no credit card required. All data fields are included. Premium plans are available for higher volumes.',
       },
     },
     {

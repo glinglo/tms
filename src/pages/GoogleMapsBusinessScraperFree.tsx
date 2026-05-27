@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useAuthContext } from '../context/AuthContext'
 import LandingMeta from '../components/landing/LandingMeta'
 import LandingHero from '../components/landing/LandingHero'
 import LandingFAQ from '../components/landing/LandingFAQ'
@@ -30,7 +31,7 @@ const FREE_FEATURES = [
 ]
 
 const COMPARISON_ROWS = [
-  { feature: 'Monthly extractions', free: 'Limited',       premium: 'Unlimited' },
+  { feature: 'Monthly extractions', free: '50 leads/month', premium: 'Unlimited' },
   { feature: 'Data fields',         free: 'All included',  premium: 'All included' },
   { feature: 'CSV export',          free: 'Yes',           premium: 'Yes' },
   { feature: 'Priority support',    free: 'Community',     premium: 'Dedicated' },
@@ -59,7 +60,7 @@ const FAQS = [
   {
     question: 'Is TheMapScraper really free?',
     answer:
-      'Yes. The free tier gives you real extractions with all data fields and CSV download. No watermarks, no hidden limitations on data quality. Upgrade anytime if you need higher volumes.',
+      'Yes. The free plan gives you 50 leads per month with all data fields and CSV download included. No watermarks, no hidden limitations on data quality. Upgrade anytime if you need higher volumes.',
   },
   {
     question: 'Do I need a credit card to start?',
@@ -69,7 +70,7 @@ const FAQS = [
   {
     question: 'What are the limits of the free plan?',
     answer:
-      'The free plan includes a monthly extraction limit. All data fields including names, phones, emails, addresses, and ratings are included in every plan.',
+      'The free plan includes 50 lead extractions per month. All data fields (names, phones, emails, addresses, ratings) are included. No credit card required. Unused leads do not roll over.',
   },
   {
     question: 'Is the data quality different on the free plan?',
@@ -91,6 +92,13 @@ const RELATED = [
 ]
 
 export default function GoogleMapsBusinessScraperFree() {
+  const { user, openSignUp } = useAuthContext()
+
+  function handleCta() {
+    if (user) window.location.href = '/dashboard'
+    else openSignUp()
+  }
+
   return (
     <>
       <LandingMeta
@@ -167,12 +175,12 @@ export default function GoogleMapsBusinessScraperFree() {
             </table>
           </div>
           <div className="flex flex-wrap items-center gap-4 mt-6">
-            <Link
-              to="/"
-              className="inline-block bg-brand text-white font-sans text-sm font-semibold px-5 py-[10px] rounded-[8px] no-underline hover:opacity-90 transition-opacity"
+            <button
+              onClick={handleCta}
+              className="inline-block bg-brand text-white font-sans text-sm font-semibold px-5 py-[10px] rounded-[8px] border-none cursor-pointer hover:opacity-90 transition-opacity"
             >
               Start Free
-            </Link>
+            </button>
             <Link
               to="/pricing"
               className="font-sans text-sm font-semibold text-ink-muted no-underline hover:text-ink"

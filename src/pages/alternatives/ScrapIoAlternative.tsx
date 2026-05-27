@@ -14,12 +14,12 @@ const ROWS = [
   },
   {
     feature: 'Pricing',
-    us: 'Simple subscription with free tier.',
+    us: 'Simple subscription. 50 leads/month free, no credit card. Paid plans for higher volumes.',
     them: 'From €49/month for 10,000 exports. Yearly deal available at €699.',
   },
   {
     feature: 'Free tier',
-    us: 'Yes, no credit card.',
+    us: '50 leads/month, no credit card.',
     them: '7-day trial with 100 leads.',
   },
   {
@@ -63,7 +63,7 @@ const FAQS = [
   {
     question: 'Is Scrap.io free?',
     answer:
-      'Scrap.io offers a 7-day free trial with 100 leads. After that, plans start at €49/month. TheMapScraper has a permanent free tier with no time limit.',
+      'Scrap.io offers a 7-day free trial with 100 leads. After that, plans start at €49/month. TheMapScraper offers 50 leads/month free permanently, no time limit and no credit card required.',
   },
   {
     question: 'Can Scrap.io scrape an entire country?',
@@ -78,7 +78,7 @@ const FAQS = [
   {
     question: 'Which is cheaper?',
     answer:
-      'TheMapScraper has a free tier and lower-priced subscriptions for basic needs. Scrap.io starts at €49/month but includes advanced filtering and larger export volumes. The right choice depends on whether you need those advanced features.',
+      'TheMapScraper offers 50 leads/month free (no credit card) and lower-priced paid plans. Scrap.io starts at €49/month but includes advanced filtering and larger export volumes. The right choice depends on whether you need those advanced features.',
   },
 ]
 
