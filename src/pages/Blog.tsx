@@ -4,6 +4,14 @@ import BreadcrumbSchema from '../components/BreadcrumbSchema'
 
 const posts = [
   {
+    slug: '/blog/best-google-maps-scrapers/',
+    title: '7 Best Google Maps Scrapers Compared [2026]',
+    excerpt:
+      'Honest comparison of the seven best Google Maps scrapers in 2026. TheMapScraper, Apify, Outscraper, Scrap.io, and more. Features, pricing, and who each tool is best for.',
+    date: '2026-05-28',
+    readTime: '12 min read',
+  },
+  {
     slug: '/blog/how-to-scrape-google-maps/',
     title: 'How to Scrape Google Maps in 2026',
     excerpt:

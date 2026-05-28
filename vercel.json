@@ -10,6 +10,7 @@
   ],
   "rewrites": [
     { "source": "/sitemap.xml",               "destination": "/api/sitemap" },
+    { "source": "/kimoskitchen.com",          "destination": "/api/gone"    },
     { "source": "/((?!api/)[^.]*)",           "destination": "/index.html"  }
   ],
   "headers": [
