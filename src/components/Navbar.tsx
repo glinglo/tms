@@ -6,9 +6,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { user, loading, signOut, openLogin, openSignUp } = useAuthContext()
   const location = useLocation()
-  const hideHomeLinks =
-    location.pathname.startsWith('/alternatives') ||
-    location.pathname === '/pricing'
+  const showHomeLinks = location.pathname === '/'
 
   return (
     <nav className="bg-cream border-b border-border-subtle h-[60px] sticky top-0 z-50">
@@ -19,7 +17,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {!hideHomeLinks && (
+        {showHomeLinks && (
           <div className="hidden md:flex gap-8 items-center">
             {[
               { label: 'Pricing', href: '/#pricing' },
@@ -96,7 +94,7 @@ export default function Navbar() {
 
       {mobileOpen && (
         <div className="bg-cream border-b border-border-subtle px-6 py-4">
-          {!hideHomeLinks && [
+          {showHomeLinks && [
             { label: 'Pricing', href: '/#pricing' },
             { label: 'How it works', href: '/#how-it-works' },
           ].map(({ label, href }) => (
