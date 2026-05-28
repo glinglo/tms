@@ -57,6 +57,17 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-2">
             <p className="font-sans text-[11px] font-semibold text-[rgba(252,252,252,0.3)] uppercase tracking-[0.06em] m-0 mb-1">
+              Resources
+            </p>
+            <Link
+              to="/blog/"
+              className="font-sans text-sm text-[rgba(252,252,252,0.4)] no-underline transition-colors duration-150 hover:text-[#fcfcfc]"
+            >
+              Blog
+            </Link>
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="font-sans text-[11px] font-semibold text-[rgba(252,252,252,0.3)] uppercase tracking-[0.06em] m-0 mb-1">
               Comparisons
             </p>
             {[

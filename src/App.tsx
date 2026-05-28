@@ -29,6 +29,8 @@ const ScrapIoAlternative = lazy(() => import('./pages/alternatives/ScrapIoAltern
 const UseCases = lazy(() => import('./pages/UseCases'))
 const RealEstateUseCase = lazy(() => import('./pages/use-cases/RealEstateUseCase'))
 const MarketingAgenciesUseCase = lazy(() => import('./pages/use-cases/MarketingAgenciesUseCase'))
+const Blog = lazy(() => import('./pages/Blog'))
+const HowToScrapeGoogleMaps = lazy(() => import('./pages/blog/HowToScrapeGoogleMaps'))
 const DashboardLayout = lazy(() => import('./components/DashboardLayout'))
 const SearchPage = lazy(() => import('./pages/dashboard/SearchPage'))
 const ExportsPage = lazy(() => import('./pages/dashboard/ExportsPage'))
@@ -146,6 +148,8 @@ function AppInner() {
           <Route path="/use-cases/" element={<UseCases />} />
           <Route path="/use-cases/real-estate/" element={<RealEstateUseCase />} />
           <Route path="/use-cases/marketing-agencies/" element={<MarketingAgenciesUseCase />} />
+          <Route path="/blog/" element={<Blog />} />
+          <Route path="/blog/how-to-scrape-google-maps/" element={<HowToScrapeGoogleMaps />} />
           <Route
             path="/dashboard"
             element={
