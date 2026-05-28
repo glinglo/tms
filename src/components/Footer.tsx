@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="bg-black py-12 px-6 pb-8">
       <div className="max-w-[1080px] mx-auto">
 
-        <div className="mb-10 flex flex-wrap gap-x-16 gap-y-8">
+        <div className="mb-10 grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-x-8 gap-y-8 items-start">
           <div>
             <a href="/" className="no-underline inline-block mb-[10px]">
               <span className="font-display text-xl font-bold text-[#fcfcfc] tracking-[-0.5px]">
