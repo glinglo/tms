@@ -4,6 +4,14 @@ import BreadcrumbSchema from '../components/BreadcrumbSchema'
 
 const posts = [
   {
+    slug: '/blog/google-maps-lead-generation-guide/',
+    title: 'Google Maps Lead Generation: The Complete Guide [2026]',
+    excerpt:
+      'How to use Google Maps as a systematic lead generation channel. Strategies for finding SMB prospects, personalizing outreach, and building a repeatable sales process.',
+    date: '2026-05-28',
+    readTime: '12 min read',
+  },
+  {
     slug: '/blog/best-google-maps-scrapers/',
     title: '7 Best Google Maps Scrapers Compared [2026]',
     excerpt:

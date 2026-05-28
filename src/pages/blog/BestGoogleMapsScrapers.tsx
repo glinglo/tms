@@ -606,7 +606,15 @@ export default function BestGoogleMapsScrapers() {
         </Link>{' '}
         is also worth thinking through before choosing a tool. If your end goal is a CRM import,
         a clean CSV from a no-code tool is often more useful than a JSON payload from a developer
-        platform that requires an extra transformation step.
+        platform that requires an extra transformation step. Once you have chosen a tool and are
+        extracting data regularly, the next step is building the outreach process around it. Our{' '}
+        <Link
+          to="/blog/google-maps-lead-generation-guide/"
+          className="text-brand hover:underline font-medium"
+        >
+          Google Maps lead generation guide
+        </Link>{' '}
+        covers that in full.
       </p>
 
       {/* ── FAQ ── */}

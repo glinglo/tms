@@ -33,6 +33,7 @@ const NotFound = lazy(() => import('./pages/NotFound'))
 const Blog = lazy(() => import('./pages/Blog'))
 const HowToScrapeGoogleMaps = lazy(() => import('./pages/blog/HowToScrapeGoogleMaps'))
 const BestGoogleMapsScrapers = lazy(() => import('./pages/blog/BestGoogleMapsScrapers'))
+const GoogleMapsLeadGenerationGuide = lazy(() => import('./pages/blog/GoogleMapsLeadGenerationGuide'))
 const DashboardLayout = lazy(() => import('./components/DashboardLayout'))
 const SearchPage = lazy(() => import('./pages/dashboard/SearchPage'))
 const ExportsPage = lazy(() => import('./pages/dashboard/ExportsPage'))
@@ -153,6 +154,7 @@ function AppInner() {
           <Route path="/blog/" element={<Blog />} />
           <Route path="/blog/how-to-scrape-google-maps/" element={<HowToScrapeGoogleMaps />} />
           <Route path="/blog/best-google-maps-scrapers/" element={<BestGoogleMapsScrapers />} />
+          <Route path="/blog/google-maps-lead-generation-guide/" element={<GoogleMapsLeadGenerationGuide />} />
           <Route path="*" element={<NotFound />} />
           <Route
             path="/dashboard"

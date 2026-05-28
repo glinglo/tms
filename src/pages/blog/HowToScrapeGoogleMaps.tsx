@@ -316,7 +316,15 @@ export default function HowToScrapeGoogleMaps() {
         <Link to="/google-maps-lead-extractor/" className="text-brand hover:underline font-medium">
           The Google Maps lead extractor
         </Link>{' '}
-        covers this workflow in detail.
+        covers this workflow in detail. For a deeper look at turning this data into a sales
+        process, read our{' '}
+        <Link
+          to="/blog/google-maps-lead-generation-guide/"
+          className="text-brand hover:underline font-medium"
+        >
+          complete Google Maps lead generation guide
+        </Link>
+        .
       </p>
 
       <h3 className="font-display text-xl font-semibold text-ink tracking-tight mt-8 mb-3">
