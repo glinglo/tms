@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import { useAuthContext } from '../../context/AuthContext'
 import type { DashboardOutletContext } from '../../components/DashboardLayout'
+import SearchErrorBanner from '../../components/SearchErrorBanner'
 import { supabase } from '../../lib/supabase'
 import { authHeaders } from '../../lib/apiAuth'
-import { parseScrapeErrorResponse } from '../../lib/scrapeErrors'
+import { parseScrapeErrorResponse, type ScrapeErrorCode } from '../../lib/scrapeErrors'
 import type { Lead } from '../../types/lead'
 import { generateCSV, downloadCSV } from '../../lib/csv'
 
@@ -32,6 +33,7 @@ export default function ExportsPage() {
   const [loading, setLoading] = useState(true)
   const [redownloading, setRedownloading] = useState<string | null>(null)
   const [redownloadError, setRedownloadError] = useState('')
+  const [redownloadErrorCode, setRedownloadErrorCode] = useState<ScrapeErrorCode | undefined>()
 
   useEffect(() => {
     if (!user) return
@@ -50,6 +52,7 @@ export default function ExportsPage() {
     if (redownloading) return
     setRedownloading(record.id)
     setRedownloadError('')
+    setRedownloadErrorCode(undefined)
 
     try {
       const res = await fetch('/api/scrape', {
@@ -64,8 +67,10 @@ export default function ExportsPage() {
       })
 
       if (!res.ok) {
-        const { message } = await parseScrapeErrorResponse(res)
-        throw new Error(message)
+        const { message, code } = await parseScrapeErrorResponse(res)
+        setRedownloadError(message)
+        setRedownloadErrorCode(code)
+        return
       }
 
       const data = await res.json() as { results: Lead[] }
@@ -73,8 +78,9 @@ export default function ExportsPage() {
       const filename = `${record.business_type}-${record.location}-leads.csv`
         .toLowerCase().replace(/\s+/g, '-')
       downloadCSV(csv, filename)
-    } catch (err) {
-      setRedownloadError(err instanceof Error ? err.message : 'Re-download failed')
+    } catch {
+      setRedownloadError('Something went wrong. Please check your connection and try again.')
+      setRedownloadErrorCode(undefined)
     } finally {
       setRedownloading(null)
     }
@@ -98,7 +104,12 @@ export default function ExportsPage() {
         </p>
 
         {redownloadError && (
-          <p className="font-sans text-sm text-brand m-0 mb-4">{redownloadError}</p>
+          <SearchErrorBanner
+            message={redownloadError}
+            code={redownloadErrorCode}
+            context="redownload"
+            onBuyCredits={openBuyCredits}
+          />
         )}
 
         {loading ? (
