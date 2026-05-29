@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { requireUserId } from './_lib/auth'
+import { deductCredits } from './_lib/credits'
 import { getSupabaseAdmin, isSupabaseAdminConfigured, supabaseAdminConfigHint } from './_lib/supabaseAdmin'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -34,46 +35,40 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: 'Supabase credentials not configured' })
   }
 
+  try {
+    const result = await deductCredits(supabase, userId, creditsToDeduct)
 
-  const { data: profile, error: fetchErr } = await supabase
-    .from('profiles')
-    .select('credits_balance')
-    .eq('id', userId)
-    .single()
+    if (!result.ok) {
+      const { wallet } = result
+      return res.status(402).json({
+        error: 'Insufficient credits',
+        balance: wallet.totalAvailable,
+        freeRemaining: wallet.freeRemaining,
+        paidBalance: wallet.paidBalance,
+        required: creditsToDeduct,
+      })
+    }
 
-  if (fetchErr || !profile) {
-    return res.status(404).json({ error: 'Profile not found' })
-  }
+    if (businessType && location && typeof resultCount === 'number') {
+      await supabase.from('searches').insert({
+        user_id: userId,
+        business_type: businessType,
+        location,
+        result_count: resultCount,
+        credits_used: creditsToDeduct,
+      })
+    }
 
-  const balance = profile.credits_balance
-  if (creditsToDeduct > balance) {
-    return res.status(402).json({
-      error: 'Insufficient credits',
-      balance,
-      required: creditsToDeduct,
+    return res.status(200).json({
+      newBalance: result.wallet.totalAvailable,
+      wallet: result.wallet,
     })
-  }
-
-  const newBalance = balance - creditsToDeduct
-
-  const { error: updateErr } = await supabase
-    .from('profiles')
-    .update({ credits_balance: newBalance })
-    .eq('id', userId)
-
-  if (updateErr) {
+  } catch (err) {
+    const message = err instanceof Error ? err.message : 'Unknown error'
+    if (message === 'Profile not found') {
+      return res.status(404).json({ error: 'Profile not found' })
+    }
+    console.error('[deduct-credits]', err)
     return res.status(500).json({ error: 'Failed to update credits' })
   }
-
-  if (businessType && location && typeof resultCount === 'number') {
-    await supabase.from('searches').insert({
-      user_id: userId,
-      business_type: businessType,
-      location,
-      result_count: resultCount,
-      credits_used: creditsToDeduct,
-    })
-  }
-
-  return res.status(200).json({ newBalance })
 }

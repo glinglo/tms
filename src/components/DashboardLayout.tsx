@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext'
-import { supabase } from '../lib/supabase'
+import { authHeaders } from '../lib/apiAuth'
+import { formatCreditsLabel, type CreditWallet } from '../lib/credits'
 import BuyCreditsModal from './BuyCreditsModal'
 
 export interface DashboardOutletContext {
   credits: number | null
+  wallet: CreditWallet | null
   refreshCredits: () => void
   openBuyCredits: () => void
 }
@@ -56,6 +58,7 @@ export default function DashboardLayout() {
   const location = useLocation()
   const navigate = useNavigate()
   const [credits, setCredits] = useState<number | null>(null)
+  const [wallet, setWallet] = useState<CreditWallet | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [paymentBanner, setPaymentBanner] = useState(false)
   const [buyCreditsOpen, setBuyCreditsOpen] = useState(false)
@@ -63,17 +66,23 @@ export default function DashboardLayout() {
   const userId = user?.id
 
   const fetchCredits = useCallback(async () => {
-    console.log('[fetchCredits] userId:', userId)
     if (!userId) return
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('credits_balance')
-      .eq('id', userId)
-      .maybeSingle()
-    console.log('[fetchCredits] raw response → data:', data, '| error:', error)
-    const value = data?.credits_balance ?? 0
-    console.log('[fetchCredits] setting credits to:', value)
-    if (!error) setCredits(value)
+    try {
+      const res = await fetch('/api/credits', {
+        headers: await authHeaders(),
+      })
+      if (!res.ok) {
+        setCredits(0)
+        setWallet(null)
+        return
+      }
+      const body = (await res.json()) as CreditWallet
+      setWallet(body)
+      setCredits(body.totalAvailable)
+    } catch {
+      setCredits(null)
+      setWallet(null)
+    }
   }, [userId])
 
   // Fetch on mount and whenever the user changes
@@ -159,7 +168,7 @@ export default function DashboardLayout() {
               {email}
             </p>
             <p className="font-sans text-[11px] text-ink-faint m-0">
-              {credits === null ? '— credits' : `${credits} credits remaining`}
+              {formatCreditsLabel(credits)}
             </p>
           </div>
         </div>
@@ -245,6 +254,7 @@ export default function DashboardLayout() {
           <Outlet
             context={{
               credits,
+              wallet,
               refreshCredits: fetchCredits,
               openBuyCredits: () => setBuyCreditsOpen(true),
             } satisfies DashboardOutletContext}

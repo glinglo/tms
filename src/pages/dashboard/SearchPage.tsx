@@ -42,7 +42,8 @@ function SkeletonRow({ opacity = 1, delay = 0 }: { opacity?: number; delay?: num
 
 export default function SearchPage() {
   const { user } = useAuthContext()
-  const { credits, refreshCredits, openBuyCredits } = useOutletContext<DashboardOutletContext>()
+  const { credits, wallet, refreshCredits, openBuyCredits } =
+    useOutletContext<DashboardOutletContext>()
 
   const [business, setBusiness] = useState('')
   const [location, setLocation] = useState('')
@@ -200,6 +201,11 @@ export default function SearchPage() {
   }
 
   const hasNoCredits = credits !== null && credits === 0
+  const freeMonthlyUsedUp =
+    wallet !== null &&
+    wallet.freeRemaining === 0 &&
+    wallet.freeUsed >= wallet.freeMonthly &&
+    wallet.paidBalance === 0
   const insufficientForDownload =
     credits !== null && leads.length > 0 && leads.length > credits
   const canDownload =
@@ -228,7 +234,9 @@ export default function SearchPage() {
         {hasNoCredits && (
           <div className="bg-[#fff8f0] border border-[rgba(234,40,4,0.2)] rounded-[10px] px-[18px] py-[14px] mb-5 flex items-center justify-between flex-wrap gap-[10px]">
             <p className="font-sans text-sm text-ink m-0">
-              You have no credits. Buy a pack to start searching.
+              {freeMonthlyUsedUp
+                ? "You've used your 50 free leads this month. Buy a pack for more, or wait until next month."
+                : 'You have no credits. Buy a pack to start searching.'}
             </p>
             <button
               type="button"

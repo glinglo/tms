@@ -206,7 +206,7 @@ SUPABASE_SERVICE_KEY=     # server-side only
 
 ```sql
 users          id, email, created_at
-profiles       user_id, credits_balance, updated_at
+profiles       id, credits_balance (paid), free_credits_used, credits_period, updated_at
 searches       id, user_id, query, location, result_count, apify_run_id, created_at
 search_results id, search_id, data (jsonb), created_at
 orders         id, user_id, stripe_session_id, credits_purchased, amount_eur, created_at

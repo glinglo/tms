@@ -35,6 +35,10 @@ With `emailRedirectTo` set in the app, confirmation links send users to:
 
 Ensure that path is allowed by the redirect URLs above.
 
+## Free tier (50 leads/month)
+
+Run the SQL migration once: see [FREE_TIER.md](./FREE_TIER.md).
+
 ## Optional env (Vercel Production)
 
 | Variable | Value |

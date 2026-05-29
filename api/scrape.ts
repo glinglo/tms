@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { requireUserId } from './_lib/auth'
+import { getCreditWallet } from './_lib/credits'
 import { getSupabaseAdmin, isSupabaseAdminConfigured, supabaseAdminConfigHint } from './_lib/supabaseAdmin'
 import {
   respondScrapeError,
@@ -123,22 +124,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         )
       }
     } else {
-      const { data: profile, error: profileErr } = await supabase
-        .from('profiles')
-        .select('credits_balance')
-        .eq('id', userId)
-        .single()
-
-      if (profileErr || !profile) {
-        console.error('[scrape] profile lookup failed', profileErr)
+      let wallet
+      try {
+        wallet = await getCreditWallet(supabase, userId)
+      } catch (err) {
+        console.error('[scrape] credit wallet failed', err)
         return respondScrapeError(res, scrapeError('INTERNAL'))
       }
 
-      if (profile.credits_balance <= 0) {
+      if (!wallet) {
+        console.error('[scrape] profile not found', userId)
+        return respondScrapeError(res, scrapeError('INTERNAL'))
+      }
+
+      if (wallet.totalAvailable <= 0) {
         return respondScrapeError(res, scrapeError('NO_CREDITS'))
       }
 
-      effectiveMax = Math.min(effectiveMax, profile.credits_balance)
+      effectiveMax = Math.min(effectiveMax, wallet.totalAvailable)
     }
   }
 

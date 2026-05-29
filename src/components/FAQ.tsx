@@ -3,7 +3,7 @@ import { useState } from 'react'
 const FAQS = [
   {
     q: 'Do the credits expire?',
-    a: 'No. Credits never expire. Buy once, use whenever you need.',
+    a: 'Purchased credits never expire. The free plan includes 50 leads per calendar month; that allowance resets each month.',
   },
   {
     q: 'How do credits work?',
