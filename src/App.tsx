@@ -13,6 +13,7 @@ import CookieBanner from './components/CookieBanner'
 import HomepageSchema from './components/HomepageSchema'
 import { DEFAULT_QUERY, defaultResults } from './data/defaultResults'
 import type { Lead } from './types/lead'
+import { parseScrapeErrorResponse } from './lib/scrapeErrors'
 
 // Route-level code splitting — these pages are never shown on the homepage
 const Privacy = lazy(() => import('./pages/Privacy'))
@@ -96,16 +97,17 @@ function HomePage() {
       })
 
       if (!res.ok) {
-        const body = await res.json().catch(() => ({}))
-        throw new Error((body as { error?: string }).error ?? `HTTP ${res.status}`)
+        const { message } = await parseScrapeErrorResponse(res)
+        setErrorMsg(message)
+        setSearchState('error')
+        return
       }
 
       const data = await res.json() as { results: Lead[]; total: number }
       setLeads(data.results)
       setSearchState('results')
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : 'Something went wrong'
-      setErrorMsg(message)
+    } catch {
+      setErrorMsg('Preview search is temporarily unavailable. Please try again in a few minutes.')
       setSearchState('error')
     }
   }

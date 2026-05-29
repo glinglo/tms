@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import { useAuthContext } from '../../context/AuthContext'
 import type { DashboardOutletContext } from '../../components/DashboardLayout'
+import SearchErrorBanner from '../../components/SearchErrorBanner'
 import type { Lead } from '../../types/lead'
 import { authHeaders } from '../../lib/apiAuth'
+import { parseScrapeErrorResponse, type ScrapeErrorCode } from '../../lib/scrapeErrors'
 import { generateCSV, downloadCSV } from '../../lib/csv'
 import { clampLeadLimit, leadLimitOptionsForCredits } from '../../lib/leadLimits'
 
@@ -48,6 +50,7 @@ export default function SearchPage() {
   const [searchState, setSearchState] = useState<SearchState>('idle')
   const [leads, setLeads] = useState<Lead[]>([])
   const [errorMsg, setErrorMsg] = useState('')
+  const [errorCode, setErrorCode] = useState<ScrapeErrorCode | undefined>()
   const [loadingMsg, setLoadingMsg] = useState('')
   const [leadEnrichment, setLeadEnrichment] = useState(false)
   const [downloading, setDownloading] = useState(false)
@@ -107,6 +110,7 @@ export default function SearchPage() {
     setSearchState('loading')
     setLeads([])
     setErrorMsg('')
+    setErrorCode(undefined)
     setDownloadError('')
 
     const fetchLimit =
@@ -124,14 +128,18 @@ export default function SearchPage() {
         }),
       })
       if (!res.ok) {
-        const body = await res.json().catch(() => ({}))
-        throw new Error((body as { error?: string }).error ?? `HTTP ${res.status}`)
+        const { message, code } = await parseScrapeErrorResponse(res)
+        setErrorMsg(message)
+        setErrorCode(code)
+        setSearchState('error')
+        return
       }
       const data = await res.json() as { results: Lead[] }
       setLeads(data.results)
       setSearchState('results')
-    } catch (err) {
-      setErrorMsg(err instanceof Error ? err.message : 'Something went wrong')
+    } catch {
+      setErrorMsg('Something went wrong. Please check your connection and try again.')
+      setErrorCode(undefined)
       setSearchState('error')
     }
   }
@@ -347,10 +355,12 @@ export default function SearchPage() {
           </p>
         )}
 
-        {searchState === 'error' && (
-          <p className="font-sans text-sm text-brand m-0 mb-5">
-            {errorMsg}
-          </p>
+        {searchState === 'error' && errorMsg && (
+          <SearchErrorBanner
+            message={errorMsg}
+            code={errorCode}
+            onBuyCredits={openBuyCredits}
+          />
         )}
 
         {(searchState === 'loading' || (searchState === 'results' && leads.length > 0)) && (

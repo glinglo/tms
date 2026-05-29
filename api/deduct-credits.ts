@@ -1,15 +1,21 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { requireUserId } from './_lib/auth'
-import { getSupabaseAdmin } from './_lib/supabaseAdmin'
+import { getSupabaseAdmin, isSupabaseAdminConfigured, supabaseAdminConfigHint } from './_lib/supabaseAdmin'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
+  if (!isSupabaseAdminConfigured()) {
+    return res.status(500).json({
+      error: supabaseAdminConfigHint() ?? 'Server configuration error',
+    })
+  }
+
   const userId = await requireUserId(req)
   if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized' })
+    return res.status(401).json({ error: 'Unauthorized — sign in again' })
   }
 
   const { creditsToDeduct, businessType, location, resultCount } = req.body as {
@@ -27,6 +33,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!supabase) {
     return res.status(500).json({ error: 'Supabase credentials not configured' })
   }
+
 
   const { data: profile, error: fetchErr } = await supabase
     .from('profiles')

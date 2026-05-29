@@ -4,6 +4,7 @@ import { useAuthContext } from '../../context/AuthContext'
 import type { DashboardOutletContext } from '../../components/DashboardLayout'
 import { supabase } from '../../lib/supabase'
 import { authHeaders } from '../../lib/apiAuth'
+import { parseScrapeErrorResponse } from '../../lib/scrapeErrors'
 import type { Lead } from '../../types/lead'
 import { generateCSV, downloadCSV } from '../../lib/csv'
 
@@ -63,8 +64,8 @@ export default function ExportsPage() {
       })
 
       if (!res.ok) {
-        const body = await res.json().catch(() => ({})) as { error?: string }
-        throw new Error(body.error ?? 'Scrape failed')
+        const { message } = await parseScrapeErrorResponse(res)
+        throw new Error(message)
       }
 
       const data = await res.json() as { results: Lead[] }

@@ -1,6 +1,14 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { requireUserId } from './_lib/auth'
-import { getSupabaseAdmin } from './_lib/supabaseAdmin'
+import { getSupabaseAdmin, isSupabaseAdminConfigured, supabaseAdminConfigHint } from './_lib/supabaseAdmin'
+import {
+  respondScrapeError,
+  scrapeError,
+  scrapeErrorFromRunStatus,
+  scrapeErrorFromUpstream,
+  ScrapeUserError,
+  throwScrape,
+} from './_lib/scrapeErrors'
 
 const ACTOR_ID = 'nwua9Gu5YrADL7ZDj'
 const BASE = 'https://api.apify.com/v2'
@@ -8,7 +16,7 @@ const POLL_INTERVAL_MS = 3000
 const TIMEOUT_MS = 420000
 const PREVIEW_MAX_RESULTS = 10
 
-function apifyHeaders() {
+function upstreamHeaders() {
   return {
     Authorization: `Bearer ${process.env.APIFY_API_TOKEN}`,
     'Content-Type': 'application/json',
@@ -20,16 +28,28 @@ async function pollRun(runId: string): Promise<string> {
   while (Date.now() < deadline) {
     await new Promise((r) => setTimeout(r, POLL_INTERVAL_MS))
     const res = await fetch(`${BASE}/acts/${ACTOR_ID}/runs/${runId}`, {
-      headers: apifyHeaders(),
+      headers: upstreamHeaders(),
     })
-    const body = await res.json() as { data: { status: string; defaultDatasetId: string } }
-    const { status, defaultDatasetId } = body.data
-    if (status === 'SUCCEEDED') return defaultDatasetId
+    const raw = await res.text()
+    if (!res.ok) {
+      console.error('[scrape] poll run failed', res.status, raw.slice(0, 500))
+      throw new ScrapeUserError(scrapeErrorFromUpstream(res.status, raw))
+    }
+    let body: { data?: { status: string; defaultDatasetId: string } }
+    try {
+      body = JSON.parse(raw) as { data?: { status: string; defaultDatasetId: string } }
+    } catch {
+      throwScrape('SEARCH_FAILED')
+    }
+    const status = body.data?.status
+    const defaultDatasetId = body.data?.defaultDatasetId
+    if (status === 'SUCCEEDED' && defaultDatasetId) return defaultDatasetId
     if (status === 'FAILED' || status === 'ABORTED' || status === 'TIMED-OUT') {
-      throw new Error(`Apify run ended with status: ${status}`)
+      console.error('[scrape] run ended', status, runId)
+      throw new ScrapeUserError(scrapeErrorFromRunStatus(status))
     }
   }
-  throw new Error('Timed out waiting for Apify run to complete')
+  throwScrape('SEARCH_TIMEOUT')
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -39,7 +59,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const token = process.env.APIFY_API_TOKEN
   if (!token) {
-    return res.status(500).json({ error: 'APIFY_API_TOKEN is not configured' })
+    console.error('[scrape] APIFY_API_TOKEN missing')
+    return respondScrapeError(res, scrapeError('INTERNAL'))
   }
 
   const {
@@ -59,25 +80,30 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   if (!businessType?.trim() || !location?.trim()) {
-    return res.status(400).json({ error: 'businessType and location are required' })
+    return respondScrapeError(res, scrapeError('INVALID_REQUEST'))
   }
 
   let effectiveMax = Math.max(1, Math.floor(maxResults))
 
   if (preview) {
     if (leadEnrichment || redownloadSearchId) {
-      return res.status(400).json({ error: 'Invalid preview request' })
+      return respondScrapeError(res, scrapeError('INVALID_REQUEST'))
     }
     effectiveMax = Math.min(effectiveMax, PREVIEW_MAX_RESULTS)
   } else {
+    if (!isSupabaseAdminConfigured()) {
+      console.error('[scrape] Supabase admin not configured')
+      return respondScrapeError(res, scrapeError('INTERNAL', supabaseAdminConfigHint()))
+    }
+
     const userId = await requireUserId(req)
     if (!userId) {
-      return res.status(401).json({ error: 'Unauthorized' })
+      return respondScrapeError(res, scrapeError('UNAUTHORIZED'))
     }
 
     const supabase = getSupabaseAdmin()
     if (!supabase) {
-      return res.status(500).json({ error: 'Supabase credentials not configured' })
+      return respondScrapeError(res, scrapeError('INTERNAL', supabaseAdminConfigHint()))
     }
 
     const isRedownload = Boolean(redownloadSearchId)
@@ -91,7 +117,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         .maybeSingle()
 
       if (priorErr || !prior) {
-        return res.status(403).json({ error: 'Export not found' })
+        return respondScrapeError(
+          res,
+          scrapeError('INVALID_REQUEST', 'This export could not be found.'),
+        )
       }
     } else {
       const { data: profile, error: profileErr } = await supabase
@@ -101,11 +130,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         .single()
 
       if (profileErr || !profile) {
-        return res.status(404).json({ error: 'Profile not found' })
+        console.error('[scrape] profile lookup failed', profileErr)
+        return respondScrapeError(res, scrapeError('INTERNAL'))
       }
 
       if (profile.credits_balance <= 0) {
-        return res.status(403).json({ error: 'No credits remaining' })
+        return respondScrapeError(res, scrapeError('NO_CREDITS'))
       }
 
       effectiveMax = Math.min(effectiveMax, profile.credits_balance)
@@ -115,7 +145,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const startRes = await fetch(`${BASE}/acts/${ACTOR_ID}/runs`, {
       method: 'POST',
-      headers: apifyHeaders(),
+      headers: upstreamHeaders(),
       body: JSON.stringify({
         searchStringsArray: [businessType.trim()],
         locationQuery: location.trim(),
@@ -128,26 +158,36 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }),
     })
 
+    const startRaw = await startRes.text()
     if (!startRes.ok) {
-      const detail = await startRes.text()
-      return res.status(502).json({ error: 'Failed to start Apify run', detail })
+      console.error('[scrape] start run failed', startRes.status, startRaw.slice(0, 500))
+      throw new ScrapeUserError(scrapeErrorFromUpstream(startRes.status, startRaw))
     }
 
-    const startBody = await startRes.json() as { data: { id: string } }
+    let startBody: { data?: { id: string } }
+    try {
+      startBody = JSON.parse(startRaw) as { data?: { id: string } }
+    } catch {
+      throwScrape('SEARCH_FAILED')
+    }
+
     const runId = startBody.data?.id
     if (!runId) {
-      return res.status(502).json({ error: 'Apify did not return a run ID' })
+      console.error('[scrape] no run id in start response')
+      throwScrape('SEARCH_FAILED')
     }
 
     const datasetId = await pollRun(runId)
 
     const itemsRes = await fetch(
       `${BASE}/datasets/${datasetId}/items?clean=true&format=json`,
-      { headers: apifyHeaders() },
+      { headers: upstreamHeaders() },
     )
 
     if (!itemsRes.ok) {
-      return res.status(502).json({ error: 'Failed to fetch dataset items' })
+      const itemsRaw = await itemsRes.text()
+      console.error('[scrape] dataset fetch failed', itemsRes.status, itemsRaw.slice(0, 300))
+      throw new ScrapeUserError(scrapeErrorFromUpstream(itemsRes.status, itemsRaw))
     }
 
     const items = await itemsRes.json() as Record<string, unknown>[]
@@ -172,7 +212,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     return res.status(200).json({ results, total: results.length })
   } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : 'Internal server error'
-    return res.status(500).json({ error: message })
+    if (err instanceof ScrapeUserError) {
+      return respondScrapeError(res, err.payload)
+    }
+    console.error('[scrape] unexpected error', err)
+    return respondScrapeError(res, scrapeError('INTERNAL'))
   }
 }

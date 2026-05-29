@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:api": "vercel dev --listen 3000",
+    "dev:api:clean": "lsof -ti :3000 | xargs kill -9 2>/dev/null || true; vercel dev --listen 3000",
     "build": "tsc -b && vite build && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
