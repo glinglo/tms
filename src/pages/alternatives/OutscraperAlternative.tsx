@@ -148,7 +148,11 @@ export default function OutscraperAlternative() {
           <p className="font-sans text-base text-ink-muted leading-relaxed">
             TheMapScraper is the better choice if you only need Google Maps data, want predictable
             pricing without stacking costs, prefer instant setup over configuring task parameters,
-            or find pay-as-you-go billing confusing and want a simple subscription.
+            or find pay-as-you-go billing confusing and want a simple subscription. Go to the homepage to{' '}
+            <Link to="/" className="text-brand font-medium hover:underline">
+              extract leads from Google Maps
+            </Link>{' '}
+            with 50 free leads included, no credit card needed.
           </p>
         </div>
       </section>

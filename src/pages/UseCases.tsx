@@ -67,7 +67,11 @@ export default function UseCases() {
             Who Uses TheMapScraper
           </h1>
           <p className="font-sans text-lg font-normal leading-relaxed text-ink-muted max-w-[560px] mx-auto m-0">
-            From sales teams to real estate agents, see how businesses use Google Maps data to find and close new clients.
+            From sales teams to real estate agents, see how businesses use Google Maps data to find and close new clients. Use the tool to{' '}
+            <Link to="/" className="text-brand font-semibold hover:underline">
+              extract leads from Google Maps
+            </Link>
+            {' '}with 50 leads free each month.
           </p>
         </div>
       </section>

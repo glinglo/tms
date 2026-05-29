@@ -118,7 +118,11 @@ export default function Alternatives() {
             TheMapScraper vs Other Google Maps Scrapers
           </h1>
           <p className="font-sans text-lg font-normal leading-relaxed text-ink-muted max-w-[560px] mx-auto">
-            Honest comparisons to help you pick the right tool for your needs.
+            Honest comparisons to help you pick the right tool for your needs.{' '}
+            <Link to="/" className="text-brand font-semibold hover:underline">
+              TheMapScraper
+            </Link>
+            {' '}is the tool being compared — start there if you want to try it free.
           </p>
         </div>
       </section>

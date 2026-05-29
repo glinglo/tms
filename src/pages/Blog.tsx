@@ -56,7 +56,11 @@ export default function Blog() {
         <div className="max-w-[1080px] mx-auto px-6">
           <h1 className="font-display text-4xl font-bold text-ink tracking-tight mb-3">Blog</h1>
           <p className="font-sans text-base text-ink-muted m-0">
-            Guides, tutorials, and tips for extracting data from Google Maps.
+            Guides, tutorials, and tips for extracting data from Google Maps. Ready to get started? Use the{' '}
+            <Link to="/" className="text-brand font-semibold hover:underline">
+              Google Maps scraper
+            </Link>
+            {' '}to pull your first list of leads in minutes.
           </p>
         </div>
       </div>

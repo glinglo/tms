@@ -218,7 +218,11 @@ export default function BestGoogleMapsScrapers() {
         TheMapScraper is a web-based scraper built specifically for people who want Google Maps
         leads without any technical setup. You type a search query, click extract, and download a
         CSV. There is no account required to start, no browser extension to install, and no API
-        keys to configure.
+        keys to configure. If you want to{' '}
+        <Link to="/" className="text-brand hover:underline font-medium">
+          scrape Google Maps
+        </Link>{' '}
+        without any technical setup, this is the fastest starting point.
       </p>
       <p className="font-sans text-[17px] leading-[1.75] text-ink mb-6">
         The tool covers the core data fields needed for lead generation: business name, phone

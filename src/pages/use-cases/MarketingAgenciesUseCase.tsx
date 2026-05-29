@@ -233,8 +233,11 @@ export default function MarketingAgenciesUseCase() {
             Real estate is one of the highest-value niches for marketing agencies. Estate agents and
             brokerages depend almost entirely on their local reputation and online visibility to win
             new clients — which makes them natural buyers for SEO, Google Ads management, review
-            generation, and social media services. A search for "estate agents in [city]" on Google
-            Maps returns dozens to hundreds of listings, each with a rating, review count, phone
+            generation, and social media services. Use the{' '}
+            <Link to="/" className="text-brand hover:underline font-medium">
+              Google Maps scraper
+            </Link>
+            {' '}to search "estate agents in [city]" and get dozens to hundreds of listings, each with a rating, review count, phone
             number, and website you can evaluate in seconds.
           </p>
           <p className="font-sans text-[17px] leading-[1.75] text-ink mb-6">

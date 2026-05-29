@@ -149,7 +149,11 @@ export default function ApifyAlternative() {
             TheMapScraper is the better choice if you want to extract Google Maps leads without any
             technical setup, need results in 2 minutes instead of 30, prefer simple subscription
             pricing over pay-per-result billing, or are a sales rep, marketer, or agency owner who
-            just wants a CSV file of leads.
+            just wants a CSV file of leads. Try the{' '}
+            <Link to="/" className="text-brand font-medium hover:underline">
+              Google Maps lead scraper
+            </Link>{' '}
+            free — 50 leads per month, no credit card required.
           </p>
         </div>
       </section>

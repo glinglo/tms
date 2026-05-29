@@ -231,6 +231,13 @@ export default function RealEstateUseCase() {
       <section className="bg-white py-10 px-6 border-t border-border-subtle">
         <div className="max-w-[720px] mx-auto">
           <p className="font-sans text-xs font-semibold text-ink-faint uppercase tracking-[0.06em] m-0 mb-3">Related</p>
+          <p className="font-sans text-sm text-ink-muted mb-4">
+            Ready to build your list?{' '}
+            <Link to="/" className="text-brand font-semibold hover:underline">
+              Extract leads from Google Maps
+            </Link>
+            {' '}free — 50 leads per month included with no credit card required.
+          </p>
           <div className="flex flex-wrap gap-x-8 gap-y-3">
             <Link to="/use-cases/" className="font-sans text-sm font-semibold text-brand no-underline hover:underline">
               All Use Cases →

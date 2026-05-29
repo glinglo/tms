@@ -149,7 +149,11 @@ export default function ScrapIoAlternative() {
             TheMapScraper is the better choice if you want the fastest possible setup with zero
             learning curve, need a free tier to test before committing, prefer a lower price point
             for basic lead extraction, or just need names, phones, emails, and addresses without
-            advanced filtering.
+            advanced filtering.{' '}
+            <Link to="/" className="text-brand font-medium hover:underline">
+              TheMapScraper
+            </Link>{' '}
+            includes 50 free leads per month with no time limit and no credit card required.
           </p>
         </div>
       </section>

@@ -128,7 +128,11 @@ export default function ExtractEmailsGoogleMaps() {
           <div className="bg-[#eff6ff] border border-[#bfdbfe] rounded-[12px] p-6 flex gap-4">
             <span className="text-2xl leading-none shrink-0 mt-[2px]" aria-hidden="true">ℹ️</span>
             <p className="font-sans text-[15px] font-normal leading-[1.65] text-[#1e40af] m-0">
-              Not all Google Maps listings include email addresses. TheMapScraper extracts emails when businesses have made them publicly available on their Google Business Profile. Typically 30-60% of listings include emails, depending on the industry and region. For listings without email, you still get phone numbers, websites, and addresses for alternative outreach channels.
+              Not all Google Maps listings include email addresses. TheMapScraper extracts emails when businesses have made them publicly available on their Google Business Profile. Typically 30-60% of listings include emails, depending on the industry and region. For listings without email, you still get phone numbers, websites, and addresses for alternative outreach channels. You can{' '}
+              <Link to="/" className="text-[#1e40af] font-medium underline">
+                scrape Google Maps
+              </Link>{' '}
+              and download a full CSV with all available fields from the homepage.
             </p>
           </div>
         </div>

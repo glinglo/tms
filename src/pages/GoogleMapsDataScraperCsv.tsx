@@ -182,6 +182,13 @@ export default function GoogleMapsDataScraperCsv() {
       <section className="bg-white py-10 px-6 border-t border-border-subtle">
         <div className="max-w-[720px] mx-auto">
           <p className="font-sans text-xs font-semibold text-ink-faint uppercase tracking-[0.06em] m-0 mb-3">Related tools</p>
+          <p className="font-sans text-sm text-ink-muted mb-4">
+            Use the{' '}
+            <Link to="/" className="text-brand font-semibold hover:underline">
+              Google Maps lead scraper
+            </Link>
+            {' '}on the homepage to run a search and download your first CSV for free.
+          </p>
           <div className="flex flex-wrap gap-x-8 gap-y-3">
             {RELATED.map(({ label, to }) => (
               <Link

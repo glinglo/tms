@@ -238,7 +238,11 @@ export default function GoogleMapsBusinessScraperFree() {
             Frequently Asked Questions
           </h2>
           <p className="font-sans text-base font-normal text-ink-faint m-0 mb-10">
-            Common questions about the free Google Maps scraper.
+            Common questions about the free Google Maps scraper. Visit the homepage to{' '}
+            <Link to="/" className="text-brand font-semibold hover:underline">
+              scrape Google Maps
+            </Link>
+            {' '}right now — no account needed for the first search.
           </p>
           <LandingFAQ faqs={FAQS} />
         </div>

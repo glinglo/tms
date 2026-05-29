@@ -110,6 +110,9 @@ export default function HowItWorks() {
               </span>
             ))}
           </div>
+          <p className="font-sans text-sm text-[rgba(252,252,252,0.55)] mt-6 max-w-[640px]">
+            Every Google Maps listing contains valuable contact information that businesses maintain themselves. TheMapScraper pulls all of it into a structured CSV file you can open in Excel, Google Sheets, or import directly into your CRM.
+          </p>
         </div>
 
         {/* Social proof + Why Choose */}
@@ -128,7 +131,7 @@ export default function HowItWorks() {
               Why Choose TheMapScraper?
             </h2>
             <p className="font-sans text-sm text-[rgba(252,252,252,0.5)] m-0">
-              A map scraper built for non-technical users. Credits never expire, one credit = one lead, no subscriptions.
+              A Google Maps scraper built for non-technical users. Credits never expire, one credit = one lead, no subscriptions. Most tools require browser extensions that break on updates or complex API setup. TheMapScraper works directly in your browser — type a search, click extract, download your leads.
             </p>
           </div>
           <div className="flex flex-col gap-4 items-end">

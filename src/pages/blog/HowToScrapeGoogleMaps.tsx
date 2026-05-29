@@ -164,8 +164,11 @@ export default function HowToScrapeGoogleMaps() {
         How to Scrape Google Maps Without Code
       </h2>
       <p className="font-sans text-[17px] leading-[1.75] text-ink mb-6">
-        The fastest path from idea to data is a purpose-built no-code tool that handles everything
-        on your behalf. Here is how the process works with TheMapScraper, step by step.
+        The fastest path from idea to data is a purpose-built no-code{' '}
+        <Link to="/" className="text-brand hover:underline font-medium">
+          Google Maps scraper
+        </Link>{' '}
+        that handles everything on your behalf. Here is how the process works, step by step.
       </p>
       <p className="font-sans text-[17px] leading-[1.75] text-ink mb-6">
         <strong className="font-semibold">Step 1: Go to themapscraper.com.</strong> No account is

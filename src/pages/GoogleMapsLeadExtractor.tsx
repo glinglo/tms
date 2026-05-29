@@ -268,6 +268,10 @@ export default function GoogleMapsLeadExtractor() {
       <section className="bg-white py-10 px-6 border-t border-border-subtle">
         <div className="max-w-[720px] mx-auto">
           <p className="font-sans text-xs font-semibold text-ink-faint uppercase tracking-[0.06em] m-0 mb-3">Related tools</p>
+          <p className="font-sans text-sm text-ink-muted mb-4">
+            <Link to="/" className="text-brand font-semibold hover:underline">TheMapScraper</Link>
+            {' '}is the homepage for the full Google Maps lead extraction tool — start there to run your first search for free.
+          </p>
           <div className="flex flex-wrap gap-x-8 gap-y-3">
             {[
               { label: 'Extract Emails from Google Maps',   to: '/extract-emails-google-maps/' },

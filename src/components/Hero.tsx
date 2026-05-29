@@ -101,6 +101,10 @@ export default function Hero({ query, setQuery, onSearch }: HeroProps) {
             </button>
           ))}
         </div>
+
+        <p className="font-sans text-[15px] font-normal leading-relaxed text-ink-muted mt-8 max-w-[640px] mx-auto">
+          TheMapScraper is a web-based Google Maps scraper that extracts business data from any search. Get phone numbers, email addresses, physical addresses, websites, ratings, and reviews for any type of business in any location. No browser extension, no API keys, no coding required.
+        </p>
       </div>
     </section>
   )
