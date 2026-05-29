@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext'
+import { getClientSiteUrl } from '../lib/siteUrl'
 
 type Mode = 'signup' | 'login'
 type Status = 'idle' | 'loading' | 'success' | 'error'
@@ -35,7 +36,13 @@ export default function AuthModal() {
     const { supabase } = await import('../lib/supabase')
 
     if (mode === 'signup') {
-      const { error } = await supabase.auth.signUp({ email, password })
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: `${getClientSiteUrl()}/dashboard`,
+        },
+      })
       if (error) {
         setErrorMsg(error.message)
         setStatus('error')

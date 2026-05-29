@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import Stripe from 'stripe'
+import { getSiteUrl } from './_lib/siteUrl'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
@@ -15,13 +16,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (!priceId || !userId) return res.status(400).json({ error: 'Missing priceId or userId' })
 
+  const siteUrl = getSiteUrl()
+
   try {
     const stripe = new Stripe(secretKey)
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       line_items: [{ price: priceId, quantity: 1 }],
-      success_url: 'https://themapscraper-beta.vercel.app/dashboard?payment=success',
-      cancel_url: 'https://themapscraper-beta.vercel.app/dashboard?payment=cancelled',
+      success_url: `${siteUrl}/dashboard?payment=success`,
+      cancel_url: `${siteUrl}/dashboard?payment=cancelled`,
       ...(userEmail ? { customer_email: userEmail } : {}),
       metadata: { userId, priceId },
     })
