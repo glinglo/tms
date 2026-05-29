@@ -2,6 +2,13 @@ import { useCallback, useEffect, useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext'
 import { supabase } from '../lib/supabase'
+import BuyCreditsModal from './BuyCreditsModal'
+
+export interface DashboardOutletContext {
+  credits: number | null
+  refreshCredits: () => void
+  openBuyCredits: () => void
+}
 
 function IconHome() {
   return (
@@ -51,6 +58,7 @@ export default function DashboardLayout() {
   const [credits, setCredits] = useState<number | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [paymentBanner, setPaymentBanner] = useState(false)
+  const [buyCreditsOpen, setBuyCreditsOpen] = useState(false)
 
   const userId = user?.id
 
@@ -157,7 +165,11 @@ export default function DashboardLayout() {
         </div>
 
         <button
-          onClick={() => navigate('/pricing')}
+          type="button"
+          onClick={() => {
+            setBuyCreditsOpen(true)
+            setSidebarOpen(false)
+          }}
           className="w-full font-sans text-[13px] font-semibold text-white bg-brand border-none rounded-pill py-[10px] cursor-pointer transition-colors duration-150 mb-[10px] hover:bg-brand-dark"
         >
           Buy credits
@@ -230,9 +242,17 @@ export default function DashboardLayout() {
           </div>
         )}
         <main className="flex-1">
-          <Outlet context={{ credits, refreshCredits: fetchCredits }} />
+          <Outlet
+            context={{
+              credits,
+              refreshCredits: fetchCredits,
+              openBuyCredits: () => setBuyCreditsOpen(true),
+            } satisfies DashboardOutletContext}
+          />
         </main>
       </div>
+
+      <BuyCreditsModal open={buyCreditsOpen} onClose={() => setBuyCreditsOpen(false)} />
     </div>
   )
 }

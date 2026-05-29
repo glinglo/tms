@@ -91,6 +91,7 @@ function HomePage() {
           businessType: q.business,
           location: q.location,
           maxResults: PREVIEW_MAX_RESULTS,
+          preview: true,
         }),
       })
 

@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
+import { useOutletContext } from 'react-router-dom'
 import { useAuthContext } from '../../context/AuthContext'
+import type { DashboardOutletContext } from '../../components/DashboardLayout'
 import { supabase } from '../../lib/supabase'
+import { authHeaders } from '../../lib/apiAuth'
 import type { Lead } from '../../types/lead'
 import { generateCSV, downloadCSV } from '../../lib/csv'
 
@@ -23,20 +26,20 @@ const COLS = '1.2fr 2fr 0.8fr 0.8fr 1fr'
 
 export default function ExportsPage() {
   const { user } = useAuthContext()
+  const { openBuyCredits } = useOutletContext<DashboardOutletContext>()
   const [searches, setSearches] = useState<SearchRecord[]>([])
   const [loading, setLoading] = useState(true)
   const [redownloading, setRedownloading] = useState<string | null>(null)
+  const [redownloadError, setRedownloadError] = useState('')
 
   useEffect(() => {
     if (!user) return
-    console.log('[ExportsPage] fetching searches for user.id:', user.id)
     supabase
       .from('searches')
       .select('*')
       .eq('user_id', user.id)
       .order('created_at', { ascending: false })
-      .then(({ data, error }) => {
-        console.log('[ExportsPage] raw response → data:', data, '| error:', error)
+      .then(({ data }) => {
         setSearches((data as SearchRecord[]) ?? [])
         setLoading(false)
       })
@@ -45,27 +48,32 @@ export default function ExportsPage() {
   const handleRedownload = async (record: SearchRecord) => {
     if (redownloading) return
     setRedownloading(record.id)
+    setRedownloadError('')
 
     try {
       const res = await fetch('/api/scrape', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: await authHeaders(),
         body: JSON.stringify({
           businessType: record.business_type,
           location: record.location,
           maxResults: record.result_count,
+          redownloadSearchId: record.id,
         }),
       })
 
-      if (!res.ok) throw new Error('Scrape failed')
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({})) as { error?: string }
+        throw new Error(body.error ?? 'Scrape failed')
+      }
 
       const data = await res.json() as { results: Lead[] }
       const csv = generateCSV(data.results)
       const filename = `${record.business_type}-${record.location}-leads.csv`
         .toLowerCase().replace(/\s+/g, '-')
       downloadCSV(csv, filename)
-    } catch {
-      // silently fail — could add a toast here later
+    } catch (err) {
+      setRedownloadError(err instanceof Error ? err.message : 'Re-download failed')
     } finally {
       setRedownloading(null)
     }
@@ -85,8 +93,12 @@ export default function ExportsPage() {
           Your exports
         </h1>
         <p className="font-sans text-sm text-ink-faint m-0 mb-7">
-          All your past searches and downloads
+          Re-download past exports at no extra credit cost
         </p>
+
+        {redownloadError && (
+          <p className="font-sans text-sm text-brand m-0 mb-4">{redownloadError}</p>
+        )}
 
         {loading ? (
           <div className="flex items-center gap-[10px] text-ink-faint">
@@ -102,7 +114,7 @@ export default function ExportsPage() {
               No exports yet
             </p>
             <p className="font-sans text-sm text-ink-faint m-0">
-              Head to Dashboard to run your first search.
+              Head to Dashboard to run your first search and download a CSV.
             </p>
           </div>
         ) : (
@@ -142,6 +154,7 @@ export default function ExportsPage() {
                     {record.credits_used}
                   </span>
                   <button
+                    type="button"
                     onClick={() => handleRedownload(record)}
                     disabled={!!redownloading}
                     className={`font-sans text-xs font-semibold border rounded-pill px-[14px] py-[6px] flex items-center gap-[6px] w-fit transition-all duration-150 ${isRedownloading ? 'text-ink-faint border-[rgba(32,32,32,0.1)] cursor-not-allowed bg-transparent' : redownloading ? 'text-ink-faint border-[rgba(32,32,32,0.1)] cursor-not-allowed bg-transparent' : 'text-brand border-[rgba(234,40,4,0.3)] cursor-pointer bg-transparent hover:bg-[rgba(234,40,4,0.05)] hover:border-brand'}`}
@@ -162,6 +175,17 @@ export default function ExportsPage() {
           </div>
           </div>
         )}
+
+        <p className="font-sans text-xs text-ink-faint mt-4 m-0">
+          Need more leads?{' '}
+          <button
+            type="button"
+            onClick={openBuyCredits}
+            className="font-sans text-xs text-brand bg-transparent border-none cursor-pointer p-0 underline"
+          >
+            Buy credits
+          </button>
+        </p>
       </div>
     </>
   )

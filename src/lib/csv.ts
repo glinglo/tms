@@ -1,7 +1,7 @@
 import type { Lead } from '../types/lead'
 
 export function generateCSV(leads: Lead[]): string {
-  const headers = ['Name', 'Phone', 'Address', 'Rating', 'Reviews', 'Website', 'Email']
+  const headers = ['Name', 'Phone', 'Address', 'Rating', 'Reviews', 'Website', 'Email', 'Instagram', 'Facebook', 'LinkedIn']
   const rows = leads.map(l => [
     l.title ?? '',
     l.phone ?? '',
@@ -10,6 +10,9 @@ export function generateCSV(leads: Lead[]): string {
     l.reviewsCount?.toString() ?? '',
     l.website ?? '',
     l.email ?? '',
+    l.instagram ?? '',
+    l.facebook ?? '',
+    l.linkedin ?? '',
   ])
   const escape = (val: string) => `"${val.replace(/"/g, '""')}"`
   return [headers.map(escape), ...rows.map(row => row.map(escape))].join('\n')
