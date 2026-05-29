@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { requireUserId } from './_lib/auth'
-import { deductCredits } from './_lib/credits'
-import { getSupabaseAdmin, isSupabaseAdminConfigured, supabaseAdminConfigHint } from './_lib/supabaseAdmin'
+import { requireUserId } from './lib/auth'
+import { deductCredits } from './lib/credits'
+import { getSupabaseAdmin, isSupabaseAdminConfigured, supabaseAdminConfigHint } from './lib/supabaseAdmin'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {

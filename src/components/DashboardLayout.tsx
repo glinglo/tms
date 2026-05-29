@@ -2,7 +2,8 @@ import { useCallback, useEffect, useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext'
 import { authHeaders } from '../lib/apiAuth'
-import { formatCreditsLabel, type CreditWallet } from '../lib/credits'
+import { computeWalletFromProfile, formatCreditsLabel, type CreditWallet } from '../lib/credits'
+import { supabase } from '../lib/supabase'
 import BuyCreditsModal from './BuyCreditsModal'
 
 export interface DashboardOutletContext {
@@ -65,25 +66,45 @@ export default function DashboardLayout() {
 
   const userId = user?.id
 
+  const fetchCreditsFromProfile = useCallback(async () => {
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('credits_balance, free_credits_used, credits_period')
+      .eq('id', userId!)
+      .maybeSingle()
+
+    if (error || !data) return false
+
+    const wallet = computeWalletFromProfile(data)
+    setWallet(wallet)
+    setCredits(wallet.totalAvailable)
+    return true
+  }, [userId])
+
   const fetchCredits = useCallback(async () => {
     if (!userId) return
     try {
       const res = await fetch('/api/credits', {
         headers: await authHeaders(),
       })
-      if (!res.ok) {
-        setCredits(0)
-        setWallet(null)
+      if (res.ok) {
+        const body = (await res.json()) as CreditWallet
+        setWallet(body)
+        setCredits(body.totalAvailable)
         return
       }
-      const body = (await res.json()) as CreditWallet
-      setWallet(body)
-      setCredits(body.totalAvailable)
+
+      console.warn('[fetchCredits] /api/credits failed', res.status, await res.text())
+      const ok = await fetchCreditsFromProfile()
+      if (!ok) setCredits(null)
     } catch {
-      setCredits(null)
-      setWallet(null)
+      const ok = await fetchCreditsFromProfile()
+      if (!ok) {
+        setCredits(null)
+        setWallet(null)
+      }
     }
-  }, [userId])
+  }, [userId, fetchCreditsFromProfile])
 
   // Fetch on mount and whenever the user changes
   useEffect(() => { fetchCredits() }, [fetchCredits])

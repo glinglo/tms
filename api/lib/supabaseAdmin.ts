@@ -1,7 +1,8 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 
 function supabaseUrl(): string | undefined {
-  return process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL
+  const raw = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL
+  return raw?.trim() || undefined
 }
 
 export function isSupabaseAdminConfigured(): boolean {
@@ -17,8 +18,12 @@ export function getSupabaseAdmin(): SupabaseClient | null {
 
 export function supabaseAdminConfigHint(): string | undefined {
   if (isSupabaseAdminConfigured()) return undefined
+  const missing: string[] = []
+  if (!supabaseUrl()) missing.push('SUPABASE_URL (or VITE_SUPABASE_URL)')
+  if (!process.env.SUPABASE_SERVICE_KEY?.trim()) missing.push('SUPABASE_SERVICE_KEY')
+  const vars = missing.join(' and ')
   if (process.env.NODE_ENV === 'development') {
-    return 'Add SUPABASE_URL and SUPABASE_SERVICE_KEY to .env (service role secret from Supabase → Project Settings → API), then restart npm run dev:api.'
+    return `Add ${vars} to .env (service role from Supabase → Project Settings → API), then restart npm run dev:api.`
   }
-  return undefined
+  return `Set ${vars} in Vercel → Project → Settings → Environment Variables (Production).`
 }

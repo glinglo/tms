@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { requireUserId } from './_lib/auth'
-import { getCreditWallet } from './_lib/credits'
-import { getSupabaseAdmin, isSupabaseAdminConfigured, supabaseAdminConfigHint } from './_lib/supabaseAdmin'
+import { requireUserId } from './lib/auth'
+import { getCreditWallet } from './lib/credits'
+import { getSupabaseAdmin, isSupabaseAdminConfigured, supabaseAdminConfigHint } from './lib/supabaseAdmin'
 import {
   respondScrapeError,
   scrapeError,
@@ -9,7 +9,7 @@ import {
   scrapeErrorFromUpstream,
   ScrapeUserError,
   throwScrape,
-} from './_lib/scrapeErrors'
+} from './lib/scrapeErrors'
 
 const ACTOR_ID = 'nwua9Gu5YrADL7ZDj'
 const BASE = 'https://api.apify.com/v2'

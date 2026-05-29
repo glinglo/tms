@@ -9,6 +9,17 @@
 
 Deduction uses free allowance first, then paid balance.
 
+## Vercel (required for `/api/credits`, scrape, deduct)
+
+In **Production** (and Preview if you test there), set:
+
+| Variable | Value |
+|----------|--------|
+| `SUPABASE_URL` | Same as `VITE_SUPABASE_URL` |
+| `SUPABASE_SERVICE_KEY` | Service role secret (Supabase → Project Settings → API) |
+
+Without `SUPABASE_SERVICE_KEY`, `/api/credits` returns **500** and the dashboard may show **0 credits** until the client fallback reads your profile (after a frontend deploy with fallback).
+
 ## Deploy (required once)
 
 1. Open [Supabase](https://supabase.com/dashboard) → your project → **SQL Editor**.
