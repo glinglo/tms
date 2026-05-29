@@ -83,6 +83,8 @@ export default function DashboardLayout() {
 
   const fetchCredits = useCallback(async () => {
     if (!userId) return
+    if (await fetchCreditsFromProfile()) return
+
     try {
       const res = await fetch('/api/credits', {
         headers: await authHeaders(),
@@ -93,17 +95,12 @@ export default function DashboardLayout() {
         setCredits(body.totalAvailable)
         return
       }
-
-      console.warn('[fetchCredits] /api/credits failed', res.status, await res.text())
-      const ok = await fetchCreditsFromProfile()
-      if (!ok) setCredits(null)
     } catch {
-      const ok = await fetchCreditsFromProfile()
-      if (!ok) {
-        setCredits(null)
-        setWallet(null)
-      }
+      // Profile read is primary; API is fallback for period sync
     }
+
+    setCredits(null)
+    setWallet(null)
   }, [userId, fetchCreditsFromProfile])
 
   // Fetch on mount and whenever the user changes

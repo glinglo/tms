@@ -1,5 +1,5 @@
 import type { VercelRequest } from '@vercel/node'
-import { getSupabaseAdmin } from './supabaseAdmin'
+import { getSupabaseAdmin } from './supabaseAdmin.js'
 
 export async function requireUserId(req: VercelRequest): Promise<string | null> {
   const header = req.headers.authorization
