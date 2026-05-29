@@ -118,8 +118,8 @@ export default function GoogleMapsLeadExtractor() {
       />
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://themapscraper.com/' },
-          { name: 'Google Maps Lead Extractor', url: 'https://themapscraper.com/google-maps-lead-extractor/' },
+          { name: 'Home', url: 'https://www.themapscraper.com/' },
+          { name: 'Google Maps Lead Extractor', url: 'https://www.themapscraper.com/google-maps-lead-extractor/' },
         ]}
       />
 

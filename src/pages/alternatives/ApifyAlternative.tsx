@@ -92,9 +92,9 @@ export default function ApifyAlternative() {
       />
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://themapscraper.com/' },
-          { name: 'Alternatives', url: 'https://themapscraper.com/alternatives/' },
-          { name: 'vs Apify', url: 'https://themapscraper.com/alternatives/apify/' },
+          { name: 'Home', url: 'https://www.themapscraper.com/' },
+          { name: 'Alternatives', url: 'https://www.themapscraper.com/alternatives/' },
+          { name: 'vs Apify', url: 'https://www.themapscraper.com/alternatives/apify/' },
         ]}
       />
 

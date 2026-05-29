@@ -83,11 +83,11 @@ The key differentiator is simplicity: no browser extension to install, no API ke
 
 ## Pricing
 
-Free tier: 50 leads per month, no credit card required. Paid plans for higher volumes. Visit https://themapscraper.com/pricing/ for current pricing.
+Free tier: 50 leads per month, no credit card required. Paid plans for higher volumes. Visit https://www.themapscraper.com/pricing/ for current pricing.
 
 ## Links
 
-- Website: https://themapscraper.com
-- Blog: https://themapscraper.com/blog/
-- Pricing: https://themapscraper.com/pricing/
-- Use cases: https://themapscraper.com/use-cases/
+- Website: https://www.themapscraper.com
+- Blog: https://www.themapscraper.com/blog/
+- Pricing: https://www.themapscraper.com/pricing/
+- Use cases: https://www.themapscraper.com/use-cases/

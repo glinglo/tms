@@ -108,8 +108,8 @@ export default function GoogleMapsBusinessScraperFree() {
       />
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://themapscraper.com/' },
-          { name: 'Free Google Maps Business Scraper', url: 'https://themapscraper.com/google-maps-business-scraper-free/' },
+          { name: 'Home', url: 'https://www.themapscraper.com/' },
+          { name: 'Free Google Maps Business Scraper', url: 'https://www.themapscraper.com/google-maps-business-scraper-free/' },
         ]}
       />
 

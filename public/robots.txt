@@ -60,4 +60,4 @@ User-agent: DotBot
 Disallow: /
 
 # --- Sitemap ---
-Sitemap: https://themapscraper.com/sitemap.xml
+Sitemap: https://www.themapscraper.com/sitemap.xml

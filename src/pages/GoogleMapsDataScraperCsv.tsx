@@ -79,8 +79,8 @@ export default function GoogleMapsDataScraperCsv() {
       />
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://themapscraper.com/' },
-          { name: 'Google Maps Data Scraper to CSV', url: 'https://themapscraper.com/google-maps-data-scraper-csv/' },
+          { name: 'Home', url: 'https://www.themapscraper.com/' },
+          { name: 'Google Maps Data Scraper to CSV', url: 'https://www.themapscraper.com/google-maps-data-scraper-csv/' },
         ]}
       />
 

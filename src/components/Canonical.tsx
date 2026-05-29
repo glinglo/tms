@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const BASE = 'https://themapscraper.com'
+const BASE = 'https://www.themapscraper.com'
 
 export default function Canonical({ path }: { path: string }) {
   useEffect(() => {

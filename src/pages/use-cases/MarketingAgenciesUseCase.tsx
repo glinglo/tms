@@ -105,9 +105,9 @@ export default function MarketingAgenciesUseCase() {
       />
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://themapscraper.com/' },
-          { name: 'Use Cases', url: 'https://themapscraper.com/use-cases/' },
-          { name: 'Marketing Agencies', url: 'https://themapscraper.com/use-cases/marketing-agencies/' },
+          { name: 'Home', url: 'https://www.themapscraper.com/' },
+          { name: 'Use Cases', url: 'https://www.themapscraper.com/use-cases/' },
+          { name: 'Marketing Agencies', url: 'https://www.themapscraper.com/use-cases/marketing-agencies/' },
         ]}
       />
 

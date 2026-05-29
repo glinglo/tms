@@ -103,8 +103,8 @@ export default function Alternatives() {
       />
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://themapscraper.com/' },
-          { name: 'Alternatives', url: 'https://themapscraper.com/alternatives/' },
+          { name: 'Home', url: 'https://www.themapscraper.com/' },
+          { name: 'Alternatives', url: 'https://www.themapscraper.com/alternatives/' },
         ]}
       />
 

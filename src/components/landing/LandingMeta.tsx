@@ -7,8 +7,8 @@ interface LandingMetaProps {
   path: string
 }
 
-const BASE = 'https://themapscraper.com'
-const OG_IMAGE = 'https://themapscraper.com/og-image.png'
+const BASE = 'https://www.themapscraper.com'
+const OG_IMAGE = 'https://www.themapscraper.com/og-image.png'
 
 function getContent(selector: string): string {
   return document.querySelector<HTMLMetaElement>(selector)?.content ?? ''

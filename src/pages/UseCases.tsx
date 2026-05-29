@@ -52,8 +52,8 @@ export default function UseCases() {
       />
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://themapscraper.com/' },
-          { name: 'Use Cases', url: 'https://themapscraper.com/use-cases/' },
+          { name: 'Home', url: 'https://www.themapscraper.com/' },
+          { name: 'Use Cases', url: 'https://www.themapscraper.com/use-cases/' },
         ]}
       />
 

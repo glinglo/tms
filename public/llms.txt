@@ -32,9 +32,9 @@ Business name, phone number, email address, full address, website URL, Google ra
 Free tier: 50 leads per month, no credit card required. Paid plans for higher volume.
 
 ## Links
-- Website: https://themapscraper.com
-- Blog: https://themapscraper.com/blog/
-- Pricing: https://themapscraper.com/pricing/
+- Website: https://www.themapscraper.com
+- Blog: https://www.themapscraper.com/blog/
+- Pricing: https://www.themapscraper.com/pricing/
 
 ## More information
-For detailed product documentation, comparisons, and use cases, see: https://themapscraper.com/llms-full.txt
+For detailed product documentation, comparisons, and use cases, see: https://www.themapscraper.com/llms-full.txt

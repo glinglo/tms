@@ -22,7 +22,7 @@ function formatDate(iso: string) {
   })
 }
 
-const BASE = 'https://themapscraper.com'
+const BASE = 'https://www.themapscraper.com'
 
 export default function BlogPost({ title, description, canonical, date, readTime, children }: BlogPostProps) {
   useEffect(() => { window.scrollTo(0, 0) }, [])

@@ -47,8 +47,8 @@ export default function Blog() {
       />
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://themapscraper.com/' },
-          { name: 'Blog', url: 'https://themapscraper.com/blog/' },
+          { name: 'Home', url: 'https://www.themapscraper.com/' },
+          { name: 'Blog', url: 'https://www.themapscraper.com/blog/' },
         ]}
       />
 

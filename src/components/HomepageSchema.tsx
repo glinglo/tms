@@ -8,7 +8,7 @@ const softwareApplication = {
   alternateName: 'Map Scraper',
   description:
     'Extract business data from Google Maps instantly. Phone numbers, emails, addresses, websites, ratings and more. Download clean CSV. No extensions, no setup.',
-  url: 'https://themapscraper.com',
+  url: 'https://www.themapscraper.com',
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web Browser',
   offers: {
@@ -33,8 +33,8 @@ const organization = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'TheMapScraper',
-  url: 'https://themapscraper.com',
-  logo: 'https://themapscraper.com/logo.png',
+  url: 'https://www.themapscraper.com',
+  logo: 'https://www.themapscraper.com/logo.png',
   description:
     'Google Maps Lead Scraper. Extract business data from Google Maps instantly.',
   sameAs: [],
@@ -94,7 +94,7 @@ export default function HomepageSchema() {
       <JsonLd data={organization} />
       <JsonLd data={faqPage} />
       <BreadcrumbSchema
-        items={[{ name: 'Home', url: 'https://themapscraper.com/' }]}
+        items={[{ name: 'Home', url: 'https://www.themapscraper.com/' }]}
       />
     </>
   )

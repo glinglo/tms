@@ -92,9 +92,9 @@ export default function OutscraperAlternative() {
       />
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://themapscraper.com/' },
-          { name: 'Alternatives', url: 'https://themapscraper.com/alternatives/' },
-          { name: 'vs Outscraper', url: 'https://themapscraper.com/alternatives/outscraper/' },
+          { name: 'Home', url: 'https://www.themapscraper.com/' },
+          { name: 'Alternatives', url: 'https://www.themapscraper.com/alternatives/' },
+          { name: 'vs Outscraper', url: 'https://www.themapscraper.com/alternatives/outscraper/' },
         ]}
       />
 

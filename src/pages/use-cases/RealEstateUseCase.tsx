@@ -100,9 +100,9 @@ export default function RealEstateUseCase() {
       />
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://themapscraper.com/' },
-          { name: 'Use Cases', url: 'https://themapscraper.com/use-cases/' },
-          { name: 'Real Estate', url: 'https://themapscraper.com/use-cases/real-estate/' },
+          { name: 'Home', url: 'https://www.themapscraper.com/' },
+          { name: 'Use Cases', url: 'https://www.themapscraper.com/use-cases/' },
+          { name: 'Real Estate', url: 'https://www.themapscraper.com/use-cases/real-estate/' },
         ]}
       />
 

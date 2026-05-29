@@ -76,8 +76,8 @@ export default function ExtractEmailsGoogleMaps() {
       />
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://themapscraper.com/' },
-          { name: 'Extract Emails from Google Maps', url: 'https://themapscraper.com/extract-emails-google-maps/' },
+          { name: 'Home', url: 'https://www.themapscraper.com/' },
+          { name: 'Extract Emails from Google Maps', url: 'https://www.themapscraper.com/extract-emails-google-maps/' },
         ]}
       />
 

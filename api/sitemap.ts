@@ -4,7 +4,7 @@ import alternatives from './_data/alternatives.js'
 import useCases from './_data/use-cases.js'
 import scrapePages from './_data/scrape.js'
 
-const BASE_URL = 'https://themapscraper.com'
+const BASE_URL = 'https://www.themapscraper.com'
 const TODAY = new Date().toISOString().split('T')[0]
 
 interface UrlEntry {
