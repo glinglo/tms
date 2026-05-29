@@ -28,6 +28,7 @@ const EXAMPLE_SEARCHES = [
   { query: 'Gyms in [city]', note: 'Fitness businesses need constant lead generation' },
   { query: 'Lawyers in [city]', note: 'Legal marketing is a premium service' },
   { query: 'Auto repair shops in [city]', note: 'Local businesses with high LTV for marketing services' },
+  { query: 'Estate agents in [city]', note: 'High-ticket clients who rely on Google presence and reviews' },
 ]
 
 const STEPS = [
@@ -100,7 +101,7 @@ export default function MarketingAgenciesUseCase() {
     <>
       <LandingMeta
         title="Google Maps Scraper for Marketing Agencies. Find Clients"
-        description="Use TheMapScraper to find local businesses that need marketing services. Extract contacts from Google Maps, identify businesses without websites, and build client lists."
+        description="Use TheMapScraper to find local businesses that need marketing services. Extract contacts from Google Maps, prospect estate agents, identify businesses without websites, and build client lists."
         path="/use-cases/marketing-agencies/"
       />
       <BreadcrumbSchema
@@ -216,6 +217,43 @@ export default function MarketingAgenciesUseCase() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Estate agents section */}
+      <section className="bg-cream py-20 px-6 border-t border-border-subtle">
+        <div className="max-w-[800px] mx-auto">
+          <h2
+            className="font-display font-bold leading-none tracking-[-0.025em] text-ink m-0 mb-8"
+            style={{ fontSize: 'clamp(26px, 4vw, 40px)' }}
+          >
+            Finding Estate Agents on Google Maps
+          </h2>
+          <p className="font-sans text-[17px] leading-[1.75] text-ink mb-6">
+            Real estate is one of the highest-value niches for marketing agencies. Estate agents and
+            brokerages depend almost entirely on their local reputation and online visibility to win
+            new clients — which makes them natural buyers for SEO, Google Ads management, review
+            generation, and social media services. A search for "estate agents in [city]" on Google
+            Maps returns dozens to hundreds of listings, each with a rating, review count, phone
+            number, and website you can evaluate in seconds.
+          </p>
+          <p className="font-sans text-[17px] leading-[1.75] text-ink mb-6">
+            The qualification filter for estate agent outreach is straightforward: look for agencies
+            with 10 to 100 reviews and a rating between 3.5 and 4.4. These are established offices
+            that are actively operating but have clear headroom to grow their online presence. An
+            estate agent sitting at 3.8 stars knows prospective buyers and sellers check Google
+            before picking up the phone — they are receptive to a conversation about improving that.
+            Extract the list, filter by rating, and you have a warm prospect pipeline built in
+            under an hour.
+          </p>
+          <p className="font-sans text-[17px] leading-[1.75] text-ink mb-6">
+            Estate agent outreach converts best when you lead with a specific observation. Reference
+            their Google rating by name, note how many reviews competitors in the same postcode have,
+            and offer one concrete improvement — whether that is a review-generation strategy, a
+            local SEO audit, or a Google Ads campaign for buyer intent keywords. Agencies that
+            specialize in real estate marketing often command premium retainers because the niche is
+            well-defined and results are measurable in enquiry volume.
+          </p>
         </div>
       </section>
 

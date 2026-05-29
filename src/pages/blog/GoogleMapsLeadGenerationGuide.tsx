@@ -346,7 +346,16 @@ export default function GoogleMapsLeadGenerationGuide() {
         >
           real estate use case page
         </Link>
-        .
+        . Marketing agencies also use Google Maps to find estate agents as prospective clients —
+        searching "estate agents in [city]" returns a ready-made list of agencies to pitch
+        SEO, Google Ads, and reputation management services to. See how{' '}
+        <Link
+          to="/use-cases/marketing-agencies/"
+          className="text-brand hover:underline font-medium"
+        >
+          marketing agencies use Google Maps data
+        </Link>
+        {' '}to build their client pipeline.
       </p>
 
       <h3 className="font-display text-xl font-semibold text-ink tracking-tight mt-8 mb-3">

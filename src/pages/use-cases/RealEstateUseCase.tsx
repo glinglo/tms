@@ -13,7 +13,7 @@ const VALUE_PROPS = [
   },
   {
     title: 'Build Referral Networks',
-    desc: 'Extract real estate agents in your target area to build referral partnerships. Get their office address, phone, website, and Google rating.',
+    desc: 'Extract real estate agents in your target area to build referral partnerships. Get their office address, phone, website, and Google rating. Marketing agencies also use this data to prospect estate agents as high-value clients.',
   },
   {
     title: 'Research New Markets',
