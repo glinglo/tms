@@ -38,6 +38,11 @@ const GoogleMapsLeadGenerationGuide = lazy(() => import('./pages/blog/GoogleMaps
 const DashboardLayout = lazy(() => import('./components/DashboardLayout'))
 const SearchPage = lazy(() => import('./pages/dashboard/SearchPage'))
 const ExportsPage = lazy(() => import('./pages/dashboard/ExportsPage'))
+const RestaurantLeads = lazy(() => import('./pages/scrape/RestaurantLeads'))
+const DentistLeads = lazy(() => import('./pages/scrape/DentistLeads'))
+const PlumberLeads = lazy(() => import('./pages/scrape/PlumberLeads'))
+const LawyerLeads = lazy(() => import('./pages/scrape/LawyerLeads'))
+const RealEstateAgentLeads = lazy(() => import('./pages/scrape/RealEstateAgentLeads'))
 
 type SearchState = 'idle' | 'loading' | 'results' | 'error'
 
@@ -158,6 +163,11 @@ function AppInner() {
           <Route path="/blog/how-to-scrape-google-maps/" element={<HowToScrapeGoogleMaps />} />
           <Route path="/blog/best-google-maps-scrapers/" element={<BestGoogleMapsScrapers />} />
           <Route path="/blog/google-maps-lead-generation-guide/" element={<GoogleMapsLeadGenerationGuide />} />
+          <Route path="/scrape/restaurant-leads/" element={<RestaurantLeads />} />
+          <Route path="/scrape/dentist-leads/" element={<DentistLeads />} />
+          <Route path="/scrape/plumber-leads/" element={<PlumberLeads />} />
+          <Route path="/scrape/lawyer-leads/" element={<LawyerLeads />} />
+          <Route path="/scrape/real-estate-agent-leads/" element={<RealEstateAgentLeads />} />
           <Route path="*" element={<NotFound />} />
           <Route
             path="/dashboard"

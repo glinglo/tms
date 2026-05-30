@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="bg-black py-12 px-6 pb-8">
       <div className="max-w-[1080px] mx-auto">
 
-        <div className="mb-10 grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-x-8 gap-y-8 items-start">
+        <div className="mb-10 grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] gap-x-6 gap-y-8 items-start">
           <div>
             <a href="/" className="no-underline inline-block mb-[10px]">
               <span className="font-display text-xl font-bold text-[#fcfcfc] tracking-[-0.5px]">
@@ -45,6 +45,26 @@ export default function Footer() {
               { label: 'Use Cases Overview',         to: '/use-cases/' },
               { label: 'Real Estate Agents',          to: '/use-cases/real-estate/' },
               { label: 'Marketing Agencies',          to: '/use-cases/marketing-agencies/' },
+            ].map(({ label, to }) => (
+              <Link
+                key={to}
+                to={to}
+                className="font-sans text-sm text-[rgba(252,252,252,0.4)] no-underline transition-colors duration-150 hover:text-[#fcfcfc]"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="font-sans text-[11px] font-semibold text-[rgba(252,252,252,0.3)] uppercase tracking-[0.06em] m-0 mb-1">
+              Lead Types
+            </p>
+            {[
+              { label: 'Restaurant Leads',         to: '/scrape/restaurant-leads/' },
+              { label: 'Dentist Leads',             to: '/scrape/dentist-leads/' },
+              { label: 'Plumber Leads',             to: '/scrape/plumber-leads/' },
+              { label: 'Lawyer Leads',              to: '/scrape/lawyer-leads/' },
+              { label: 'Real Estate Agent Leads',   to: '/scrape/real-estate-agent-leads/' },
             ].map(({ label, to }) => (
               <Link
                 key={to}

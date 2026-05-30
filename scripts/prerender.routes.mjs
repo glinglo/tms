@@ -350,6 +350,73 @@ export const routes = [
     ],
   },
 
+  // ── Scrape / Industry leads ────────────────────────────────────────────────
+  {
+    path: '/scrape/restaurant-leads/',
+    title: 'Scrape Restaurant Leads from Google Maps | Sample Data',
+    description:
+      'Extract restaurant leads from Google Maps. See real sample data: 2,847 businesses with phone numbers, emails, websites, and ratings. Try free.',
+    schemas: [
+      breadcrumb([
+        { name: 'Home', url: `${BASE}/` },
+        { name: 'Scrape', url: `${BASE}/scrape/` },
+        { name: 'Restaurant Leads', url: `${BASE}/scrape/restaurant-leads/` },
+      ]),
+    ],
+  },
+  {
+    path: '/scrape/dentist-leads/',
+    title: 'Scrape Dentist Leads from Google Maps | Sample Data',
+    description:
+      'Extract dentist leads from Google Maps. See real sample data: 1,923 businesses with phone numbers, emails, websites, and ratings. Try free.',
+    schemas: [
+      breadcrumb([
+        { name: 'Home', url: `${BASE}/` },
+        { name: 'Scrape', url: `${BASE}/scrape/` },
+        { name: 'Dentist Leads', url: `${BASE}/scrape/dentist-leads/` },
+      ]),
+    ],
+  },
+  {
+    path: '/scrape/plumber-leads/',
+    title: 'Scrape Plumber Leads from Google Maps | Sample Data',
+    description:
+      'Extract plumber leads from Google Maps. See real sample data: 1,641 businesses with phone numbers, emails, websites, and ratings. Try free.',
+    schemas: [
+      breadcrumb([
+        { name: 'Home', url: `${BASE}/` },
+        { name: 'Scrape', url: `${BASE}/scrape/` },
+        { name: 'Plumber Leads', url: `${BASE}/scrape/plumber-leads/` },
+      ]),
+    ],
+  },
+  {
+    path: '/scrape/lawyer-leads/',
+    title: 'Scrape Lawyer Leads from Google Maps | Sample Data',
+    description:
+      'Extract lawyer leads from Google Maps. See real sample data: 2,104 businesses with phone numbers, emails, websites, and ratings. Try free.',
+    schemas: [
+      breadcrumb([
+        { name: 'Home', url: `${BASE}/` },
+        { name: 'Scrape', url: `${BASE}/scrape/` },
+        { name: 'Lawyer Leads', url: `${BASE}/scrape/lawyer-leads/` },
+      ]),
+    ],
+  },
+  {
+    path: '/scrape/real-estate-agent-leads/',
+    title: 'Scrape Real Estate Agent Leads from Google Maps | Sample Data',
+    description:
+      'Extract real estate agent leads from Google Maps. See real sample data: 3,218 businesses with phone numbers, emails, websites, and ratings. Try free.',
+    schemas: [
+      breadcrumb([
+        { name: 'Home', url: `${BASE}/` },
+        { name: 'Scrape', url: `${BASE}/scrape/` },
+        { name: 'Real Estate Agent Leads', url: `${BASE}/scrape/real-estate-agent-leads/` },
+      ]),
+    ],
+  },
+
   // ── Legal ──────────────────────────────────────────────────────────────────
   {
     path: '/privacy-policy/',
