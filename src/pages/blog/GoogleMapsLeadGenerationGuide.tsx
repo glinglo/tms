@@ -69,6 +69,10 @@ export default function GoogleMapsLeadGenerationGuide() {
       date="2026-05-28"
       readTime="12 min read"
     >
+      <p className="font-sans text-xs text-ink-faint m-0 mb-8">
+        Last updated: <time dateTime="2026-05">May 2026</time>
+      </p>
+
       <p className="font-sans text-[17px] leading-[1.75] text-ink mb-6">
         Google Maps is not just a navigation tool. For sales teams and agencies, it is a directory
         of more than 200 million businesses, each with contact information, a public rating, and

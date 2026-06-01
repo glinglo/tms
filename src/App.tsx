@@ -35,6 +35,9 @@ const Blog = lazy(() => import('./pages/Blog'))
 const HowToScrapeGoogleMaps = lazy(() => import('./pages/blog/HowToScrapeGoogleMaps'))
 const BestGoogleMapsScrapers = lazy(() => import('./pages/blog/BestGoogleMapsScrapers'))
 const GoogleMapsLeadGenerationGuide = lazy(() => import('./pages/blog/GoogleMapsLeadGenerationGuide'))
+const GoogleMapsScraperExtension = lazy(() => import('./pages/blog/GoogleMapsScraperExtension'))
+const ScrapeGoogleMapsReviews = lazy(() => import('./pages/blog/ScrapeGoogleMapsReviews'))
+const GoogleMapsScraperApi = lazy(() => import('./pages/blog/GoogleMapsScraperApi'))
 const DashboardLayout = lazy(() => import('./components/DashboardLayout'))
 const SearchPage = lazy(() => import('./pages/dashboard/SearchPage'))
 const ExportsPage = lazy(() => import('./pages/dashboard/ExportsPage'))
@@ -163,6 +166,9 @@ function AppInner() {
           <Route path="/blog/how-to-scrape-google-maps/" element={<HowToScrapeGoogleMaps />} />
           <Route path="/blog/best-google-maps-scrapers/" element={<BestGoogleMapsScrapers />} />
           <Route path="/blog/google-maps-lead-generation-guide/" element={<GoogleMapsLeadGenerationGuide />} />
+          <Route path="/blog/google-maps-scraper-extension-vs-web-app/" element={<GoogleMapsScraperExtension />} />
+          <Route path="/blog/scrape-google-maps-reviews/" element={<ScrapeGoogleMapsReviews />} />
+          <Route path="/blog/google-maps-scraper-api/" element={<GoogleMapsScraperApi />} />
           <Route path="/scrape/restaurant-leads/" element={<RestaurantLeads />} />
           <Route path="/scrape/dentist-leads/" element={<DentistLeads />} />
           <Route path="/scrape/plumber-leads/" element={<PlumberLeads />} />

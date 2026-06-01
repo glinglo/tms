@@ -61,33 +61,31 @@ const ROWS = [
 
 const FAQS = [
   {
-    question: 'Is Outscraper free?',
+    question: 'Is there a free Outscraper alternative?',
     answer:
-      'Outscraper offers 500 free records for Google Maps scraping. After that, pricing is $3 per 1,000 records for base data. Email enrichment and contact scraping are additional charges.',
+      'Yes. TheMapScraper offers 50 free leads per month from Google Maps with no credit card required and no time limit. It is a simpler, subscription-based alternative for users who want predictable pricing instead of Outscraper\'s pay-as-you-go model.',
   },
   {
-    question: 'Why is Outscraper pricing confusing?',
+    question: 'What is Outscraper used for?',
     answer:
-      'Outscraper uses separate pricing for each service: Maps scraping, email extraction, phone validation, and contact enrichment. When you stack multiple services, the total cost per lead can reach $6-14 per 1,000, which is hard to predict upfront.',
+      'Outscraper is a data extraction platform used for scraping Google Maps, Google Search, reviews, Amazon, and 50+ other sources. It is popular for lead generation, market research, and business intelligence, particularly among teams that need enriched contact data.',
   },
   {
-    question: 'Does Outscraper extract emails?',
+    question: 'How does TheMapScraper compare to Outscraper pricing?',
     answer:
-      'Yes, but email extraction is a separate paid service on top of the base Maps scraping cost. TheMapScraper includes email extraction (when available on the listing) at no additional cost.',
-  },
-  {
-    question: 'Which has better data quality?',
-    answer:
-      'Both tools pull data directly from Google Maps, so the base data quality is similar. Outscraper offers additional enrichment that can improve contact data, but at extra cost.',
+      'Outscraper uses pay-as-you-go pricing at approximately $3 per 1,000 Google Maps records, with email enrichment costing an additional $3–11 per 1,000. TheMapScraper uses a simple monthly subscription, which is easier to budget and avoids the unpredictable costs of stacking Outscraper\'s enrichment services.',
   },
 ]
+
+const h2Class = 'font-display font-bold tracking-[-0.025em] text-ink mb-5'
+const h2Style = { fontSize: 'clamp(22px, 3vw, 34px)' }
 
 export default function OutscraperAlternative() {
   return (
     <>
       <LandingMeta
-        title="TheMapScraper vs Outscraper [2026 Comparison]"
-        description="Compare TheMapScraper and Outscraper for Google Maps scraping. Pricing, features, enrichment options, and which tool is right for you."
+        title="Outscraper Alternative: TheMapScraper vs Outscraper [2026 Comparison]"
+        description="Compare TheMapScraper and Outscraper for Google Maps lead generation. Free alternative with no credit system — extract emails, phones and addresses instantly."
         path="/alternatives/outscraper/"
       />
       <BreadcrumbSchema
@@ -105,65 +103,87 @@ export default function OutscraperAlternative() {
         ctaHref="/pricing"
       />
 
-      {/* Comparison Table */}
+      <div className="bg-cream px-6 pb-2 text-center">
+        <p className="font-sans text-xs text-ink-faint m-0">
+          Last updated: <time dateTime="2026-05">May 2026</time>
+        </p>
+      </div>
+
+      {/* What is Outscraper? */}
+      <section className="bg-white px-6 py-20">
+        <div className="max-w-[800px] mx-auto">
+          <h2 className={h2Class} style={h2Style}>
+            What is Outscraper?
+          </h2>
+          <p className="font-sans text-base text-ink-muted leading-relaxed">
+            Outscraper (sometimes written as Outscrapper) is a paid Google Maps data API and
+            multi-source scraping platform. It extracts business listings from Google Maps, Google
+            Search, reviews, Amazon, and 50+ other sources on a pay-as-you-go basis. It is used
+            primarily by sales teams and data agencies who need enriched contact data — phone
+            validation, email addresses, and tech stack detection — beyond what Google Maps shows
+            directly.
+          </p>
+        </div>
+      </section>
+
+      {/* Outscraper vs TheMapScraper: pricing */}
+      <section className="bg-cream px-6 py-20">
+        <div className="max-w-[800px] mx-auto">
+          <h2 className={h2Class} style={h2Style}>
+            Outscraper vs TheMapScraper: pricing
+          </h2>
+          <p className="font-sans text-base text-ink-muted leading-relaxed">
+            Outscraper charges $3 per 1,000 Google Maps records for base data. Email extraction,
+            phone validation, and tech stack detection are separate paid add-ons, each costing
+            $3–11 per 1,000 records. Stacking two or three enrichment services quickly pushes the
+            cost to $6–14 per 1,000 enriched leads. TheMapScraper uses a flat monthly subscription:
+            you know exactly what you pay every month, and email extraction from Google Maps listings
+            is included at no additional cost.
+          </p>
+        </div>
+      </section>
+
+      {/* Feature comparison table */}
       <section className="bg-white px-6 py-20">
         <div className="max-w-[1080px] mx-auto">
           <h2
             className="font-display font-bold tracking-[-0.025em] text-ink mb-10 text-center"
-            style={{ fontSize: 'clamp(22px, 3vw, 34px)' }}
+            style={h2Style}
           >
-            Feature Comparison
+            TheMapScraper vs Outscraper: feature comparison
           </h2>
           <ComparisonTable competitor="Outscraper" rows={ROWS} />
         </div>
       </section>
 
-      {/* When to choose Outscraper */}
+      {/* Is Outscraper free? */}
       <section className="bg-cream px-6 py-20">
         <div className="max-w-[800px] mx-auto">
-          <h2
-            className="font-display font-bold tracking-[-0.025em] text-ink mb-5"
-            style={{ fontSize: 'clamp(22px, 3vw, 34px)' }}
-          >
-            When to Choose Outscraper
+          <h2 className={h2Class} style={h2Style}>
+            Is Outscraper free? A note on pricing
           </h2>
           <p className="font-sans text-base text-ink-muted leading-relaxed">
-            Outscraper is the better choice if you need data from multiple sources beyond Google
-            Maps, require enrichment features like phone validation and tech stack detection, want
-            API access for automated workflows, or need to scrape at very high volumes with volume
-            discounts (rates drop to $1/1K after 100K records).
-          </p>
-        </div>
-      </section>
-
-      {/* When to choose TheMapScraper */}
-      <section className="bg-white px-6 py-20">
-        <div className="max-w-[800px] mx-auto">
-          <h2
-            className="font-display font-bold tracking-[-0.025em] text-ink mb-5"
-            style={{ fontSize: 'clamp(22px, 3vw, 34px)' }}
-          >
-            When to Choose TheMapScraper
-          </h2>
-          <p className="font-sans text-base text-ink-muted leading-relaxed">
-            TheMapScraper is the better choice if you only need Google Maps data, want predictable
-            pricing without stacking costs, prefer instant setup over configuring task parameters,
-            or find pay-as-you-go billing confusing and want a simple subscription. Go to the homepage to{' '}
+            Outscraper offers 500 free records for Google Maps scraping. Beyond that, all usage is
+            billed per record with no ongoing free tier. The total cost per lead depends on how many
+            enrichment services you add on top of the base scraping fee, which can make budgeting
+            difficult. TheMapScraper offers 50 free leads per month permanently — no time limit, no
+            credit card, and no stacking of service costs. Go to the homepage to{' '}
             <Link to="/" className="text-brand font-medium hover:underline">
               extract leads from Google Maps
             </Link>{' '}
-            with 50 free leads included, no credit card needed.
+            with 50 free leads included.
           </p>
         </div>
       </section>
 
-      <section className="bg-cream px-6 py-20 border-t border-border-subtle">
+      {/* FAQ */}
+      <section className="bg-white px-6 py-20 border-t border-border-subtle">
         <div className="max-w-[720px] mx-auto">
           <h2
             className="font-display font-bold leading-none tracking-[-0.025em] text-ink m-0 mb-3"
             style={{ fontSize: 'clamp(26px, 4vw, 40px)' }}
           >
-            Frequently Asked Questions
+            Frequently asked questions
           </h2>
           <p className="font-sans text-base font-normal text-ink-faint m-0 mb-10">
             Common questions about TheMapScraper vs Outscraper.
@@ -172,22 +192,16 @@ export default function OutscraperAlternative() {
         </div>
       </section>
 
-      {/* Other comparisons */}
-      <section className="bg-cream px-6 py-16">
-        <div className="max-w-[1080px] mx-auto">
+      {/* Compare more alternatives */}
+      <section className="bg-cream px-6 py-16 border-t border-border-subtle">
+        <div className="max-w-[800px] mx-auto">
           <h2
-            className="font-display font-bold tracking-[-0.025em] text-ink mb-8 text-center"
+            className="font-display font-bold tracking-[-0.025em] text-ink mb-6"
             style={{ fontSize: 'clamp(18px, 2.5vw, 26px)' }}
           >
-            Other Comparisons
+            Compare more alternatives
           </h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to="/alternatives/"
-              className="font-sans text-sm font-semibold text-ink-muted no-underline border border-border-subtle bg-white rounded-pill px-5 py-2.5 transition-colors duration-150 hover:text-ink"
-            >
-              All comparisons
-            </Link>
+          <div className="flex flex-wrap gap-4">
             <Link
               to="/alternatives/apify/"
               className="font-sans text-sm font-semibold text-ink-muted no-underline border border-border-subtle bg-white rounded-pill px-5 py-2.5 transition-colors duration-150 hover:text-ink"

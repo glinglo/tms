@@ -70,6 +70,10 @@ export default function HowToScrapeGoogleMaps() {
       date="2026-05-28"
       readTime="11 min read"
     >
+      <p className="font-sans text-xs text-ink-faint m-0 mb-8">
+        Last updated: <time dateTime="2026-05">May 2026</time>
+      </p>
+
       <p className="font-sans text-[17px] leading-[1.75] text-ink mb-6">
         Google Maps holds information on more than 200 million businesses across every country,
         category, and neighborhood on earth. That makes it the most comprehensive directory of

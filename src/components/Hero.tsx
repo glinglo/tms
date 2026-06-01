@@ -36,7 +36,7 @@ export default function Hero({ query, setQuery, onSearch }: HeroProps) {
         </h1>
 
         <p className="font-sans text-lg font-normal leading-relaxed text-ink-muted mb-5">
-          Search any business type, any location. Download a clean CSV with phone, address, and website. Ready for outreach.
+          Extract business leads from any Google Maps search, free. Download a clean CSV with phone, email, address, and website. Ready for outreach.
         </p>
 
         <p className="font-sans text-[13px] font-normal text-ink-faint mb-7">

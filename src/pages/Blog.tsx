@@ -4,6 +4,30 @@ import BreadcrumbSchema from '../components/BreadcrumbSchema'
 
 const posts = [
   {
+    slug: '/blog/google-maps-scraper-api/',
+    title: 'Google Maps Scraper API: How to Extract Data Programmatically [2026]',
+    excerpt:
+      'Access Google Maps data via API. Compare the official Google Places API vs scraper APIs from Apify, Outscraper, and more. Pricing, limits, and when to skip the API entirely.',
+    date: '2026-06-01',
+    readTime: '10 min read',
+  },
+  {
+    slug: '/blog/scrape-google-maps-reviews/',
+    title: 'How to Scrape Google Maps Reviews: Complete Guide [2026]',
+    excerpt:
+      'Extract Google Maps reviews at scale. Learn how to scrape review text, ratings, dates, and reviewer data. Tools, methods, and use cases for review analysis.',
+    date: '2026-06-01',
+    readTime: '10 min read',
+  },
+  {
+    slug: '/blog/google-maps-scraper-extension-vs-web-app/',
+    title: 'Google Maps Scraper Extension vs Web App: What to Use in 2026',
+    excerpt:
+      'Chrome extensions for Google Maps scraping are convenient but fragile. This guide compares extension-based scrapers vs web app scrapers so you can choose the right tool.',
+    date: '2026-05-31',
+    readTime: '9 min read',
+  },
+  {
     slug: '/blog/google-maps-lead-generation-guide/',
     title: 'Google Maps Lead Generation: The Complete Guide [2026]',
     excerpt:
@@ -41,8 +65,8 @@ export default function Blog() {
   return (
     <>
       <LandingMeta
-        title="TheMapScraper Blog. Google Maps Scraping Guides and Tips"
-        description="Learn how to scrape Google Maps for lead generation. Guides, tutorials, comparisons, and tips for extracting business data."
+        title="Google Maps Scraping Blog — Guides, Tips & Tools | TheMapScraper"
+        description="Guides and tutorials on Google Maps scraping, lead generation, and business data extraction. Learn how to extract leads without code."
         path="/blog/"
       />
       <BreadcrumbSchema
@@ -54,7 +78,7 @@ export default function Blog() {
 
       <div className="bg-cream border-b border-border-subtle py-14">
         <div className="max-w-[1080px] mx-auto px-6">
-          <h1 className="font-display text-4xl font-bold text-ink tracking-tight mb-3">Blog</h1>
+          <h1 className="font-display text-4xl font-bold text-ink tracking-tight mb-3">Google Maps Scraping — Guides &amp; Resources</h1>
           <p className="font-sans text-base text-ink-muted m-0">
             Guides, tutorials, and tips for extracting data from Google Maps. Ready to get started? Use the{' '}
             <Link to="/" className="text-brand font-semibold hover:underline">

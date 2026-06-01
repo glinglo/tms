@@ -20,6 +20,17 @@ import { routes } from './prerender.routes.mjs'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const distDir = join(__dirname, '..', 'dist')
 
+// Load the SSR renderer built by `vite build --config vite.ssr.config.ts`
+let ssrRender = null
+try {
+  const ssrEntry = join(__dirname, '..', 'dist-ssr', 'entry-server.js')
+  const { render } = await import(ssrEntry)
+  ssrRender = render
+  console.log('  SSR renderer loaded\n')
+} catch {
+  console.warn('  SSR renderer not found — body content will not be injected\n')
+}
+
 function esc(str) {
   return str
     .replace(/&/g, '&amp;')
@@ -28,7 +39,7 @@ function esc(str) {
     .replace(/>/g, '&gt;')
 }
 
-function buildHtml(template, { title, description, ogTitle, ogDescription, ogUrl, canonical, schemas }) {
+function buildHtml(template, { title, description, ogTitle, ogDescription, ogUrl, canonical, schemas, bodyHtml }) {
   let html = template
 
   html = html.replace(
@@ -71,6 +82,10 @@ function buildHtml(template, { title, description, ogTitle, ogDescription, ogUrl
     html = html.replace('</head>', `${schemaHtml}\n</head>`)
   }
 
+  if (bodyHtml) {
+    html = html.replace('<div id="root"></div>', `<div id="root">${bodyHtml}</div>`)
+  }
+
   return html
 }
 
@@ -81,10 +96,19 @@ let fail = 0
 
 for (const route of routes) {
   try {
-    const { path, title, description, ogTitle, ogDescription, schemas } = route
+    const { path, title, description, ogTitle, ogDescription, schemas, renderSsr } = route
     const canonical = `https://www.themapscraper.com${path}`
     const resolvedOgTitle = ogTitle ?? title
     const resolvedOgDesc = ogDescription ?? description
+
+    let bodyHtml = ''
+    if (renderSsr && ssrRender) {
+      try {
+        bodyHtml = ssrRender(path)
+      } catch (ssrErr) {
+        console.warn(`  SSR render failed for ${path}: ${ssrErr.message}`)
+      }
+    }
 
     const html = buildHtml(template, {
       title,
@@ -94,6 +118,7 @@ for (const route of routes) {
       ogUrl: canonical,
       canonical,
       schemas: schemas ?? [],
+      bodyHtml,
     })
 
     let outputPath

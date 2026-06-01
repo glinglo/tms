@@ -127,6 +127,10 @@ export default function BestGoogleMapsScrapers() {
       date="2026-05-28"
       readTime="12 min read"
     >
+      <p className="font-sans text-xs text-ink-faint m-0 mb-8">
+        Last updated: <time dateTime="2026-05">May 2026</time>
+      </p>
+
       <p className="font-sans text-[17px] leading-[1.75] text-ink mb-6">
         The Google Maps scraping market has gotten crowded. In 2026 there are browser extensions,
         cloud platforms, open source scripts, and purpose-built web apps, each with different

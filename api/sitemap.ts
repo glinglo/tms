@@ -21,11 +21,13 @@ const STATIC_PAGES: UrlEntry[] = [
   { loc: '/alternatives/', lastmod: '2026-05-27', changefreq: 'monthly', priority: '0.8' },
   // Use cases hub
   { loc: '/use-cases/', lastmod: '2026-05-27', changefreq: 'monthly', priority: '0.8' },
+  // Blog index
+  { loc: '/blog/', lastmod: '2026-05-31', changefreq: 'weekly', priority: '0.9' },
   // Transactional landing pages
-  { loc: '/google-maps-lead-extractor/', lastmod: '2025-05-01', changefreq: 'monthly', priority: '0.9' },
-  { loc: '/extract-emails-google-maps/', lastmod: '2025-05-01', changefreq: 'monthly', priority: '0.9' },
-  { loc: '/google-maps-data-scraper-csv/', lastmod: '2025-05-01', changefreq: 'monthly', priority: '0.9' },
-  { loc: '/google-maps-business-scraper-free/', lastmod: '2025-05-01', changefreq: 'monthly', priority: '0.9' },
+  { loc: '/google-maps-lead-extractor/', lastmod: '2026-05-31', changefreq: 'monthly', priority: '0.9' },
+  { loc: '/extract-emails-google-maps/', lastmod: '2026-05-31', changefreq: 'monthly', priority: '0.9' },
+  { loc: '/google-maps-data-scraper-csv/', lastmod: '2026-05-31', changefreq: 'monthly', priority: '0.9' },
+  { loc: '/google-maps-business-scraper-free/', lastmod: '2026-05-31', changefreq: 'monthly', priority: '0.9' },
   // Legal
   { loc: '/privacy-policy/', lastmod: '2025-01-01', changefreq: 'yearly', priority: '0.2' },
   { loc: '/terms-of-service/', lastmod: '2025-01-01', changefreq: 'yearly', priority: '0.2' },
