@@ -87,32 +87,39 @@ export default function HowItWorks() {
 
         {/* Data fields section */}
         <div className="mt-16 pt-12 border-t border-[rgba(255,255,255,0.08)]">
-          <h2
-            className="font-display font-bold tracking-[-0.02em] text-[#fcfcfc] m-0 mb-2"
-            style={{ fontSize: 'clamp(20px, 2.5vw, 26px)' }}
+          <div
+            className="grid gap-12 md:gap-[48px]"
+            style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}
           >
-            What Data Can You Extract from Google Maps?
-          </h2>
-          <p className="font-sans text-sm text-[rgba(252,252,252,0.5)] m-0 mb-5">
-            Every field exported to CSV, ready for your CRM or outreach tool.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {[
-              'Business name', 'Phone number', 'Email address', 'Physical address',
-              'Website URL', 'Google rating', 'Review count', 'Business category',
-              'Opening hours', 'Coordinates', 'Google Maps URL',
-            ].map((field) => (
-              <span
-                key={field}
-                className="font-sans text-xs font-semibold text-[rgba(252,252,252,0.7)] bg-[#2a2a2a] border border-[rgba(255,255,255,0.1)] rounded-pill px-3 py-[5px]"
+            {/* Left: title + description */}
+            <div className="flex flex-col justify-start">
+              <h2
+                className="font-display font-bold tracking-[-0.02em] text-[#fcfcfc] m-0 mb-3"
+                style={{ fontSize: 'clamp(20px, 2.5vw, 26px)' }}
               >
-                {field}
-              </span>
-            ))}
+                What Data Can You Extract from Google Maps?
+              </h2>
+              <p className="font-sans text-sm text-[rgba(252,252,252,0.55)] m-0">
+                Every Google Maps listing contains valuable contact information that businesses maintain themselves. TheMapScraper pulls all of it into a structured CSV file you can open in Excel, Google Sheets, or import directly into your CRM.
+              </p>
+            </div>
+
+            {/* Right: badge grid */}
+            <div className="flex flex-wrap gap-2 content-start">
+              {[
+                'Business name', 'Phone number', 'Email address', 'Physical address',
+                'Website URL', 'Google rating', 'Review count', 'Business category',
+                'Opening hours', 'Coordinates', 'Google Maps URL',
+              ].map((field) => (
+                <span
+                  key={field}
+                  className="font-sans text-xs font-semibold text-[rgba(252,252,252,0.7)] bg-[#2a2a2a] border border-[rgba(255,255,255,0.1)] rounded-pill px-3 py-[5px]"
+                >
+                  {field}
+                </span>
+              ))}
+            </div>
           </div>
-          <p className="font-sans text-sm text-[rgba(252,252,252,0.55)] mt-6 max-w-[640px]">
-            Every Google Maps listing contains valuable contact information that businesses maintain themselves. TheMapScraper pulls all of it into a structured CSV file you can open in Excel, Google Sheets, or import directly into your CRM.
-          </p>
         </div>
 
         {/* Social proof + Why Choose */}
@@ -124,17 +131,21 @@ export default function HowItWorks() {
 
         <div
           id="pricing"
-          className="mt-8 border-t border-[rgba(255,255,255,0.1)] pt-12 flex items-center justify-between flex-wrap gap-6"
+          className="mt-8 border-t border-[rgba(255,255,255,0.1)] pt-12 grid gap-12 md:gap-[48px]"
+          style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}
         >
-          <div>
-            <h2 className="font-display text-[22px] font-bold text-[#fcfcfc] m-0 mb-[6px] tracking-[-0.02em]">
+          {/* Left: title + description */}
+          <div className="flex flex-col justify-start">
+            <h2 className="font-display text-[22px] font-bold text-[#fcfcfc] m-0 mb-3 tracking-[-0.02em]">
               Why Choose TheMapScraper?
             </h2>
             <p className="font-sans text-sm text-[rgba(252,252,252,0.5)] m-0">
               A Google Maps scraper built for non-technical users. Credits never expire, one credit = one lead, no subscriptions. Most tools require browser extensions that break on updates or complex API setup. TheMapScraper works directly in your browser — type a search, click extract, download your leads.
             </p>
           </div>
-          <div className="flex flex-col gap-4 items-end">
+
+          {/* Right: pricing cards + CTA */}
+          <div className="flex flex-col gap-4 items-start md:items-end">
             <div className="flex gap-2 flex-nowrap items-start">
               {[
                 { label: 'Free', price: '$0', leads: '50/mo', featured: false },
