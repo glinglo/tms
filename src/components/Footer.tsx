@@ -126,6 +126,13 @@ export default function Footer() {
                 </Link>
               </>
             ))}
+            <span className="text-[rgba(252,252,252,0.2)] text-xs">·</span>
+            <a
+              href="mailto:jose@themapscraper.com"
+              className="font-sans text-xs text-[rgba(252,252,252,0.35)] no-underline transition-colors duration-150 hover:text-[#fcfcfc]"
+            >
+              Contact
+            </a>
           </div>
         </div>
 
