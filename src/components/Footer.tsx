@@ -108,7 +108,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-[rgba(255,255,255,0.10)] pt-6 flex items-center justify-between flex-wrap gap-3">
-          <p className="font-sans text-xs text-[rgba(252,252,252,0.3)] m-0">
+          <p className="font-sans text-xs text-[rgba(252,252,252,0.3)] m-0" suppressHydrationWarning>
             © {year} themapscraper.com. Not affiliated with Google.
           </p>
           <div className="flex items-center gap-[6px]">

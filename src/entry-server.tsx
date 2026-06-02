@@ -1,6 +1,11 @@
 import { renderToString } from 'react-dom/server'
 import { MemoryRouter } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
+import AuthModal from './components/AuthModal'
+import CookieBanner from './components/CookieBanner'
 import Hero from './components/Hero'
 import PreviewSection from './components/PreviewSection'
 import HowItWorks from './components/HowItWorks'
@@ -83,7 +88,14 @@ export function render(url: string): string {
   return renderToString(
     <MemoryRouter initialEntries={[url]}>
       <AuthProvider>
-        <Page />
+        <div style={{ backgroundColor: '#f9f7f3', minHeight: '100vh' }}>
+          <ScrollToTop />
+          <Navbar />
+          <Page />
+          <Footer />
+          <AuthModal />
+          <CookieBanner />
+        </div>
       </AuthProvider>
     </MemoryRouter>
   )
