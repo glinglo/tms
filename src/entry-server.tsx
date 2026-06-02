@@ -2,8 +2,10 @@ import { renderToString } from 'react-dom/server'
 import { MemoryRouter } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import Hero from './components/Hero'
+import PreviewSection from './components/PreviewSection'
 import HowItWorks from './components/HowItWorks'
 import FAQ from './components/FAQ'
+import { DEFAULT_QUERY, defaultResults } from './data/defaultResults'
 import Blog from './pages/Blog'
 import HowToScrapeGoogleMaps from './pages/blog/HowToScrapeGoogleMaps'
 import BestGoogleMapsScrapers from './pages/blog/BestGoogleMapsScrapers'
@@ -26,14 +28,21 @@ import GoogleMapsScraperApi from './pages/blog/GoogleMapsScraperApi'
 import ApifyAlternative from './pages/alternatives/ApifyAlternative'
 import OutscraperAlternative from './pages/alternatives/OutscraperAlternative'
 import ScrapIoAlternative from './pages/alternatives/ScrapIoAlternative'
+import About from './pages/About'
 
 function HomeSSR() {
   return (
     <>
       <Hero
-        query={{ business: '', location: '' }}
+        query={DEFAULT_QUERY}
         setQuery={() => {}}
         onSearch={() => {}}
+      />
+      <PreviewSection
+        query={DEFAULT_QUERY}
+        searchState="results"
+        leads={defaultResults}
+        errorMsg={null}
       />
       <HowItWorks />
       <FAQ />
@@ -65,6 +74,7 @@ const PAGE_MAP: Record<string, React.ComponentType> = {
   '/alternatives/apify/': ApifyAlternative,
   '/alternatives/outscraper/': OutscraperAlternative,
   '/alternatives/scrap-io/': ScrapIoAlternative,
+  '/about/': About,
 }
 
 export function render(url: string): string {

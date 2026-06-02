@@ -1394,6 +1394,21 @@ export const routes = [
     ],
   },
 
+  // ── About ─────────────────────────────────────────────────────────────────
+  {
+    path: '/about/',
+    title: 'About TheMapScraper | Built for Sales Teams and Agencies',
+    description:
+      'TheMapScraper was built to make Google Maps lead generation simple. No code, no extensions, no API keys. Learn about our mission and how the tool works.',
+    renderSsr: true,
+    schemas: [
+      breadcrumb([
+        { name: 'Home', url: `${BASE}/` },
+        { name: 'About', url: `${BASE}/about/` },
+      ]),
+    ],
+  },
+
   // ── Legal ──────────────────────────────────────────────────────────────────
   {
     path: '/privacy-policy/',
