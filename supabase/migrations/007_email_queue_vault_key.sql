@@ -1,9 +1,13 @@
--- Fix process_email_queue(): replace current_setting() calls with hardcoded values.
--- Supabase does not support custom GUC parameters via ALTER DATABASE/ROLE, so
--- current_setting('app.supabase_url') always returned NULL, causing silent no-ops.
+-- Replace hardcoded service role key with a Vault secret lookup.
+-- The key must be stored in Supabase Vault before this function will work.
 --
--- ⚠️  Fill in YOUR_SERVICE_ROLE_KEY before running supabase db push.
---     Project Settings → API → service_role (secret) key.
+-- Add the secret via the Supabase Dashboard:
+--   Dashboard → Edge Functions → Vault → New Secret
+--   Name:  service_role_key
+--   Value: <your service role key>
+--
+-- Or via SQL:
+--   SELECT vault.create_secret('<your-service-role-key>', 'service_role_key');
 
 CREATE OR REPLACE FUNCTION public.process_email_queue()
 RETURNS void
@@ -19,7 +23,12 @@ DECLARE
   body     jsonb;
 BEGIN
   base_url := 'https://kqwtjiybmwzbilpfbcfi.supabase.co';
-  svc_key  := '';
+  svc_key  := (SELECT decrypted_secret FROM vault.decrypted_secrets WHERE name = 'service_role_key' LIMIT 1);
+
+  IF svc_key IS NULL THEN
+    RAISE WARNING 'process_email_queue: vault secret "service_role_key" not found — skipping';
+    RETURN;
+  END IF;
 
   FOR r IN
     SELECT id, user_id, email, template, payload, created_at
