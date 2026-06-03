@@ -8,6 +8,12 @@ const PRICE_TO_CREDITS: Record<string, number> = {
   'price_1TZZGnRgzkWTYE9Pl81u2Qug': 6000,
 }
 
+const PRICE_TO_PLAN: Record<string, string> = {
+  'price_1TZZGmRgzkWTYE9PbeIfkFEp': 'starter',
+  'price_1TZZGmRgzkWTYE9PyJvrXVRE': 'growth',
+  'price_1TZZGnRgzkWTYE9Pl81u2Qug': 'pro',
+}
+
 function readRawBody(req: VercelRequest): Promise<Buffer> {
   return new Promise((resolve, reject) => {
     const chunks: Buffer[] = []
@@ -88,6 +94,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     console.log(`[webhook] +${creditsToAdd} credits → user ${userId}, new balance: ${newBalance}`)
+
+    // Cancel pending nurture emails — user has upgraded
+    const { error: nurtureErr } = await supabase
+      .from('email_queue')
+      .update({ sent: true })
+      .eq('user_id', userId)
+      .eq('sent', false)
+      .like('template', 'nurture_%')
+
+    if (nurtureErr) {
+      console.error('[webhook] failed to cancel nurture emails:', nurtureErr)
+    } else {
+      console.log(`[webhook] cancelled pending nurture emails for user ${userId}`)
+    }
+
+    // Update plan in profiles
+    const plan = PRICE_TO_PLAN[priceId]
+    const { error: planErr } = await supabase
+      .from('profiles')
+      .update({ plan })
+      .eq('id', userId)
+
+    if (planErr) {
+      console.error('[webhook] failed to update plan:', planErr)
+    } else {
+      console.log(`[webhook] plan → ${plan} for user ${userId}`)
+    }
   }
 
   return res.status(200).json({ received: true })
