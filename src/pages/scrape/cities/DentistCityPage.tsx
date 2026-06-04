@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
-import LandingMeta from '../../components/landing/LandingMeta'
-import LandingHero from '../../components/landing/LandingHero'
-import LandingFAQ from '../../components/landing/LandingFAQ'
-import LandingCTA from '../../components/landing/LandingCTA'
-import DataFieldsTable from '../../components/landing/DataFieldsTable'
-import BreadcrumbSchema from '../../components/BreadcrumbSchema'
-import { useAuthContext } from '../../context/AuthContext'
+import LandingMeta from '../../../components/landing/LandingMeta'
+import LandingFAQ from '../../../components/landing/LandingFAQ'
+import LandingCTA from '../../../components/landing/LandingCTA'
+import DataFieldsTable from '../../../components/landing/DataFieldsTable'
+import BreadcrumbSchema from '../../../components/BreadcrumbSchema'
+import { useAuthContext } from '../../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
-import type { IndustryConfig } from '../../data/industryLeads'
+import { ALL_CITY_LINKS } from '../../../data/dentistCities'
+import type { CityConfig } from '../../../data/dentistCities'
 
 const BASE = 'https://www.themapscraper.com'
 
@@ -20,7 +20,7 @@ function StarRating({ rating }: { rating: number }) {
   )
 }
 
-function MaskedCta() {
+function CityCta({ city, total }: { city: string; total: string }) {
   const { user, openSignUp } = useAuthContext()
   const navigate = useNavigate()
   function handleCta() {
@@ -30,8 +30,12 @@ function MaskedCta() {
   return (
     <div className="mt-6 rounded-[10px] border border-border-subtle bg-cream px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div>
-        <p className="font-sans text-sm font-semibold text-ink m-0">Want the full dataset?</p>
-        <p className="font-sans text-sm text-ink-muted m-0 mt-[2px]">Unlock all contacts — 50 free leads/month, no credit card required.</p>
+        <p className="font-sans text-sm font-semibold text-ink m-0">
+          Want all {total} dentists in {city}?
+        </p>
+        <p className="font-sans text-sm text-ink-muted m-0 mt-[2px]">
+          Start free — 50 leads/month, no credit card required.
+        </p>
       </div>
       <button
         onClick={handleCta}
@@ -43,8 +47,10 @@ function MaskedCta() {
   )
 }
 
-export default function IndustryLeadsPage({ config }: { config: IndustryConfig }) {
-  const { name, plural, path, metaTitle, metaDescription, badge, h1, subtitle, stats, sampleData, whyH2, whyParagraphs, howSteps, faqs, related, cityPages } = config
+export default function DentistCityPage({ config }: { config: CityConfig }) {
+  const { name, state, path, metaTitle, metaDescription, totalResults, stats, sampleData, aboutContent, faqs } = config
+
+  const relatedCities = ALL_CITY_LINKS.filter((c) => c.to !== path)
 
   return (
     <>
@@ -53,24 +59,40 @@ export default function IndustryLeadsPage({ config }: { config: IndustryConfig }
         items={[
           { name: 'Home', url: `${BASE}/` },
           { name: 'Scrape', url: `${BASE}/scrape/` },
-          { name: `${name} Leads`, url: `${BASE}${path}` },
+          { name: 'Dentist Leads', url: `${BASE}/scrape/dentist-leads/` },
+          { name: `${name}, ${state}`, url: `${BASE}${path}` },
         ]}
       />
 
       {/* Hero */}
-      <LandingHero
-        badge={badge}
-        h1={h1}
-        subtitle={subtitle}
-        ctaText="Start Free — 50 leads/month"
-        ctaHref="/"
-      />
+      <section className="bg-cream pt-16 pb-12 px-6 border-b border-border-subtle">
+        <div className="max-w-[800px] mx-auto text-center">
+          <span className="inline-flex items-center gap-2 bg-white border border-border-subtle rounded-full px-4 py-[6px] font-sans text-xs font-semibold text-ink-muted mb-6">
+            {totalResults} dentists scraped in {name}
+          </span>
+          <h1
+            className="font-display font-bold leading-none tracking-[-0.03em] text-ink m-0 mb-4"
+            style={{ fontSize: 'clamp(32px, 5vw, 52px)' }}
+          >
+            Scrape Dentist Leads in {name} from Google Maps
+          </h1>
+          <p className="font-sans text-base text-ink-faint m-0 mb-8 max-w-[600px] mx-auto">
+            We scraped {totalResults} dentists in {name}. Here's a preview of the data you'll get — with emails, phone numbers, ratings, and more.
+          </p>
+          <a
+            href="/"
+            className="inline-flex items-center gap-2 bg-brand text-white font-sans text-[15px] font-semibold px-8 py-[14px] rounded-pill no-underline transition-colors duration-150 hover:bg-brand-dark"
+          >
+            Start Free — 50 leads/month
+          </a>
+        </div>
+      </section>
 
       {/* Stats bar */}
       <section className="bg-white py-10 px-6 border-b border-border-subtle">
         <div className="max-w-[900px] mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
           {[
-            { label: 'Businesses scraped', value: stats.total },
+            { label: 'Dentists scraped', value: stats.total },
             { label: 'Have email address', value: stats.emailPct },
             { label: 'Have website', value: stats.websitePct },
             { label: 'Average rating', value: stats.avgRating },
@@ -95,7 +117,7 @@ export default function IndustryLeadsPage({ config }: { config: IndustryConfig }
             className="font-display font-bold leading-none tracking-[-0.025em] text-ink m-0 mb-3"
             style={{ fontSize: 'clamp(26px, 4vw, 40px)' }}
           >
-            Sample {name} Data from Google Maps
+            Sample Dentist Data from {name}
           </h2>
           <p className="font-sans text-base text-ink-faint m-0 mb-8">
             Real-looking data extracted with TheMapScraper. Full contact details are unlocked when you sign up.
@@ -132,7 +154,7 @@ export default function IndustryLeadsPage({ config }: { config: IndustryConfig }
               </tbody>
             </table>
           </div>
-          <MaskedCta />
+          <CityCta city={name} total={totalResults} />
         </div>
       </section>
 
@@ -143,7 +165,7 @@ export default function IndustryLeadsPage({ config }: { config: IndustryConfig }
             className="font-display font-bold leading-none tracking-[-0.025em] text-ink m-0 mb-3"
             style={{ fontSize: 'clamp(26px, 4vw, 40px)' }}
           >
-            What Data Fields Can You Extract?
+            What You'll Get for Each Dentist
           </h2>
           <p className="font-sans text-base text-ink-faint m-0 mb-8">
             Every column exported to CSV, ready for your CRM or outreach tool.
@@ -152,17 +174,17 @@ export default function IndustryLeadsPage({ config }: { config: IndustryConfig }
         </div>
       </section>
 
-      {/* Why scrape this industry */}
+      {/* About section */}
       <section className="bg-cream py-20 px-6">
         <div className="max-w-[800px] mx-auto">
           <h2
             className="font-display font-bold leading-none tracking-[-0.025em] text-ink m-0 mb-8"
             style={{ fontSize: 'clamp(26px, 4vw, 40px)' }}
           >
-            {whyH2}
+            About Dentist Data in {name}
           </h2>
           <div className="flex flex-col gap-5">
-            {whyParagraphs.map((p, i) => (
+            {aboutContent.split('\n\n').map((p, i) => (
               <p key={i} className="font-sans text-base font-normal leading-relaxed text-ink-muted m-0">
                 {p}
               </p>
@@ -178,10 +200,26 @@ export default function IndustryLeadsPage({ config }: { config: IndustryConfig }
             className="font-display font-bold leading-none tracking-[-0.025em] text-ink m-0 mb-12 text-center"
             style={{ fontSize: 'clamp(26px, 4vw, 40px)' }}
           >
-            How to Scrape {name} Data from Google Maps
+            How to Scrape Dentists in {name}
           </h2>
           <div className="grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
-            {howSteps.map((step) => (
+            {[
+              {
+                n: '01',
+                title: `Enter "dentists in ${name}"`,
+                desc: `Type "dentists in ${name}" or a specialty like "orthodontists in ${name}" into TheMapScraper search box.`,
+              },
+              {
+                n: '02',
+                title: 'Click scrape and wait ~2 minutes',
+                desc: `TheMapScraper pulls every matching dental practice from Google Maps in ${name} with full contact details and ratings.`,
+              },
+              {
+                n: '03',
+                title: 'Download your CSV',
+                desc: `Get names, phones, emails, websites, addresses, ratings, and review counts for every dentist in ${name} — ready for your outreach tool.`,
+              },
+            ].map((step) => (
               <div
                 key={step.n}
                 className="bg-cream border border-border-subtle rounded-[10px] p-7 flex flex-col gap-4"
@@ -207,59 +245,48 @@ export default function IndustryLeadsPage({ config }: { config: IndustryConfig }
             Frequently Asked Questions
           </h2>
           <p className="font-sans text-base font-normal text-ink-faint m-0 mb-10">
-            Everything you need to know about scraping {plural} from Google Maps.
+            Everything you need to know about scraping dentists in {name} from Google Maps.
           </p>
           <LandingFAQ faqs={faqs} />
         </div>
       </section>
 
-      {/* Browse by City */}
-      {cityPages && cityPages.length > 0 && (
-        <section className="bg-white py-10 px-6 border-t border-border-subtle">
-          <div className="max-w-[720px] mx-auto">
-            <p className="font-sans text-xs font-semibold text-ink-faint uppercase tracking-[0.06em] m-0 mb-4">
-              Browse by city
-            </p>
-            <div className="flex flex-wrap gap-x-8 gap-y-3">
-              {cityPages.map(({ label, to }) => (
-                <Link key={to} to={to} className="font-sans text-sm font-semibold text-brand no-underline hover:underline">
-                  {name} leads in {label} →
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Related pages */}
+      {/* Related cities + back to hub */}
       <section className="bg-white py-10 px-6 border-t border-border-subtle">
         <div className="max-w-[720px] mx-auto">
-          <p className="font-sans text-xs font-semibold text-ink-faint uppercase tracking-[0.06em] m-0 mb-4">More industry leads</p>
+          <p className="font-sans text-xs font-semibold text-ink-faint uppercase tracking-[0.06em] m-0 mb-4">
+            Dentist leads by city
+          </p>
           <div className="flex flex-wrap gap-x-8 gap-y-3 mb-8">
-            {related.map(({ label, to }) => (
+            {relatedCities.map(({ label, to }) => (
               <Link key={to} to={to} className="font-sans text-sm font-semibold text-brand no-underline hover:underline">
                 {label} →
               </Link>
             ))}
           </div>
-          <p className="font-sans text-xs font-semibold text-ink-faint uppercase tracking-[0.06em] m-0 mb-3">Related tools</p>
+          <p className="font-sans text-xs font-semibold text-ink-faint uppercase tracking-[0.06em] m-0 mb-3">
+            More industries
+          </p>
           <div className="flex flex-wrap gap-x-8 gap-y-3">
-            {[
-              { label: 'Google Maps Lead Extractor', to: '/google-maps-lead-extractor/' },
-              { label: 'Extract Emails from Google Maps', to: '/extract-emails-google-maps/' },
-              { label: 'Google Maps Data Scraper to CSV', to: '/google-maps-data-scraper-csv/' },
-            ].map(({ label, to }) => (
-              <Link key={to} to={to} className="font-sans text-sm font-semibold text-brand no-underline hover:underline">
-                {label} →
-              </Link>
-            ))}
+            <Link to="/scrape/dentist-leads/" className="font-sans text-sm font-semibold text-brand no-underline hover:underline">
+              ← All Dentist Leads
+            </Link>
+            <Link to="/scrape/plumber-leads/" className="font-sans text-sm font-semibold text-brand no-underline hover:underline">
+              Plumber Leads →
+            </Link>
+            <Link to="/scrape/lawyer-leads/" className="font-sans text-sm font-semibold text-brand no-underline hover:underline">
+              Lawyer Leads →
+            </Link>
+            <Link to="/scrape/restaurant-leads/" className="font-sans text-sm font-semibold text-brand no-underline hover:underline">
+              Restaurant Leads →
+            </Link>
           </div>
         </div>
       </section>
 
       {/* CTA */}
       <LandingCTA
-        headline={`Start scraping ${plural} now`}
+        headline={`Start scraping dentists in ${name}`}
         ctaText="Try It Free"
         ctaHref="/"
         subtext="50 free leads per month · No credit card required"

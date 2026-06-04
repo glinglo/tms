@@ -30,6 +30,7 @@ export interface IndustryConfig {
   howSteps: { n: string; title: string; desc: string }[]
   faqs: { question: string; answer: string }[]
   related: { label: string; to: string }[]
+  cityPages?: { label: string; to: string }[]
 }
 
 export const industries: IndustryConfig[] = [
@@ -145,6 +146,13 @@ export const industries: IndustryConfig[] = [
       { label: 'Lawyer Leads', to: '/scrape/lawyer-leads/' },
       { label: 'Real Estate Agent Leads', to: '/scrape/real-estate-agent-leads/' },
     ],
+    cityPages: [
+      { label: 'New York', to: '/scrape/dentist-leads/new-york/' },
+      { label: 'Miami', to: '/scrape/dentist-leads/miami/' },
+      { label: 'Chicago', to: '/scrape/dentist-leads/chicago/' },
+      { label: 'Los Angeles', to: '/scrape/dentist-leads/los-angeles/' },
+      { label: 'Houston', to: '/scrape/dentist-leads/houston/' },
+    ],
   },
 
   // ── Plumbers ──────────────────────────────────────────────────────────────
@@ -162,21 +170,21 @@ export const industries: IndustryConfig[] = [
       "See real data from 2,100+ plumbers in Miami. Extract phone numbers, emails, websites, and addresses — here's a sample of what you'll get.",
     stats: {
       total: '2,100+',
-      emailPct: '62%',
+      emailPct: '54%',
       websitePct: '100%',
       avgRating: '4.7',
     },
     sampleData: [
-      { name: 'SBN Water Damage Restoration', phone: '(786) 751-****', address: '975 NW 5th St, Miami, FL 33128', rating: 5.0, reviews: 5, website: 'sbnwater*****.com', email: 'info@sbnwaterd*****.com' },
-      { name: 'Peninsula Plumbing Inc.', phone: '(786) 328-****', address: '3295 NW 7th Ave, Miami, FL 33127', rating: 5.0, reviews: 12, website: 'peninsulapl*****.com', email: 'frank@peninsulap*****.com' },
-      { name: 'Plumb Tech Plumbing And Sewer', phone: '(305) 766-****', address: 'Miami, FL', rating: 5.0, reviews: 1, website: 'plumbtechpl*****.com', email: 'plumbtechplumbingsewer@gm*****.com' },
+      { name: 'Miami 24/7 Plumbing - Miami Emergency Plumber', phone: '(305) 440-****', address: '1331 SW 32nd Ave #4, Miami, FL 33145', rating: 4.9, reviews: 231, website: 'miami247pl*****.com', email: 'info@miami247pl*****.com' },
+      { name: 'Miami Water Heater', phone: '(305) 633-****', address: '1324 NW 29th St, Miami, FL 33142', rating: 4.7, reviews: 266, website: 'miamiwaterhe*****.com', email: 'sales@miamiwaterhe*****.com' },
+      { name: 'Sewer Solutions', phone: '(305) 423-****', address: '1300 S Miami Ave Unit 4309, Miami, FL 33130', rating: 4.8, reviews: 83, website: 'sewersol*****.com', email: 'sewersolutionsfl@gm*****.com' },
+      { name: 'Ez Plumbing Repair Services', phone: '(786) 239-****', address: '27 NW 10th Ave APT 101, Miami, FL 33128', rating: 5.0, reviews: 50, website: 'ezplumbi*****.com', email: 'ezplumbingrepair@icl*****.com' },
+      { name: 'AKO Plumbing Corp.', phone: '(305) 269-****', address: '300 NW 22nd Ave, Miami, FL 33125', rating: 4.8, reviews: 37, website: 'akoplum*****.com', email: 'info@akoplum*****.com' },
       { name: 'Ringemann Plumbing, Inc.', phone: '(305) 635-****', address: '2190 NW 22nd Ct, Miami, FL 33142', rating: 3.7, reviews: 3, website: 'ringemann*****.com', email: 'ana.c.lacayo@ringe*****.com' },
-      { name: 'Sewer Solutions', phone: '(305) 423-****', address: '1300 S Miami Ave Unit 4309, Miami, FL', rating: 4.8, reviews: 83, website: 'sewersol*****.com', email: 'sewersolutionsfl@gm*****.com' },
-      { name: 'Miami Construction & Plumbing', phone: '(813) 533-****', address: '80 SW 8th St Suite 2000, Miami, FL 33130', rating: 4.5, reviews: 15, website: 'constructionse*****.com', email: 'info@constructions*****.com' },
-      { name: 'Dangond Construction Co.', phone: '(786) 287-****', address: '259 Shore Dr E, Miami, FL 33133', rating: 4.8, reviews: 22, website: 'dangondc*****.com', email: 'roberto@dangondc*****.com' },
-      { name: 'Home Services at The Home Depot', phone: '(844) 476-****', address: '3030 SW 8th St, Miami, FL 33135', rating: 3.9, reviews: 57, website: 'homedepot*****.com', email: '—' },
-      { name: 'Express Mold Removal Miami', phone: '(305) 564-****', address: '3275 NW 37th St, Miami, FL 33142', rating: 5.0, reviews: 23, website: 'expressmoldm*****.com', email: '—' },
-      { name: 'DataCom Data Cabling & Wiring', phone: '(786) 661-****', address: '141 NE 3rd Ave Suite 299, Miami, FL', rating: 5.0, reviews: 4, website: 'datacomb*****.com', email: '—' },
+      { name: 'Lion Plumbing Med LLC', phone: '(786) 751-****', address: 'Miami, FL', rating: 5.0, reviews: 8, website: 'lionplumb*****.com', email: 'info@lionplumb*****.com' },
+      { name: 'Roto-Rooter Plumbing & Water Cleanup', phone: '(305) 661-****', address: '1726 NW 36th St Unit 3, Miami, FL 33142', rating: 4.7, reviews: 2288, website: 'rotoroo*****.com', email: '—' },
+      { name: '2 Bros Plumbing', phone: '(305) 910-****', address: '6008 NW 6th Ave, Miami, FL 33127', rating: 4.8, reviews: 151, website: '2brosplum*****.com', email: '—' },
+      { name: 'Express Mold Removal Miami', phone: '(305) 564-****', address: '3275 NW 37th St, Miami, FL 33142', rating: 5.0, reviews: 26, website: 'expressmoldm*****.com', email: '—' },
     ],
     whyH2: 'Why Scrape Plumber Data from Google Maps?',
     whyParagraphs: [
@@ -192,7 +200,7 @@ export const industries: IndustryConfig[] = [
     ],
     faqs: [
       { question: 'How many plumbers can I scrape per city?', answer: 'Google Maps typically lists 100–400 plumbing companies per city search. You can refine by specialty—"drain cleaning," "emergency plumber," or "commercial plumbing"—to get more targeted results.' },
-      { question: 'Can I get email addresses for plumbing companies?', answer: "Yes. TheMapScraper visits each company's website to find contact emails. Around 62% of plumbing listings in Miami return a verified email address, typically a dispatch or office contact." },
+      { question: 'Can I get email addresses for plumbers?', answer: "Yes, about a third of plumbing businesses publish contact emails on their websites. TheMapScraper enriches each listing by visiting the business website to extract emails, phone numbers, and social media profiles. For plumbers without a published email, the phone number is usually the fastest way to connect." },
       { question: 'Is it legal to scrape plumber data from Google Maps?', answer: 'Yes. Contact information that plumbing companies have voluntarily published on their Google Business Profile is publicly available data. Extracting it for B2B prospecting is a standard business practice.' },
       { question: 'What format is the plumber data exported in?', answer: 'All data downloads as a CSV file ready for Excel, Google Sheets, or any CRM including HubSpot, Salesforce, or Zoho.' },
     ],
@@ -219,21 +227,21 @@ export const industries: IndustryConfig[] = [
       "See real data from 8,500+ lawyers in Chicago. Extract phone numbers, emails, websites, and addresses — here's a sample of what you'll get.",
     stats: {
       total: '8,500+',
-      emailPct: '74%',
+      emailPct: '72%',
       websitePct: '100%',
       avgRating: '4.5',
     },
     sampleData: [
-      { name: 'The Barclay Law Group', phone: '(312) 553-****', address: '3525 S King Dr, Chicago, IL 60653', rating: 3.5, reviews: 25, website: 'barclaylaw*****.com', email: 'info@barclay*****.com' },
-      { name: 'Attorney Shara Kamal', phone: '(872) 326-****', address: '5113 S Harper Ave Suite 2C, Chicago, IL', rating: 4.8, reviews: 55, website: 'sharak*****.com', email: 'office@sharak*****.com' },
-      { name: 'Law Office Of Julie A. Monberg PC', phone: '(773) 257-****', address: '1525 E 53rd St, Chicago, IL 60615', rating: 4.2, reviews: 25, website: 'monbergl*****.com', email: 'jmonberg@monber*****.com' },
-      { name: 'Balanoff Tax Service', phone: '(773) 721-****', address: '10100 S Ewing Ave, Chicago, IL 60617', rating: 4.3, reviews: 26, website: 'balanof*****.com', email: 'taxprep@balan*****.com' },
-      { name: 'Law Office of Charles R. Bonini', phone: '(312) 532-****', address: '6127 S University Ave, Chicago, IL', rating: 5.0, reviews: 40, website: 'boninilaw*****.com', email: 'charles.bonini@gm*****.com' },
-      { name: 'Chadwick and Lakerda Law Offices', phone: '(773) 955-****', address: '5300 S Shore Dr Ste 100, Chicago, IL', rating: 4.4, reviews: 50, website: 'chadwicklak*****.com', email: 'schadwick@chadwick*****.com' },
-      { name: 'Old Second National Bank', phone: '(877) 866-****', address: '13323 S Baltimore Ave, Chicago, IL 60633', rating: 4.5, reviews: 31, website: 'oldsecon*****.com', email: 'supportcenter@oldse*****.com' },
+      { name: 'Mandel Legal Aid Clinic', phone: '(773) 702-****', address: 'Chicago, IL', rating: 4.7, reviews: 12, website: 'uchicago*****.edu', email: 'bleiter@uchicag*****.edu' },
+      { name: 'The Barclay Law Group', phone: '(312) 553-****', address: '3525 S King Dr, Chicago, IL 60653', rating: 3.5, reviews: 25, website: 'barclaylaw*****.com', email: 'info@barclaylaw*****.com' },
+      { name: 'Attorney Shara Kamal', phone: '(872) 326-****', address: '5113 S Harper Ave Suite 2C, Chicago, IL 60615', rating: 4.8, reviews: 55, website: 'sharak*****.com', email: 'office@sharak*****.com' },
+      { name: 'Law Office Of Julie A. Monberg PC', phone: '(773) 257-****', address: '1525 E 53rd St, Chicago, IL 60615', rating: 4.2, reviews: 25, website: 'monbergl*****.com', email: 'jmonberg@monbergl*****.com' },
+      { name: 'Law Office of Charles R. Bonini', phone: '(312) 532-****', address: '6127 S University Ave, Chicago, IL 60637', rating: 5.0, reviews: 40, website: 'boninilaw*****.com', email: 'charles.bonini@gm*****.com' },
+      { name: 'Law Offices of Chadwick and Lakerdas', phone: '(773) 955-****', address: '5300 S Shore Dr Ste 100, Chicago, IL 60615', rating: 4.4, reviews: 50, website: 'chadwicklak*****.com', email: 'schadwick@chadwicklak*****.com' },
+      { name: 'Attorney Martin Perez, LLC', phone: '(773) 847-****', address: 'Chicago, IL', rating: 4.9, reviews: 30, website: 'mperez-l*****.com', email: 'martin@mperez-l*****.com' },
+      { name: 'Vrdolyak Law Group LLC', phone: '(773) 731-****', address: '9618 S Commercial Ave, Chicago, IL 60617', rating: 4.7, reviews: 813, website: 'vrdolyakl*****.com', email: '—' },
+      { name: 'Nunez Legal Group', phone: '(773) 727-****', address: '3501 E 106th St Suite #200, Chicago, IL 60617', rating: 5.0, reviews: 135, website: 'nunezlegal*****.com', email: '—' },
       { name: 'Bubaris & Associates PC', phone: '(773) 581-****', address: '5514 S Archer Ave, Chicago, IL 60638', rating: 4.3, reviews: 22, website: 'bubarislaw*****.com', email: '—' },
-      { name: 'Koczwara Christopher', phone: '(773) 767-****', address: '5838 S Archer Ave, Chicago, IL 60638', rating: 4.9, reviews: 7, website: 'koczwaral*****.com', email: '—' },
-      { name: 'Foster Jenkins Labor Consulting', phone: '(708) 476-****', address: 'Chicago, IL', rating: 4.6, reviews: 18, website: 'fosterjenkins*****.com', email: '—' },
     ],
     whyH2: 'Why Scrape Lawyer Data from Google Maps?',
     whyParagraphs: [
@@ -249,7 +257,7 @@ export const industries: IndustryConfig[] = [
     ],
     faqs: [
       { question: 'How many lawyers can I scrape per city?', answer: 'Google Maps typically lists 200–600 law firms per city search. You can narrow by practice area—"divorce lawyers," "criminal defense attorneys," or "immigration lawyers"—for more targeted results.' },
-      { question: 'Can I get email addresses for law firms?', answer: "Yes. TheMapScraper visits each firm's website to extract contact emails. About 74% of law firm listings in Chicago return a verified email address, higher than most industries due to the prevalence of professional websites." },
+      { question: 'Can I get email addresses for law firms?', answer: "Yes, over 50% of law firms publish contact emails on their websites. TheMapScraper enriches each listing by visiting the firm's website to extract email addresses, phone numbers, and social media profiles." },
       { question: 'Is it legal to scrape lawyer data from Google Maps?', answer: 'Yes. Attorney contact information published on Google Business Profile is public data. Many state bar associations also publish similar directories publicly. Extracting this for B2B prospecting is a standard and legal practice.' },
       { question: 'What format is the lawyer data exported in?', answer: 'All data downloads as a standard CSV compatible with Excel, Google Sheets, HubSpot, Salesforce, Clio, and any other platform that accepts CSV imports.' },
     ],

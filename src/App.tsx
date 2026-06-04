@@ -47,6 +47,11 @@ const DentistLeads = lazy(() => import('./pages/scrape/DentistLeads'))
 const PlumberLeads = lazy(() => import('./pages/scrape/PlumberLeads'))
 const LawyerLeads = lazy(() => import('./pages/scrape/LawyerLeads'))
 const RealEstateAgentLeads = lazy(() => import('./pages/scrape/RealEstateAgentLeads'))
+const DentistNewYork = lazy(() => import('./pages/scrape/cities/DentistNewYork'))
+const DentistMiami = lazy(() => import('./pages/scrape/cities/DentistMiami'))
+const DentistChicago = lazy(() => import('./pages/scrape/cities/DentistChicago'))
+const DentistLosAngeles = lazy(() => import('./pages/scrape/cities/DentistLosAngeles'))
+const DentistHouston = lazy(() => import('./pages/scrape/cities/DentistHouston'))
 
 type SearchState = 'idle' | 'loading' | 'results' | 'error'
 
@@ -173,6 +178,11 @@ function AppInner() {
           <Route path="/blog/google-maps-scraper-api/" element={<GoogleMapsScraperApi />} />
           <Route path="/scrape/restaurant-leads/" element={<RestaurantLeads />} />
           <Route path="/scrape/dentist-leads/" element={<DentistLeads />} />
+          <Route path="/scrape/dentist-leads/new-york/" element={<DentistNewYork />} />
+          <Route path="/scrape/dentist-leads/miami/" element={<DentistMiami />} />
+          <Route path="/scrape/dentist-leads/chicago/" element={<DentistChicago />} />
+          <Route path="/scrape/dentist-leads/los-angeles/" element={<DentistLosAngeles />} />
+          <Route path="/scrape/dentist-leads/houston/" element={<DentistHouston />} />
           <Route path="/scrape/plumber-leads/" element={<PlumberLeads />} />
           <Route path="/scrape/lawyer-leads/" element={<LawyerLeads />} />
           <Route path="/scrape/real-estate-agent-leads/" element={<RealEstateAgentLeads />} />

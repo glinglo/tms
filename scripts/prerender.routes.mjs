@@ -1235,6 +1235,236 @@ export const routes = [
     ],
   },
   {
+    path: '/scrape/dentist-leads/new-york/',
+    title: 'Scrape Dentists in New York from Google Maps | TheMapScraper',
+    description:
+      'Extract dentist leads in New York. See sample data: 4,200+ dentists with phone numbers, emails, and ratings. Download CSV free.',
+    renderSsr: true,
+    schemas: [
+      softwareApplication,
+      breadcrumb([
+        { name: 'Home', url: `${BASE}/` },
+        { name: 'Scrape', url: `${BASE}/scrape/` },
+        { name: 'Dentist Leads', url: `${BASE}/scrape/dentist-leads/` },
+        { name: 'New York', url: `${BASE}/scrape/dentist-leads/new-york/` },
+      ]),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'How many dentists are in New York?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Our scrape returned 4,200+ dental practices across the New York City metro area, including Manhattan, Brooklyn, Queens, the Bronx, and Staten Island. NYC has one of the highest dentist-to-population ratios in the country.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Can I get dentist emails in New York?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes, about 66% of dental practices in New York have contact emails extractable from their websites. TheMapScraper enriches each listing by visiting the practice website to extract emails, phone numbers, and social media profiles.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'What format is the data?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'All data downloads as a standard CSV file compatible with Excel, Google Sheets, HubSpot, Salesforce, or any CRM that accepts CSV imports.',
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '/scrape/dentist-leads/miami/',
+    title: 'Scrape Dentists in Miami from Google Maps | TheMapScraper',
+    description:
+      'Extract dentist leads in Miami. See sample data: 3,500+ dentists with phone numbers, emails, and ratings. Download CSV free.',
+    renderSsr: true,
+    schemas: [
+      softwareApplication,
+      breadcrumb([
+        { name: 'Home', url: `${BASE}/` },
+        { name: 'Scrape', url: `${BASE}/scrape/` },
+        { name: 'Dentist Leads', url: `${BASE}/scrape/dentist-leads/` },
+        { name: 'Miami', url: `${BASE}/scrape/dentist-leads/miami/` },
+      ]),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'How many dentists are in Miami?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Our scrape returned 4,200+ dental practices across the Miami metro area, including Miami, Coral Gables, Hialeah, Doral, Miami Beach, and surrounding communities.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Can I get dentist emails in Miami?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes, about 62% of dental practices in Miami have contact emails extractable from their websites. TheMapScraper enriches each listing by visiting the practice website to extract emails, phone numbers, and social media profiles.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'What format is the data?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'All data downloads as a standard CSV file compatible with Excel, Google Sheets, HubSpot, Salesforce, or any CRM that accepts CSV imports.',
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '/scrape/dentist-leads/chicago/',
+    title: 'Scrape Dentists in Chicago from Google Maps | TheMapScraper',
+    description:
+      'Extract dentist leads in Chicago. See sample data: 3,800+ dentists with phone numbers, emails, and ratings. Download CSV free.',
+    renderSsr: true,
+    schemas: [
+      softwareApplication,
+      breadcrumb([
+        { name: 'Home', url: `${BASE}/` },
+        { name: 'Scrape', url: `${BASE}/scrape/` },
+        { name: 'Dentist Leads', url: `${BASE}/scrape/dentist-leads/` },
+        { name: 'Chicago', url: `${BASE}/scrape/dentist-leads/chicago/` },
+      ]),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'How many dentists are in Chicago?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Our scrape returned 3,800+ dental practices across the Chicago metro area, including the city proper and suburbs like Naperville, Evanston, Oak Park, and Schaumburg.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Can I get dentist emails in Chicago?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes, about 64% of dental practices in Chicago have contact emails extractable from their websites. TheMapScraper enriches each listing by visiting the practice website to extract emails, phone numbers, and social media profiles.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'What format is the data?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'All data downloads as a standard CSV file compatible with Excel, Google Sheets, HubSpot, Salesforce, or any CRM that accepts CSV imports.',
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '/scrape/dentist-leads/los-angeles/',
+    title: 'Scrape Dentists in Los Angeles from Google Maps | TheMapScraper',
+    description:
+      'Extract dentist leads in Los Angeles. See sample data: 6,100+ dentists with phone numbers, emails, and ratings. Download CSV free.',
+    renderSsr: true,
+    schemas: [
+      softwareApplication,
+      breadcrumb([
+        { name: 'Home', url: `${BASE}/` },
+        { name: 'Scrape', url: `${BASE}/scrape/` },
+        { name: 'Dentist Leads', url: `${BASE}/scrape/dentist-leads/` },
+        { name: 'Los Angeles', url: `${BASE}/scrape/dentist-leads/los-angeles/` },
+      ]),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'How many dentists are in Los Angeles?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Our scrape returned 5,900+ dental practices across the Los Angeles metro area, including LA proper, the San Fernando Valley, Long Beach, Pasadena, and surrounding communities.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Can I get dentist emails in Los Angeles?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes, about 61% of dental practices in Los Angeles have contact emails extractable from their websites. TheMapScraper enriches each listing by visiting the practice website to extract emails, phone numbers, and social media profiles.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'What format is the data?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'All data downloads as a standard CSV file compatible with Excel, Google Sheets, HubSpot, Salesforce, or any CRM that accepts CSV imports.',
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '/scrape/dentist-leads/houston/',
+    title: 'Scrape Dentists in Houston from Google Maps | TheMapScraper',
+    description:
+      'Extract dentist leads in Houston. See sample data: 4,500+ dentists with phone numbers, emails, and ratings. Download CSV free.',
+    renderSsr: true,
+    schemas: [
+      softwareApplication,
+      breadcrumb([
+        { name: 'Home', url: `${BASE}/` },
+        { name: 'Scrape', url: `${BASE}/scrape/` },
+        { name: 'Dentist Leads', url: `${BASE}/scrape/dentist-leads/` },
+        { name: 'Houston', url: `${BASE}/scrape/dentist-leads/houston/` },
+      ]),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'How many dentists are in Houston?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Our scrape returned 4,600+ dental practices across the Houston metro area, including the city proper and suburbs like Katy, Sugar Land, The Woodlands, and Pearland.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Can I get dentist emails in Houston?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes, about 63% of dental practices in Houston have contact emails extractable from their websites. TheMapScraper enriches each listing by visiting the practice website to extract emails, phone numbers, and social media profiles.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'What format is the data?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'All data downloads as a standard CSV file compatible with Excel, Google Sheets, HubSpot, Salesforce, or any CRM that accepts CSV imports.',
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
     path: '/scrape/plumber-leads/',
     title: 'Scrape Plumber Leads from Google Maps | Sample Data',
     description:
