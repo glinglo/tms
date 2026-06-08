@@ -26,6 +26,10 @@
     <!-- Vercel Analytics (consent-gated, loaded after user accepts) -->
     <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
 
+    <!-- Umami Analytics — defer: non-blocking, executes after HTML parse -->
+    <link rel="dns-prefetch" href="https://cloud.umami.is" />
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="50a9f11a-048f-4041-ab34-6b30a4ff4c4e"></script>
+
     <!-- Preload LCP font (H1 uses Bricolage Bold/ExtraBold) — self-hosted, no external hop -->
     <link rel="preload" href="/fonts/BricolageGrotesque-Bold.woff2" as="font" type="font/woff2" crossorigin />
   </head>
