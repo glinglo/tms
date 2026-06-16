@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import { useAuthContext } from '../../context/AuthContext'
 import type { DashboardOutletContext } from '../../components/DashboardLayout'
@@ -34,6 +34,11 @@ export default function ExportsPage() {
   const [redownloading, setRedownloading] = useState<string | null>(null)
   const [redownloadError, setRedownloadError] = useState('')
   const [redownloadErrorCode, setRedownloadErrorCode] = useState<ScrapeErrorCode | undefined>()
+  const redownloadPollRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  useEffect(() => {
+    return () => { if (redownloadPollRef.current) clearInterval(redownloadPollRef.current) }
+  }, [])
 
   useEffect(() => {
     if (!user) return
@@ -50,12 +55,14 @@ export default function ExportsPage() {
 
   const handleRedownload = async (record: SearchRecord) => {
     if (redownloading) return
+    if (redownloadPollRef.current) clearInterval(redownloadPollRef.current)
     setRedownloading(record.id)
     setRedownloadError('')
     setRedownloadErrorCode(undefined)
 
+    let runId: string
     try {
-      const res = await fetch('/api/scrape', {
+      const startRes = await fetch('/api/scrape-start', {
         method: 'POST',
         headers: await authHeaders(),
         body: JSON.stringify({
@@ -65,25 +72,50 @@ export default function ExportsPage() {
           redownloadSearchId: record.id,
         }),
       })
-
-      if (!res.ok) {
-        const { message, code } = await parseScrapeErrorResponse(res)
+      if (!startRes.ok) {
+        const { message, code } = await parseScrapeErrorResponse(startRes)
         setRedownloadError(message)
         setRedownloadErrorCode(code)
+        setRedownloading(null)
         return
       }
-
-      const data = await res.json() as { results: Lead[] }
-      const csv = generateCSV(data.results)
-      const filename = `${record.business_type}-${record.location}-leads.csv`
-        .toLowerCase().replace(/\s+/g, '-')
-      downloadCSV(csv, filename)
+      const body = await startRes.json() as { runId: string }
+      runId = body.runId
     } catch {
       setRedownloadError('Something went wrong. Please check your connection and try again.')
       setRedownloadErrorCode(undefined)
-    } finally {
       setRedownloading(null)
+      return
     }
+
+    redownloadPollRef.current = setInterval(async () => {
+      try {
+        const statusRes = await fetch(`/api/scrape-status?runId=${encodeURIComponent(runId)}`)
+        if (!statusRes.ok) {
+          const { message, code } = await parseScrapeErrorResponse(statusRes)
+          clearInterval(redownloadPollRef.current!)
+          setRedownloadError(message)
+          setRedownloadErrorCode(code)
+          setRedownloading(null)
+          return
+        }
+        const data = await statusRes.json() as { status: string; results?: Lead[] }
+        if (data.status === 'done') {
+          clearInterval(redownloadPollRef.current!)
+          const csv = generateCSV(data.results ?? [])
+          const filename = `${record.business_type}-${record.location}-leads.csv`
+            .toLowerCase().replace(/\s+/g, '-')
+          downloadCSV(csv, filename)
+          setRedownloading(null)
+        }
+        // 'pending' → keep polling
+      } catch {
+        clearInterval(redownloadPollRef.current!)
+        setRedownloadError('Something went wrong. Please try again.')
+        setRedownloadErrorCode(undefined)
+        setRedownloading(null)
+      }
+    }, 3000)
   }
 
   return (

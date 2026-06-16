@@ -57,7 +57,12 @@ export default function SearchPage() {
   const [downloading, setDownloading] = useState(false)
   const [downloadError, setDownloadError] = useState('')
   const timersRef = useRef<ReturnType<typeof setTimeout>[]>([])
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const lastQuery = useRef({ business: '', location: '', leadEnrichment: false })
+
+  useEffect(() => {
+    return () => { if (pollRef.current) clearInterval(pollRef.current) }
+  }, [])
 
   useEffect(() => {
     if (credits === null || credits <= 0) return
@@ -117,8 +122,10 @@ export default function SearchPage() {
     const fetchLimit =
       credits !== null && credits > 0 ? Math.min(maxResults, credits) : maxResults
 
+    if (pollRef.current) clearInterval(pollRef.current)
+
     try {
-      const res = await fetch('/api/scrape', {
+      const startRes = await fetch('/api/scrape-start', {
         method: 'POST',
         headers: await authHeaders(),
         body: JSON.stringify({
@@ -128,16 +135,40 @@ export default function SearchPage() {
           leadEnrichment,
         }),
       })
-      if (!res.ok) {
-        const { message, code } = await parseScrapeErrorResponse(res)
+      if (!startRes.ok) {
+        const { message, code } = await parseScrapeErrorResponse(startRes)
         setErrorMsg(message)
         setErrorCode(code)
         setSearchState('error')
         return
       }
-      const data = await res.json() as { results: Lead[] }
-      setLeads(data.results)
-      setSearchState('results')
+      const { runId } = await startRes.json() as { runId: string }
+
+      pollRef.current = setInterval(async () => {
+        try {
+          const statusRes = await fetch(`/api/scrape-status?runId=${encodeURIComponent(runId)}`)
+          if (!statusRes.ok) {
+            const { message, code } = await parseScrapeErrorResponse(statusRes)
+            clearInterval(pollRef.current!)
+            setErrorMsg(message)
+            setErrorCode(code)
+            setSearchState('error')
+            return
+          }
+          const data = await statusRes.json() as { status: string; results?: Lead[] }
+          if (data.status === 'done') {
+            clearInterval(pollRef.current!)
+            setLeads(data.results ?? [])
+            setSearchState('results')
+          }
+          // 'pending' → keep polling
+        } catch {
+          clearInterval(pollRef.current!)
+          setErrorMsg('Something went wrong. Please check your connection and try again.')
+          setErrorCode(undefined)
+          setSearchState('error')
+        }
+      }, 3000)
     } catch {
       setErrorMsg('Something went wrong. Please check your connection and try again.')
       setErrorCode(undefined)

@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react'
+import { lazy, Suspense, useState, useEffect, useRef } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -52,6 +52,7 @@ const DentistMiami = lazy(() => import('./pages/scrape/cities/DentistMiami'))
 const DentistChicago = lazy(() => import('./pages/scrape/cities/DentistChicago'))
 const DentistLosAngeles = lazy(() => import('./pages/scrape/cities/DentistLosAngeles'))
 const DentistHouston = lazy(() => import('./pages/scrape/cities/DentistHouston'))
+const GoogleMapsScraper = lazy(() => import('./pages/GoogleMapsScraper'))
 
 type SearchState = 'idle' | 'loading' | 'results' | 'error'
 
@@ -79,6 +80,39 @@ function HomePage() {
   const [searchState, setSearchState] = useState<SearchState>('results')
   const [leads, setLeads] = useState<Lead[]>(defaultResults)
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
+  const [previewRunId, setPreviewRunId] = useState<string | null>(null)
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  useEffect(() => {
+    if (!previewRunId) return
+    pollRef.current = setInterval(async () => {
+      try {
+        const res = await fetch(`/api/scrape-status?runId=${encodeURIComponent(previewRunId)}`)
+        if (!res.ok) {
+          const { message } = await parseScrapeErrorResponse(res)
+          clearInterval(pollRef.current!)
+          setPreviewRunId(null)
+          setErrorMsg(message)
+          setSearchState('error')
+          return
+        }
+        const data = await res.json() as { status: string; results?: Lead[] }
+        if (data.status === 'done') {
+          clearInterval(pollRef.current!)
+          setPreviewRunId(null)
+          setLeads(data.results ?? [])
+          setSearchState('results')
+        }
+        // 'pending' → keep polling
+      } catch {
+        clearInterval(pollRef.current!)
+        setPreviewRunId(null)
+        setErrorMsg('Preview search is temporarily unavailable. Please try again in a few minutes.')
+        setSearchState('error')
+      }
+    }, 3000)
+    return () => { if (pollRef.current) clearInterval(pollRef.current) }
+  }, [previewRunId])
 
   const handleSearch = async (q: { business: string; location: string }) => {
     if (isDefaultQuery(q)) {
@@ -88,6 +122,8 @@ function HomePage() {
       return
     }
 
+    if (pollRef.current) clearInterval(pollRef.current)
+    setPreviewRunId(null)
     setQuery(q)
     setSearchState('loading')
     setLeads([])
@@ -99,7 +135,7 @@ function HomePage() {
     }, 50)
 
     try {
-      const res = await fetch('/api/scrape', {
+      const res = await fetch('/api/scrape-start', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -117,9 +153,8 @@ function HomePage() {
         return
       }
 
-      const data = await res.json() as { results: Lead[]; total: number }
-      setLeads(data.results)
-      setSearchState('results')
+      const { runId } = await res.json() as { runId: string }
+      setPreviewRunId(runId)
     } catch {
       setErrorMsg('Preview search is temporarily unavailable. Please try again in a few minutes.')
       setSearchState('error')
@@ -158,6 +193,7 @@ function AppInner() {
           <Route path="/privacy-policy" element={<Privacy />} />
           <Route path="/terms-of-service" element={<Terms />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/google-maps-scraper/" element={<GoogleMapsScraper />} />
           <Route path="/google-maps-lead-extractor/" element={<GoogleMapsLeadExtractor />} />
           <Route path="/extract-emails-google-maps/" element={<ExtractEmailsGoogleMaps />} />
           <Route path="/google-maps-data-scraper-csv/" element={<GoogleMapsDataScraperCsv />} />
