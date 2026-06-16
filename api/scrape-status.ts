@@ -5,7 +5,7 @@ import {
   scrapeErrorFromRunStatus,
   scrapeErrorFromUpstream,
   ScrapeUserError,
-} from './lib/scrapeErrors.js'
+} from './_lib/scrapeErrors.js'
 
 const BASE = 'https://api.apify.com/v2'
 
