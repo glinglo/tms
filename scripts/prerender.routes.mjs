@@ -163,6 +163,19 @@ export const routes = [
 
   // ── Landing pages ──────────────────────────────────────────────────────────
   {
+    path: '/google-maps-scraper/',
+    title: 'Google Maps Scraper — Extract Business Leads in Seconds',
+    description:
+      'TheMapScraper is a Google Maps scraper that pulls business names, phones, emails, addresses, and websites into a ready-to-use CSV. No code, no extension.',
+    renderSsr: true,
+    schemas: [
+      breadcrumb([
+        { name: 'Home', url: `${BASE}/` },
+        { name: 'Google Maps Scraper', url: `${BASE}/google-maps-scraper/` },
+      ]),
+    ],
+  },
+  {
     path: '/google-maps-lead-extractor/',
     title: 'Google Maps Lead Extractor. Get B2B Contacts in Seconds',
     description:
