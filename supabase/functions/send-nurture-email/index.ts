@@ -25,13 +25,7 @@ Takes about 2 minutes.
     case "nurture_2":
       return {
         subject: "The problem with manual prospecting",
-        text: `Hey, most people who sign up for TheMapScraper are trying to stop doing one thing: manually copying business info from Google Maps into a spreadsheet.
-
-It's slow, error-prone, and honestly just painful.
-
-If that sounds familiar, the paid plan lets you pull 500+ leads at a time with emails included.
-
-Worth a look: https://themapscraper.com/pricing
+        text: `Hey — most people use TheMapScraper to stop copying business info from Google Maps by hand. If you want to pull 500+ leads at a time with emails included, paid plans start at €9: https://themapscraper.com/pricing
 
 — Jose`,
       };

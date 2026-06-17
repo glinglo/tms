@@ -3,6 +3,7 @@ import { useOutletContext } from 'react-router-dom'
 import { useAuthContext } from '../../context/AuthContext'
 import type { DashboardOutletContext } from '../../components/DashboardLayout'
 import SearchErrorBanner from '../../components/SearchErrorBanner'
+import UpgradeModal from '../../components/UpgradeModal'
 import type { Lead } from '../../types/lead'
 import { authHeaders } from '../../lib/apiAuth'
 import { parseScrapeErrorResponse, type ScrapeErrorCode } from '../../lib/scrapeErrors'
@@ -53,9 +54,10 @@ export default function SearchPage() {
   const [errorMsg, setErrorMsg] = useState('')
   const [errorCode, setErrorCode] = useState<ScrapeErrorCode | undefined>()
   const [loadingMsg, setLoadingMsg] = useState('')
-  const [leadEnrichment, setLeadEnrichment] = useState(false)
+  const [leadEnrichment, setLeadEnrichment] = useState(true)
   const [downloading, setDownloading] = useState(false)
   const [downloadError, setDownloadError] = useState('')
+  const [upgradeOpen, setUpgradeOpen] = useState(false)
   const timersRef = useRef<ReturnType<typeof setTimeout>[]>([])
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const lastQuery = useRef({ business: '', location: '', leadEnrichment: false })
@@ -107,6 +109,7 @@ export default function SearchPage() {
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!business.trim() || !location.trim()) return
+    if (hasNoCredits) { setUpgradeOpen(true); return }
 
     lastQuery.current = {
       business: business.trim(),
@@ -262,23 +265,6 @@ export default function SearchPage() {
           Search Google Maps and download a clean CSV
         </p>
 
-        {hasNoCredits && (
-          <div className="bg-[#fff8f0] border border-[rgba(234,40,4,0.2)] rounded-[10px] px-[18px] py-[14px] mb-5 flex items-center justify-between flex-wrap gap-[10px]">
-            <p className="font-sans text-sm text-ink m-0">
-              {freeMonthlyUsedUp
-                ? "You've used your 50 free leads this month. Buy a pack for more, or wait until next month."
-                : 'You have no credits. Buy a pack to start searching.'}
-            </p>
-            <button
-              type="button"
-              onClick={openBuyCredits}
-              className="font-sans text-[13px] font-semibold text-brand bg-transparent border-none cursor-pointer p-0 underline"
-            >
-              Buy credits →
-            </button>
-          </div>
-        )}
-
         <form
           onSubmit={handleSearch}
           className="bg-white border border-border-subtle rounded-[14px] p-4 md:p-5 mb-7 flex flex-col gap-3"
@@ -293,7 +279,7 @@ export default function SearchPage() {
                 type="text"
                 value={business}
                 onChange={(e) => setBusiness(e.target.value)}
-                placeholder="e.g. Dentists"
+                placeholder="e.g. Dentists, Plumbers, Law Firms"
                 required
                 className="font-sans text-[15px] text-ink bg-cream border border-border-subtle rounded-pill px-4 py-[11px] outline-none transition-colors duration-150 focus:border-brand"
               />
@@ -336,40 +322,26 @@ export default function SearchPage() {
           {/* Enrichment option + submit */}
           <div className="flex flex-wrap items-center justify-end gap-3 md:gap-4">
             <div className="flex items-center gap-2">
-              <label className="flex items-center gap-2 cursor-pointer select-none m-0">
+              <label className="flex items-start gap-2 cursor-pointer select-none m-0">
                 <input
                   type="checkbox"
                   checked={leadEnrichment}
                   onChange={(e) => setLeadEnrichment(e.target.checked)}
                   disabled={searchState === 'loading'}
-                  className="w-4 h-4 accent-brand cursor-pointer disabled:cursor-not-allowed"
+                  className="w-4 h-4 accent-brand cursor-pointer disabled:cursor-not-allowed mt-[2px] shrink-0"
                 />
-                <span className="font-sans text-sm text-ink-muted">
-                  Add lead enrichment
+                <span className="flex flex-col gap-[2px]">
+                  <span className="font-sans text-sm text-ink-muted">Add lead enrichment</span>
+                  <span className="font-sans text-[11px] text-ink-faint leading-snug">
+                    Finds email addresses for each business — included in your credits
+                  </span>
                 </span>
               </label>
-              <span className="relative group inline-flex shrink-0">
-                <span
-                  tabIndex={0}
-                  role="img"
-                  aria-label="About lead enrichment"
-                  className="inline-flex items-center justify-center w-[18px] h-[18px] rounded-full border border-[rgba(32,32,32,0.18)] bg-cream font-sans text-[11px] font-bold text-ink-faint leading-none cursor-help hover:border-brand hover:text-brand transition-colors duration-150 outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-1"
-                >
-                  i
-                </span>
-                <span
-                  role="tooltip"
-                  className="pointer-events-none absolute bottom-[calc(100%+8px)] left-1/2 -translate-x-1/2 z-10 w-[min(280px,calc(100vw-48px))] px-3 py-2 rounded-lg bg-ink text-white font-sans text-xs leading-snug text-center opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-opacity duration-150 shadow-[0_4px_16px_rgba(0,0,0,0.12)] after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-[6px] after:border-transparent after:border-t-ink"
-                >
-                  If enabled, we search each business website for email addresses and social profiles. The search takes longer.
-                </span>
-              </span>
             </div>
             <button
               type="submit"
-              disabled={searchState === 'loading' || hasNoCredits}
-              title={hasNoCredits ? 'Buy credits to search' : undefined}
-              className={`font-sans text-sm font-semibold text-white border-none rounded-pill px-[22px] py-3 whitespace-nowrap flex items-center gap-2 transition-colors duration-150 ${hasNoCredits ? 'bg-[#c8c2b8] cursor-not-allowed' : searchState === 'loading' ? 'bg-[#f0a090] cursor-not-allowed' : 'bg-brand cursor-pointer hover:bg-brand-dark'}`}
+              disabled={searchState === 'loading'}
+              className={`font-sans text-sm font-semibold text-white border-none rounded-pill px-[22px] py-3 whitespace-nowrap flex items-center gap-2 transition-colors duration-150 ${searchState === 'loading' ? 'bg-[#f0a090] cursor-not-allowed' : hasNoCredits ? 'bg-[#c8c2b8] cursor-pointer' : 'bg-brand cursor-pointer hover:bg-brand-dark'}`}
             >
               {searchState === 'loading' ? (
                 <>
@@ -409,6 +381,12 @@ export default function SearchPage() {
                 <div className="flex items-center justify-between flex-wrap gap-[10px]">
                   <p className="font-sans text-sm text-ink-muted m-0">
                     <strong className="text-ink">{leads.length} results found</strong>
+                    {(() => {
+                      const emailCount = leads.filter(l => l.email?.trim()).length
+                      return emailCount > 0
+                        ? <> · <strong className="text-ink">{emailCount} with email</strong></>
+                        : null
+                    })()}
                     {' '}— download uses{' '}
                     <strong className="text-ink">{leads.length} credit{leads.length === 1 ? '' : 's'}</strong>
                     {credits !== null && (
@@ -516,6 +494,14 @@ export default function SearchPage() {
           </p>
         )}
       </div>
+
+      <UpgradeModal
+        open={upgradeOpen}
+        onClose={() => setUpgradeOpen(false)}
+        userId={user?.id ?? ''}
+        userEmail={user?.email ?? ''}
+        wallet={wallet}
+      />
     </>
   )
 }
