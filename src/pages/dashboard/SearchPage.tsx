@@ -235,11 +235,6 @@ export default function SearchPage() {
   }
 
   const hasNoCredits = credits !== null && credits === 0
-  const freeMonthlyUsedUp =
-    wallet !== null &&
-    wallet.freeRemaining === 0 &&
-    wallet.freeUsed >= wallet.freeMonthly &&
-    wallet.paidBalance === 0
   const insufficientForDownload =
     credits !== null && leads.length > 0 && leads.length > credits
   const canDownload =
