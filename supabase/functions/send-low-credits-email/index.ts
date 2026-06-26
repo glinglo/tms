@@ -6,7 +6,7 @@ serve(async (req: Request) => {
     return new Response("Method not allowed", { status: 405 });
   }
 
-  let body: { user_id?: string; email?: string; credits_remaining?: number; plan?: string };
+  let body: { user_id?: string; email?: string; credits_remaining?: number; plan?: string; business_type?: string; location?: string };
   try {
     body = await req.json();
   } catch {
@@ -16,7 +16,7 @@ serve(async (req: Request) => {
     });
   }
 
-  const { email, credits_remaining } = body;
+  const { email, credits_remaining, business_type, location } = body;
 
   if (!email || credits_remaining === undefined) {
     return new Response(JSON.stringify({ error: "email and credits_remaining are required" }), {
@@ -25,10 +25,31 @@ serve(async (req: Request) => {
     });
   }
 
-  const result = await sendEmail({
-    to: email,
-    subject: "You're running low on leads",
-    text: `Hey,
+  let subject: string;
+  let text: string;
+
+  if (credits_remaining === 0) {
+    if (business_type && location) {
+      subject = `Want more leads from ${location}?`;
+      text = `Hey,
+
+Looking for more ${business_type} in ${location}?
+
+For just €9 you get 500 credits: https://themapscraper.com/pricing
+
+Jose`;
+    } else {
+      subject = "Your free credits are gone";
+      text = `Hey,
+
+Your free credits are gone. For just €9 you get 500 credits:
+https://themapscraper.com/pricing
+
+Jose`;
+    }
+  } else {
+    subject = "You're running low on leads";
+    text = `Hey,
 
 Just a heads up — you're down to ${credits_remaining} leads on your TheMapScraper account.
 
@@ -38,8 +59,10 @@ You can grab more here: https://themapscraper.com/pricing
 
 Let me know if you have any questions.
 
-Jose`,
-  });
+Jose`;
+  }
+
+  const result = await sendEmail({ to: email, subject, text });
 
   if (!result.success) {
     return new Response(JSON.stringify({ error: result.error }), {

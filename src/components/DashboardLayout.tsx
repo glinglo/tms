@@ -5,6 +5,7 @@ import { authHeaders } from '../lib/apiAuth'
 import { computeWalletFromProfile, formatCreditsLabel, type CreditWallet } from '../lib/credits'
 import { supabase } from '../lib/supabase'
 import BuyCreditsModal from './BuyCreditsModal'
+import ZeroCreditsModal from './ZeroCreditsModal'
 
 export interface DashboardOutletContext {
   credits: number | null
@@ -63,13 +64,15 @@ export default function DashboardLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [paymentBanner, setPaymentBanner] = useState(false)
   const [buyCreditsOpen, setBuyCreditsOpen] = useState(false)
+  const [zeroCreditsOpen, setZeroCreditsOpen] = useState(false)
+  const [plan, setPlan] = useState<string | null>(null)
 
   const userId = user?.id
 
   const fetchCreditsFromProfile = useCallback(async () => {
     const { data, error } = await supabase
       .from('profiles')
-      .select('credits_balance, free_credits_used, credits_period')
+      .select('credits_balance, free_credits_used, credits_period, plan')
       .eq('id', userId!)
       .maybeSingle()
 
@@ -78,6 +81,7 @@ export default function DashboardLayout() {
     const wallet = computeWalletFromProfile(data)
     setWallet(wallet)
     setCredits(wallet.totalAvailable)
+    setPlan(data.plan ?? 'free')
     return true
   }, [userId])
 
@@ -124,6 +128,14 @@ export default function DashboardLayout() {
       return () => clearTimeout(timer)
     }
   }, [location.search, fetchCredits, navigate])
+
+  // Show zero-credits modal once per session for free users who have exhausted all credits
+  useEffect(() => {
+    if (credits === null || credits > 0 || plan !== 'free') return
+    if (sessionStorage.getItem('zeroCreditsModalShown')) return
+    sessionStorage.setItem('zeroCreditsModalShown', '1')
+    setZeroCreditsOpen(true)
+  }, [credits, plan])
 
   // Close sidebar on route change (mobile nav)
   useEffect(() => { setSidebarOpen(false) }, [location.pathname])
@@ -281,6 +293,12 @@ export default function DashboardLayout() {
       </div>
 
       <BuyCreditsModal open={buyCreditsOpen} onClose={() => setBuyCreditsOpen(false)} />
+      <ZeroCreditsModal
+        open={zeroCreditsOpen}
+        onClose={() => setZeroCreditsOpen(false)}
+        userId={userId ?? ''}
+        userEmail={email}
+      />
     </div>
   )
 }
