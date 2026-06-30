@@ -7,7 +7,7 @@ const faqs = [
   {
     question: 'What is the best free Google Maps scraper?',
     answer:
-      'For non-technical users, TheMapScraper offers 50 free leads per month with no credit card required. For developers, open source options like the omkarcloud Google Maps scraper are completely free but require Python knowledge and proxy management.',
+      'For non-technical users, TheMapScraper offers 25 free leads per month with no credit card required. For developers, open source options like the omkarcloud Google Maps scraper are completely free but require Python knowledge and proxy management.',
   },
   {
     question: 'Do Google Maps scrapers extract emails?',
@@ -86,7 +86,7 @@ function InlineCTA() {
       <div>
         <p className="font-sans text-base font-semibold text-ink m-0">Try TheMapScraper free</p>
         <p className="font-sans text-sm text-ink-muted m-0 mt-1">
-          50 leads per month. No credit card, no setup.
+          25 leads per month. No credit card, no setup.
         </p>
       </div>
       {user ? (
@@ -265,7 +265,7 @@ export default function BestGoogleMapsScrapers() {
 
       <ToolMeta
         bestFor="Sales reps, agency owners, and freelancers who want leads from Google Maps without technical infrastructure."
-        pricing="Free tier: 50 leads/month, no credit card required. Paid plans for higher volume."
+        pricing="Free tier: 25 leads/month, no credit card required. Paid plans for higher volume."
       />
 
       <InlineCTA />

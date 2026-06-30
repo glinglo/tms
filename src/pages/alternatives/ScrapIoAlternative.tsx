@@ -14,12 +14,12 @@ const ROWS = [
   },
   {
     feature: 'Pricing',
-    us: 'Simple subscription. 50 leads/month free, no credit card. Paid plans for higher volumes.',
+    us: 'Simple subscription. 25 leads/month free, no credit card. Paid plans for higher volumes.',
     them: 'From €49/month for 10,000 exports. Yearly deal available at €699.',
   },
   {
     feature: 'Free tier',
-    us: '50 leads/month, no credit card.',
+    us: '25 leads/month, no credit card.',
     them: '7-day trial with 100 leads.',
   },
   {
@@ -63,12 +63,12 @@ const FAQS = [
   {
     question: 'Is Scrap.io free to use?',
     answer:
-      'Scrap.io offers a 7-day free trial with up to 100 leads. After the trial, plans start at €49 per month. TheMapScraper offers 50 free leads per month permanently with no time limit and no credit card required.',
+      'Scrap.io offers a 7-day free trial with up to 100 leads. After the trial, plans start at €49 per month. TheMapScraper offers 25 free leads per month permanently with no time limit and no credit card required.',
   },
   {
     question: 'What is the best free Scrap.io alternative?',
     answer:
-      'TheMapScraper is a strong free alternative to Scrap.io for basic Google Maps lead extraction. It offers 50 leads per month at no cost with no credit card required. While it lacks Scrap.io\'s advanced filtering and country-level scraping, it is faster to set up and more affordable for smaller-scale use.',
+      'TheMapScraper is a strong free alternative to Scrap.io for basic Google Maps lead extraction. It offers 25 leads per month at no cost with no credit card required. While it lacks Scrap.io\'s advanced filtering and country-level scraping, it is faster to set up and more affordable for smaller-scale use.',
   },
   {
     question: 'How is TheMapScraper different from Scrap.io?',
@@ -165,7 +165,7 @@ export default function ScrapIoAlternative() {
           <p className="font-sans text-base text-ink-muted leading-relaxed">
             Scrap.io is an excellent tool for power users who need granular filtering, but its
             minimum plan is €49/month — significant if you only need occasional lead lists.
-            TheMapScraper lets you start for free (50 leads/month, no credit card) and upgrade only
+            TheMapScraper lets you start for free (25 leads/month, no credit card) and upgrade only
             if your volume grows. For sales reps, small agencies, or anyone running ad-hoc searches,{' '}
             <Link to="/" className="text-brand font-medium hover:underline">
               TheMapScraper

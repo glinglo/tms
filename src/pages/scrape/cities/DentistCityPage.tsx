@@ -34,7 +34,7 @@ function CityCta({ city, total }: { city: string; total: string }) {
           Want all {total} dentists in {city}?
         </p>
         <p className="font-sans text-sm text-ink-muted m-0 mt-[2px]">
-          Start free — 50 leads/month, no credit card required.
+          Start free — 25 leads/month, no credit card required.
         </p>
       </div>
       <button
@@ -83,7 +83,7 @@ export default function DentistCityPage({ config }: { config: CityConfig }) {
             href="/"
             className="inline-flex items-center gap-2 bg-brand text-white font-sans text-[15px] font-semibold px-8 py-[14px] rounded-pill no-underline transition-colors duration-150 hover:bg-brand-dark"
           >
-            Start Free — 50 leads/month
+            Start Free — 25 leads/month
           </a>
         </div>
       </section>
@@ -289,7 +289,7 @@ export default function DentistCityPage({ config }: { config: CityConfig }) {
         headline={`Start scraping dentists in ${name}`}
         ctaText="Try It Free"
         ctaHref="/"
-        subtext="50 free leads per month · No credit card required"
+        subtext="25 free leads per month · No credit card required"
       />
     </>
   )

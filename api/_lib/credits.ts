@@ -1,6 +1,6 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 
-export const FREE_MONTHLY_CREDITS = 50
+export const FREE_MONTHLY_CREDITS = 25
 
 export function currentCreditsPeriod(): string {
   const now = new Date()

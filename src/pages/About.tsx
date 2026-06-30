@@ -5,7 +5,7 @@ import BreadcrumbSchema from '../components/BreadcrumbSchema'
 const COMMITMENTS = [
   {
     title: 'Transparency',
-    body: 'We show you exactly what data you will get before you spend a single credit. The preview on the homepage is live — real results from a real search, not curated demo data.',
+    body: 'We show you exactly what data you will get before you spend a single lead. The preview on the homepage is live — real results from a real search, not curated demo data.',
   },
   {
     title: 'Privacy',
@@ -143,7 +143,7 @@ export default function About() {
       <LandingCTA
         headline="Ready to try it?"
         ctaText="Start Free"
-        subtext="50 free leads per month · No credit card required"
+        subtext="25 free leads per month · No credit card required"
       />
     </>
   )

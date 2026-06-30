@@ -24,7 +24,7 @@ const ROWS = [
   },
   {
     feature: 'Free tier',
-    us: '50 leads/month, no credit card.',
+    us: '25 leads/month, no credit card.',
     them: '500 free records.',
   },
   {

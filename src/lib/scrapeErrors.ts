@@ -16,7 +16,7 @@ export interface ScrapeErrorBody {
 const FALLBACK_BY_STATUS: Record<number, string> = {
   400: 'Please check your search and try again.',
   401: 'Your session expired. Please sign in again.',
-  403: 'You do not have enough credits for this search.',
+  403: 'You do not have enough leads for this search.',
   502: 'We could not complete this search. Try again with fewer leads.',
   503: 'Search is temporarily unavailable. Please try again later.',
   504: 'This search took too long. Try fewer leads or a narrower location.',

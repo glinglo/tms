@@ -211,7 +211,7 @@ export default function DashboardLayout() {
           }}
           className="w-full font-sans text-[13px] font-semibold text-white bg-brand border-none rounded-pill py-[10px] cursor-pointer transition-colors duration-150 mb-[10px] hover:bg-brand-dark"
         >
-          Buy credits
+          Buy leads
         </button>
 
         <button
@@ -270,7 +270,7 @@ export default function DashboardLayout() {
           <div className="mx-6 mt-4 bg-[#f0fdf4] border border-[#bbf7d0] rounded-xl px-4 py-3 flex items-center gap-3">
             <span className="text-[#16a34a] text-base leading-none">✓</span>
             <p className="font-sans text-sm font-medium text-[#15803d] m-0">
-              Payment successful — your credits have been added.
+              Payment successful — your leads have been added.
             </p>
             <button
               onClick={() => setPaymentBanner(false)}

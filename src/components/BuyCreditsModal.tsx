@@ -62,10 +62,10 @@ export default function BuyCreditsModal({ open, onClose }: BuyCreditsModalProps)
                 id="buy-credits-title"
                 className="font-display text-[clamp(22px,3vw,30px)] font-bold tracking-[-0.02em] text-ink m-0 mb-2"
               >
-                Buy credits
+                Buy leads
               </h2>
               <p className="font-sans text-sm text-ink-faint m-0">
-                One-time packs. Credits never expire.
+                One-time packs. Leads never expire.
               </p>
             </div>
 

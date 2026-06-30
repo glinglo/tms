@@ -4,15 +4,15 @@ import PricingPlansGrid from '../components/PricingPlansGrid'
 const FAQS = [
   {
     q: 'Is there a free plan?',
-    a: 'Yes. The free plan includes 50 leads per month with all data fields and CSV export. No credit card required. You can upgrade anytime.',
+    a: 'Yes. The free plan includes 25 leads per month with all data fields and CSV export. No credit card required. You can upgrade anytime.',
   },
   {
-    q: 'Do credits expire?',
-    a: 'No. Credits never expire. Buy once, use whenever you need.',
+    q: 'Do leads expire?',
+    a: 'No. Leads never expire. Buy once, use whenever you need.',
   },
   {
-    q: 'How do credits work?',
-    a: '1 credit = 1 lead. When you download a list of 500 businesses, you use 500 credits. Credits never expire, so you can buy a pack today and use it months later.',
+    q: 'How do leads work?',
+    a: '1 lead = 1 business. When you download a list of 500 businesses, you use 500 leads. Leads never expire, so you can buy a pack today and use it months later.',
   },
   {
     q: 'What fields are included in the CSV?',
@@ -20,7 +20,7 @@ const FAQS = [
   },
   {
     q: 'Can I upgrade from the free plan?',
-    a: 'Yes. You can buy a credit pack anytime from your dashboard. Your account and settings carry over. The free plan resets every month; purchased credits never expire.',
+    a: 'Yes. You can buy a lead pack anytime from your dashboard. Your account and settings carry over. The free plan resets every month; purchased leads never expire.',
   },
 ]
 
@@ -35,7 +35,7 @@ export default function Pricing() {
             Simple, transparent pricing
           </h1>
           <p className="font-sans text-base text-ink-faint m-0">
-            Start free. Buy credits when you need more. They never expire.
+            Start free. Buy leads when you need more. They never expire.
           </p>
         </div>
 

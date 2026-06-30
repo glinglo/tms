@@ -31,7 +31,7 @@ function MaskedCta() {
     <div className="mt-6 rounded-[10px] border border-border-subtle bg-cream px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div>
         <p className="font-sans text-sm font-semibold text-ink m-0">Want the full dataset?</p>
-        <p className="font-sans text-sm text-ink-muted m-0 mt-[2px]">Unlock all contacts — 50 free leads/month, no credit card required.</p>
+        <p className="font-sans text-sm text-ink-muted m-0 mt-[2px]">Unlock all contacts — 25 free leads/month, no credit card required.</p>
       </div>
       <button
         onClick={handleCta}
@@ -62,7 +62,7 @@ export default function IndustryLeadsPage({ config }: { config: IndustryConfig }
         badge={badge}
         h1={h1}
         subtitle={subtitle}
-        ctaText="Start Free — 50 leads/month"
+        ctaText="Start Free — 25 leads/month"
         ctaHref="/"
       />
 
@@ -262,7 +262,7 @@ export default function IndustryLeadsPage({ config }: { config: IndustryConfig }
         headline={`Start scraping ${plural} now`}
         ctaText="Try It Free"
         ctaHref="/"
-        subtext="50 free leads per month · No credit card required"
+        subtext="25 free leads per month · No credit card required"
       />
     </>
   )

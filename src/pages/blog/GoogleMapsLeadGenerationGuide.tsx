@@ -27,7 +27,7 @@ const faqs = [
   {
     question: 'Do I need to pay for a scraping tool?',
     answer:
-      'Not necessarily. TheMapScraper offers 50 free leads per month with no credit card required. That is enough to test the workflow and see results before committing to a paid plan.',
+      'Not necessarily. TheMapScraper offers 25 free leads per month with no credit card required. That is enough to test the workflow and see results before committing to a paid plan.',
   },
 ]
 
@@ -38,7 +38,7 @@ function InlineCTA() {
       <div>
         <p className="font-sans text-base font-semibold text-ink m-0">Build your first lead list today</p>
         <p className="font-sans text-sm text-ink-muted m-0 mt-1">
-          50 free leads. No credit card, no setup, results in 2 minutes.
+          25 free leads. No credit card, no setup, results in 2 minutes.
         </p>
       </div>
       {user ? (
@@ -427,7 +427,7 @@ export default function GoogleMapsLeadGenerationGuide() {
         <Link to="/" className="text-brand hover:underline font-medium">
           TheMapScraper
         </Link>{' '}
-        is the simplest starting point. The free tier covers 50 leads per month with no credit
+        is the simplest starting point. The free tier covers 25 leads per month with no credit
         card required. If you want to compare it against other options before committing, the{' '}
         <Link
           to="/blog/best-google-maps-scrapers/"

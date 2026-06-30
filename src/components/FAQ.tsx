@@ -2,12 +2,12 @@ import { useState } from 'react'
 
 const FAQS = [
   {
-    q: 'Do the credits expire?',
-    a: 'Purchased credits never expire. The free plan includes 50 leads per calendar month; that allowance resets each month.',
+    q: 'Do the leads expire?',
+    a: 'Purchased leads never expire. The free plan includes 25 leads per calendar month; that allowance resets each month.',
   },
   {
-    q: 'How do credits work?',
-    a: 'Simple: 1 credit = 1 lead. When you download a list of 500 businesses, you use 500 credits. Credits never expire, so you can buy a pack today and use it months later. You can check your credit balance at any time from your dashboard.',
+    q: 'How do leads work?',
+    a: 'Simple: 1 lead = 1 business. When you download a list of 500 businesses, you use 500 leads. Leads never expire, so you can buy a pack today and use it months later. You can check your lead balance at any time from your dashboard.',
   },
   {
     q: 'How fresh is the data?',
@@ -27,11 +27,11 @@ const FAQS = [
   },
   {
     q: 'What if my search returns fewer results than expected?',
-    a: 'You are only charged credits for the leads actually returned, never more.',
+    a: 'You are only charged for the leads actually returned, never more.',
   },
   {
     q: 'Do you offer refunds?',
-    a: 'Credits are non-refundable but they never expire, so they\'re never wasted.',
+    a: 'Lead packs are non-refundable but they never expire, so they\'re never wasted.',
   },
   {
     q: 'Can I scrape businesses in any country?',
@@ -54,7 +54,7 @@ export default function FAQ() {
             Frequently Asked Questions
           </h2>
           <p className="font-sans text-base font-normal text-ink-faint m-0">
-            Everything you need to know before buying credits.
+            Everything you need to know before buying leads.
           </p>
         </div>
 

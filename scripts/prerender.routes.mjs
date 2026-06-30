@@ -176,6 +176,108 @@ export const routes = [
     ],
   },
   {
+    path: '/cold-email-lead-list-builder/',
+    title: 'Cold Email Lead List Builder | Extract Emails from Google Maps',
+    description:
+      'Build targeted cold email lead lists from Google Maps. Extract verified business emails, phones, and addresses by industry and city. 25 free leads to start.',
+    renderSsr: true,
+    schemas: [
+      breadcrumb([
+        { name: 'Home', url: `${BASE}/` },
+        { name: 'Cold Email Lead List Builder', url: `${BASE}/cold-email-lead-list-builder/` },
+      ]),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'How many leads can I get for cold email?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'The free tier gives you 25 leads to test. The Starter plan (€9) gives you 500 leads — enough for a solid cold email campaign targeting one city and niche.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Are the emails verified?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Emails are extracted directly from business websites, so they are real published addresses. We recommend using an email verification tool like ZeroBounce or NeverBounce before sending your campaign.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Can I scrape leads from multiple cities?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes, run separate searches for each city and combine the CSVs. For example, scrape dentists in Miami, Houston, and Chicago to build a nationwide list.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: "What's the best cold email volume from Google Maps leads?",
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Start with 50–100 leads per campaign. Google Maps leads convert well because they are real businesses with verified contact info. Quality over quantity.',
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '/buy-local-business-leads/',
+    title: 'Buy Local Business Leads with Emails | Fresh Google Maps Data',
+    description:
+      'Stop buying stale lead lists. Scrape fresh local business leads from Google Maps with emails, phones, and addresses. Build your own list in minutes. 25 free leads.',
+    renderSsr: true,
+    schemas: [
+      breadcrumb([
+        { name: 'Home', url: `${BASE}/` },
+        { name: 'Buy Local Business Leads', url: `${BASE}/buy-local-business-leads/` },
+      ]),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'Is this better than buying leads from Apollo or ZoomInfo?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'For local businesses, yes. Apollo and ZoomInfo focus on B2B SaaS companies, startups, and enterprise contacts. TheMapScraper targets local businesses listed on Google Maps — restaurants, dentists, lawyers, plumbers, agencies. Different data source, different use case. If you sell to local SMBs, Google Maps data is more relevant and significantly cheaper.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'How fresh is the data?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Data is scraped in real-time when you run a search. You always get the latest information from Google Maps — whatever businesses have on their profile at that moment. There is no cached database sitting between you and the source.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Do the leads include email addresses?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes. TheMapScraper visits each business website to extract published email addresses. Email rates vary by industry: 50–70% for lawyers and dentists, 30–50% for plumbers and contractors, 5–20% for restaurants. You also get phone numbers, addresses, and websites for every listing regardless of email availability.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Can I import the leads into my CRM or cold email tool?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes. Leads are exported as standard CSV files. Import directly into HubSpot, Salesforce, Pipedrive, Instantly, Lemlist, or any tool that accepts CSV. No reformatting needed.',
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
     path: '/google-maps-lead-extractor/',
     title: 'Google Maps Lead Extractor. Get B2B Contacts in Seconds',
     description:

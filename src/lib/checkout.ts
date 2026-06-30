@@ -1,8 +1,8 @@
-export async function startCheckout(priceId: string, userId: string, userEmail: string): Promise<void> {
+export async function startCheckout(priceId: string, userId: string, userEmail: string, couponId?: string): Promise<void> {
   const res = await fetch('/api/create-checkout-session', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ priceId, userId, userEmail }),
+    body: JSON.stringify({ priceId, userId, userEmail, ...(couponId ? { couponId } : {}) }),
   })
   if (!res.ok) {
     const body = await res.json().catch(() => ({}))

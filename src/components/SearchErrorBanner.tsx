@@ -28,8 +28,8 @@ export default function SearchErrorBanner({
 
   const footnote = isTemporary
     ? context === 'redownload'
-      ? 'Re-download runs a fresh search at no extra credit cost. Try again later.'
-      : 'Your credits were not used. Try again later or use fewer leads with lead enrichment off.'
+      ? 'Re-download runs a fresh search at no extra cost. Try again later.'
+      : 'Your leads were not used. Try again later or use fewer leads with lead enrichment off.'
     : null
 
   const bodyText = isTemporary
@@ -55,7 +55,7 @@ export default function SearchErrorBanner({
           onClick={onBuyCredits}
           className="mt-3 font-sans text-[13px] font-semibold text-brand bg-transparent border-none cursor-pointer p-0 underline"
         >
-          Buy credits →
+          Buy leads →
         </button>
       )}
       {footnote && (

@@ -86,7 +86,7 @@ const FAQS = [
   {
     question: 'How many real estate leads can I get?',
     answer:
-      'It depends on the market size. A search for "real estate agents in New York" will return hundreds of results. Smaller cities may return 20-50. The free tier includes 50 leads per month.',
+      'It depends on the market size. A search for "real estate agents in New York" will return hundreds of results. Smaller cities may return 20-50. The free tier includes 25 leads per month.',
   },
 ]
 
@@ -236,7 +236,7 @@ export default function RealEstateUseCase() {
             <Link to="/" className="text-brand font-semibold hover:underline">
               Extract leads from Google Maps
             </Link>
-            {' '}free — 50 leads per month included with no credit card required.
+            {' '}free — 25 leads per month included with no credit card required.
           </p>
           <div className="flex flex-wrap gap-x-8 gap-y-3">
             <Link to="/use-cases/" className="font-sans text-sm font-semibold text-brand no-underline hover:underline">

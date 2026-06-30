@@ -5,7 +5,7 @@ import { startCheckout } from '../lib/checkout'
 import { useAuthContext } from '../context/AuthContext'
 
 const FREE_FEATURES = [
-  '50 leads per month',
+  '25 leads per month',
   'All data fields included',
   'CSV export',
   'No credit card required',
@@ -138,7 +138,7 @@ export default function PricingPlansGrid({
               <div className="h-px bg-[rgba(32,32,32,0.07)]" />
 
               <ul className="m-0 p-0 flex flex-col gap-[8px] list-none">
-                {[plan.creditsLabel, plan.perCredit, 'CSV export with all fields', 'Credits never expire'].map(
+                {[plan.creditsLabel, plan.perCredit, 'CSV export with all fields', 'Leads never expire'].map(
                   (feat) => (
                     <li key={feat} className="flex items-start gap-[8px] font-sans text-sm text-ink-muted">
                       <span className="text-brand font-bold text-base leading-none shrink-0 mt-px">✓</span>
@@ -180,7 +180,7 @@ export default function PricingPlansGrid({
       </div>
 
       <p className={`font-sans text-xs text-ink-faint text-center ${compact ? 'mt-4' : 'mt-8'}`}>
-        Payments processed securely by Stripe. Credits added instantly after payment.
+        Payments processed securely by Stripe. Leads added instantly after payment.
       </p>
     </>
   )

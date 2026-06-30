@@ -19,7 +19,7 @@ const ROWS = [
   },
   {
     feature: 'Pricing',
-    us: 'Simple subscription. 50 leads/month free, no credit card. Paid plans for higher volumes.',
+    us: 'Simple subscription. 25 leads/month free, no credit card. Paid plans for higher volumes.',
     them: 'Pay per result. ~$0.50/1K for basic data, up to $6/1K with email enrichment. Platform fee $29+/mo at scale.',
   },
   {
@@ -63,7 +63,7 @@ const FAQS = [
   {
     question: 'Is there a free Apify alternative for Google Maps?',
     answer:
-      'Yes. TheMapScraper offers a free tier with 50 leads per month and no credit card required. It is purpose-built for Google Maps and requires no technical setup, making it a simple alternative to Apify\'s actor-based system for users who only need Google Maps data.',
+      'Yes. TheMapScraper offers a free tier with 25 leads per month and no credit card required. It is purpose-built for Google Maps and requires no technical setup, making it a simple alternative to Apify\'s actor-based system for users who only need Google Maps data.',
   },
   {
     question: 'What is the difference between TheMapScraper and Apify?',
@@ -73,7 +73,7 @@ const FAQS = [
   {
     question: 'Does Apify have a free plan for Google Maps scraping?',
     answer:
-      'Apify offers $5 in free monthly credits, which covers roughly 500–5,000 Google Maps listings depending on the actor used. TheMapScraper offers 50 free leads per month with no time limit and no credit card required, making it a straightforward option for small-scale use.',
+      'Apify offers $5 in free monthly credits, which covers roughly 500–5,000 Google Maps listings depending on the actor used. TheMapScraper offers 25 free leads per month with no time limit and no credit card required, making it a straightforward option for small-scale use.',
   },
 ]
 

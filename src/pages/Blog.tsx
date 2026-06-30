@@ -68,6 +68,7 @@ export default function Blog() {
         title="Google Maps Scraping Blog — Guides, Tips & Tools | TheMapScraper"
         description="Guides and tutorials on Google Maps scraping, lead generation, and business data extraction. Learn how to extract leads without code."
         path="/blog/"
+        robots="noindex, follow"
       />
       <BreadcrumbSchema
         items={[

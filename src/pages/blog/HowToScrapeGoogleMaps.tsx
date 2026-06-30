@@ -8,7 +8,7 @@ const faqs = [
   {
     question: 'Is Google Maps scraping free?',
     answer:
-      'Some tools offer free tiers. TheMapScraper includes 50 free leads per month with no credit card required. Python-based methods are free to run but require technical knowledge and ongoing proxy costs.',
+      'Some tools offer free tiers. TheMapScraper includes 25 free leads per month with no credit card required. Python-based methods are free to run but require technical knowledge and ongoing proxy costs.',
   },
   {
     question: 'How many businesses can I scrape at once?',
@@ -39,7 +39,7 @@ function InlineCTA() {
       <div>
         <p className="font-sans text-base font-semibold text-ink m-0">Try it yourself</p>
         <p className="font-sans text-sm text-ink-muted m-0 mt-1">
-          Get 50 free leads with no credit card required.
+          Get 25 free leads with no credit card required.
         </p>
       </div>
       {user ? (
@@ -206,7 +206,7 @@ export default function HowToScrapeGoogleMaps() {
       <p className="font-sans text-[17px] leading-[1.75] text-ink mb-6">
         TheMapScraper includes a{' '}
         <Link to="/google-maps-business-scraper-free/" className="text-brand hover:underline font-medium">
-          free tier with 50 leads per month
+          free tier with 25 leads per month
         </Link>{' '}
         with no credit card required. That is enough to run a test extraction on your target market
         and evaluate the data quality before deciding whether to scale up.

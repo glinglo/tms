@@ -91,22 +91,22 @@ export default function Terms() {
           ]} />
         </Section>
 
-        <Section title="Credits">
+        <Section title="Leads">
           <P>
-            Access to full search results requires credits. One credit equals one lead row
+            Access to full search results requires leads. One lead equals one business row
             in the exported CSV.
           </P>
           <UL items={[
-            'Credits are purchased in packs via Stripe.',
-            'Credits never expire — they remain in your account indefinitely.',
-            'Credits are non-refundable. If your search returns fewer results than expected, you are only charged for the leads actually returned.',
-            'Credits are non-transferable between accounts.',
+            'Lead packs are purchased via Stripe.',
+            'Leads never expire — they remain in your account indefinitely.',
+            'Lead packs are non-refundable. If your search returns fewer results than expected, you are only charged for the leads actually returned.',
+            'Leads are non-transferable between accounts.',
           ]} />
         </Section>
 
         <Section title="Payments">
           <P>
-            All payments are processed by Stripe. By purchasing credits, you agree to
+            All payments are processed by Stripe. By purchasing leads, you agree to
             Stripe's terms of service. The Map Scraper does not store your card details.
           </P>
           <P>
@@ -152,7 +152,7 @@ export default function Terms() {
           <P>
             We reserve the right to suspend or terminate accounts that violate these terms,
             particularly the acceptable use rules above. In cases of clear abuse, termination
-            may be immediate and without prior notice. Unused credits will not be refunded upon
+            may be immediate and without prior notice. Unused leads will not be refunded upon
             termination for breach.
           </P>
         </Section>
@@ -165,7 +165,7 @@ export default function Terms() {
           </P>
           <P>
             Our total liability to you for any claim arising from use of the service is limited
-            to the amount you paid for credits in the 30 days preceding the claim.
+            to the amount you paid for leads in the 30 days preceding the claim.
           </P>
         </Section>
 

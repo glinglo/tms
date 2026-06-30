@@ -1,4 +1,4 @@
-export const FREE_MONTHLY_CREDITS = 50
+export const FREE_MONTHLY_CREDITS = 25
 
 export interface CreditWallet {
   freeRemaining: number
@@ -44,7 +44,7 @@ export function computeWalletFromProfile(
 
 /** Single balance shown in the UI (free + paid combined on the server). */
 export function formatCreditsLabel(total: number | null): string {
-  if (total === null) return '— credits'
-  if (total === 0) return '0 credits remaining'
-  return `${total.toLocaleString()} credits remaining`
+  if (total === null) return '— leads'
+  if (total === 0) return '0 leads remaining'
+  return `${total.toLocaleString()} leads remaining`
 }

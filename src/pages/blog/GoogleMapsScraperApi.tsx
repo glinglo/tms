@@ -17,7 +17,7 @@ const faqs = [
   {
     question: 'What is the cheapest way to get Google Maps data?',
     answer:
-      'For small volumes, TheMapScraper\'s free tier gives you 50 leads per month with no credit card required — the most cost-effective starting point. For large volumes (tens of thousands of records per month), scraper APIs like Apify or Outscraper offer better per-unit pricing than the official Places API.',
+      'For small volumes, TheMapScraper\'s free tier gives you 25 leads per month with no credit card required — the most cost-effective starting point. For large volumes (tens of thousands of records per month), scraper APIs like Apify or Outscraper offer better per-unit pricing than the official Places API.',
   },
   {
     question: 'Do I need coding skills to use a Google Maps scraper API?',

@@ -95,18 +95,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     console.log(`[webhook] +${creditsToAdd} credits → user ${userId}, new balance: ${newBalance}`)
 
-    // Cancel pending nurture emails — user has upgraded
+    // Cancel all pending branch emails (ghost/activated/exhausted/legacy nurture)
     const { error: nurtureErr } = await supabase
       .from('email_queue')
       .update({ sent: true })
       .eq('user_id', userId)
       .eq('sent', false)
-      .like('template', 'nurture_%')
+      .or('template.like.ghost_%,template.like.activated_%,template.like.exhausted_%,template.like.nurture_%')
 
     if (nurtureErr) {
-      console.error('[webhook] failed to cancel nurture emails:', nurtureErr)
+      console.error('[webhook] failed to cancel branch emails:', nurtureErr)
     } else {
-      console.log(`[webhook] cancelled pending nurture emails for user ${userId}`)
+      console.log(`[webhook] cancelled pending branch emails for user ${userId}`)
     }
 
     // Update plan in profiles

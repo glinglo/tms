@@ -38,7 +38,7 @@ function InlineCTA() {
       <div>
         <p className="font-sans text-base font-semibold text-ink m-0">Try it without installing anything</p>
         <p className="font-sans text-sm text-ink-muted m-0 mt-1">
-          Get 50 free leads per month. No Chrome extension, no credit card.
+          Get 25 free leads per month. No Chrome extension, no credit card.
         </p>
       </div>
       {user ? (
@@ -257,7 +257,7 @@ export default function GoogleMapsScraperExtension() {
               ['Browser must stay open', 'Yes', 'No'],
               ['Email extraction', 'Limited or paid', 'Included free'],
               ['CSV export', 'Yes', 'Yes'],
-              ['Free tier', 'Varies', '50 leads/month, no credit card'],
+              ['Free tier', 'Varies', '25 leads/month, no credit card'],
             ].map(([feature, ext, web]) => (
               <tr key={feature} className="even:bg-[#fafbfc]">
                 <td className="px-4 py-3 border border-border-subtle text-ink font-medium">{feature}</td>

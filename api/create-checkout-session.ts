@@ -8,10 +8,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const secretKey = process.env.STRIPE_SECRET_KEY
   if (!secretKey) return res.status(500).json({ error: 'STRIPE_SECRET_KEY not configured' })
 
-  const { priceId, userId, userEmail } = req.body as {
+  const { priceId, userId, userEmail, couponId } = req.body as {
     priceId?: string
     userId?: string
     userEmail?: string
+    couponId?: string
   }
 
   if (!priceId || !userId) return res.status(400).json({ error: 'Missing priceId or userId' })
@@ -26,6 +27,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       success_url: `${siteUrl}/dashboard?payment=success`,
       cancel_url: `${siteUrl}/dashboard?payment=cancelled`,
       ...(userEmail ? { customer_email: userEmail } : {}),
+      ...(couponId ? { discounts: [{ coupon: couponId }] } : {}),
       metadata: { userId, priceId },
     })
     return res.status(200).json({ url: session.url })

@@ -186,7 +186,7 @@ export default function SearchPage() {
     if (credits === null) return
     if (cost > credits) {
       setDownloadError(
-        `You have ${credits} credit${credits === 1 ? '' : 's'} but this export has ${cost} leads. Buy more credits or run a smaller search.`,
+        `You only have ${credits} lead${credits === 1 ? '' : 's'} but this export has ${cost}. Buy more leads or run a smaller search.`,
       )
       return
     }
@@ -214,10 +214,10 @@ export default function SearchPage() {
         }
         if (res.status === 402 && body.balance != null && body.required != null) {
           setDownloadError(
-            `Insufficient credits (${body.balance} available, ${body.required} required).`,
+            `Insufficient leads (${body.balance} available, ${body.required} required).`,
           )
         } else {
-          setDownloadError(body.error ?? 'Could not deduct credits')
+          setDownloadError(body.error ?? 'Could not deduct leads')
         }
         return
       }
@@ -328,7 +328,7 @@ export default function SearchPage() {
                 <span className="flex flex-col gap-[2px]">
                   <span className="font-sans text-sm text-ink-muted">Add lead enrichment</span>
                   <span className="font-sans text-[11px] text-ink-faint leading-snug">
-                    Finds email addresses for each business — included in your credits
+                    Finds email addresses for each business — included in your plan
                   </span>
                 </span>
               </label>
@@ -383,7 +383,7 @@ export default function SearchPage() {
                         : null
                     })()}
                     {' '}— download uses{' '}
-                    <strong className="text-ink">{leads.length} credit{leads.length === 1 ? '' : 's'}</strong>
+                    <strong className="text-ink">{leads.length} lead{leads.length === 1 ? '' : 's'}</strong>
                     {credits !== null && (
                       <> ({credits} remaining)</>
                     )}
@@ -394,9 +394,9 @@ export default function SearchPage() {
                     disabled={downloading || !canDownload}
                     title={
                       hasNoCredits
-                        ? 'Buy credits to download'
+                        ? 'Buy leads to download'
                         : insufficientForDownload
-                          ? `You need ${leads.length} credits but only have ${credits}`
+                          ? `You need ${leads.length} leads but only have ${credits}`
                           : undefined
                     }
                     className={`font-sans text-sm font-semibold text-white border-none rounded-pill px-5 py-[10px] flex items-center gap-[7px] transition-colors duration-150 ${!canDownload || downloading ? 'bg-[#c8c2b8] cursor-not-allowed' : 'bg-brand cursor-pointer hover:bg-brand-dark'}`}
@@ -408,14 +408,14 @@ export default function SearchPage() {
                   <div className="flex flex-wrap items-center gap-2">
                     <p className="font-sans text-sm text-brand m-0">
                       {downloadError ||
-                        `You need ${leads.length} credits to download (${credits} available).`}
+                        `You need ${leads.length} leads to download (${credits} available).`}
                     </p>
                     <button
                       type="button"
                       onClick={openBuyCredits}
                       className="font-sans text-[13px] font-semibold text-brand bg-transparent border-none cursor-pointer p-0 underline"
                     >
-                      Buy credits
+                      Buy leads
                     </button>
                   </div>
                 )}

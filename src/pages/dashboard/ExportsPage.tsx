@@ -132,7 +132,7 @@ export default function ExportsPage() {
           Your exports
         </h1>
         <p className="font-sans text-sm text-ink-faint m-0 mb-7">
-          Re-download past exports at no extra credit cost
+          Re-download past exports at no extra cost
         </p>
 
         {redownloadError && (
@@ -168,7 +168,7 @@ export default function ExportsPage() {
               className="grid py-[10px] px-5 bg-cream border-b border-[rgba(32,32,32,0.10)]"
               style={{ gridTemplateColumns: COLS }}
             >
-              {['Date', 'Search query', 'Results', 'Credits used', ''].map((col, i) => (
+              {['Date', 'Search query', 'Results', 'Leads used', ''].map((col, i) => (
                 <span key={i} className="font-sans text-[11px] font-semibold text-ink-faint uppercase tracking-[0.05em]">
                   {col}
                 </span>
@@ -227,7 +227,7 @@ export default function ExportsPage() {
             onClick={openBuyCredits}
             className="font-sans text-xs text-brand bg-transparent border-none cursor-pointer p-0 underline"
           >
-            Buy credits
+            Buy leads
           </button>
         </p>
       </div>

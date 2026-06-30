@@ -73,7 +73,7 @@ export default function Privacy() {
             'Search history — the business type and location queries you run, stored so you can re-download past results without re-scraping.',
             'Search results — the Google Maps data returned by your searches, stored temporarily so you can download your CSV.',
             'Payment information — processed entirely by Stripe. We do not store card numbers or bank details on our servers.',
-            'Credit balance — the number of credits in your account.',
+            'Lead balance — the number of leads in your account.',
             'Basic usage data — timestamps of searches and downloads.',
           ]} />
         </Section>
@@ -83,9 +83,9 @@ export default function Privacy() {
           <UL items={[
             'Create and manage your account.',
             'Run searches on your behalf and return results.',
-            'Process your credit purchases via Stripe.',
-            'Let you re-download past search results without using additional credits.',
-            'Send transactional emails (e.g. receipt after purchase, low-credit reminder). No marketing emails without your consent.',
+            'Process your lead pack purchases via Stripe.',
+            'Let you re-download past search results without using additional leads.',
+            'Send transactional emails (e.g. receipt after purchase, low-lead-balance reminder). No marketing emails without your consent.',
           ]} />
           <P>We do not sell, rent, or share your personal data with third parties for marketing purposes.</P>
         </Section>

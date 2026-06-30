@@ -5,6 +5,7 @@ interface LandingMetaProps {
   title: string
   description: string
   path: string
+  robots?: string
 }
 
 const BASE = 'https://www.themapscraper.com'
@@ -24,7 +25,7 @@ function setContent(attr: 'name' | 'property', key: string, value: string) {
   el.content = value
 }
 
-export default function LandingMeta({ title, description, path }: LandingMetaProps) {
+export default function LandingMeta({ title, description, path, robots }: LandingMetaProps) {
   useEffect(() => {
     const orig = {
       title: document.title,
@@ -34,6 +35,7 @@ export default function LandingMeta({ title, description, path }: LandingMetaPro
       ogUrl:   getContent('meta[property="og:url"]'),
       twTitle: getContent('meta[name="twitter:title"]'),
       twDesc:  getContent('meta[name="twitter:description"]'),
+      robots:  getContent('meta[name="robots"]'),
     }
 
     document.title = title
@@ -45,6 +47,7 @@ export default function LandingMeta({ title, description, path }: LandingMetaPro
     setContent('name',     'twitter:title',     title)
     setContent('name',     'twitter:description', description)
     setContent('name',     'twitter:image',     OG_IMAGE)
+    if (robots) setContent('name', 'robots', robots)
 
     return () => {
       document.title = orig.title
@@ -54,8 +57,9 @@ export default function LandingMeta({ title, description, path }: LandingMetaPro
       setContent('property', 'og:url',            orig.ogUrl)
       setContent('name',     'twitter:title',     orig.twTitle)
       setContent('name',     'twitter:description', orig.twDesc)
+      if (robots) setContent('name', 'robots', orig.robots)
     }
-  }, [title, description, path])
+  }, [title, description, path, robots])
 
   return <Canonical path={path} />
 }

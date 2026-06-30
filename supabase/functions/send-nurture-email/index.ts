@@ -6,52 +6,146 @@ interface NurtureEmail {
   text: string;
 }
 
-function getEmail(template: string): NurtureEmail | null {
+interface NurturePayload {
+  user_id?: string;
+  email?: string;
+  template?: string;
+  business_type?: string | null;
+  location?: string | null;
+  result_count?: number | null;
+}
+
+function getEmail(template: string, payload: NurturePayload): NurtureEmail | null {
+  const businessType = payload.business_type ?? "businesses";
+  const location = payload.location ?? "your city";
+
   switch (template) {
-    case "nurture_1":
+    // ── Branch A: Ghost (never searched) ─────────────────────────────────────
+
+    case "ghost_1":
       return {
-        subject: "Did you get your first leads?",
-        text: `Hey, just checking in — did you get a chance to try TheMapScraper yet?
+        subject: "did you find the dashboard okay?",
+        text: `Hey,
 
-If you ran your first scrape, I'd love to know what you searched for.
+Noticed you signed up but haven't run a search yet. Wanted to check if everything's working okay on your end -- sometimes people hit a snag with the login.
 
-If not, here's the link to get started: https://themapscraper.com/dashboard
+If you want to give it a go: just go to the dashboard, type a business type and a city, and you'll have a list of leads in about 2 minutes.
 
-Takes about 2 minutes.
+https://themapscraper.com/dashboard
 
-— Jose`,
+Jose`,
       };
 
-    case "nurture_2":
+    case "ghost_2":
       return {
-        subject: "The problem with manual prospecting",
-        text: `Hey — most people use TheMapScraper to stop copying business info from Google Maps by hand. If you want to pull 500+ leads at a time with emails included, paid plans start at €9: https://themapscraper.com/pricing
+        subject: "takes 2 minutes, promise",
+        text: `Hey,
 
-— Jose`,
+Still haven't seen a search from you. No worries if the timing's been off.
+
+When you're ready: pick any niche + city you care about and run it. The free plan gives you 25 leads with emails included.
+
+-- Jose`,
       };
 
-    case "nurture_3":
+    case "ghost_3":
       return {
-        subject: "How agencies use TheMapScraper",
-        text: `Hey, one of the most common use cases I see: agencies scraping leads by city + niche (e.g. 'plumbers in Chicago') to build prospecting lists for their clients.
+        subject: "closing your free leads soon",
+        text: `Hey,
 
-The free plan gives you 50 leads/month to test it.
+Your 25 free leads are still sitting there unused. I'll stop bugging you after this.
 
-If you need more — or want emails included — the paid plans start at €9/month: https://themapscraper.com/pricing
+If you ever need business leads from Google Maps, you know where to find it.
 
-— Jose`,
+-- Jose`,
       };
 
-    case "nurture_4":
+    // ── Branch B: Activated (searched, credits remaining) ─────────────────────
+
+    case "activated_1":
       return {
-        subject: "Last thing — 20% off if you upgrade this week",
-        text: `Hey, you've been on the free plan for a couple weeks now.
+        subject: payload.business_type
+          ? `how did the ${payload.business_type} search go?`
+          : "how did your first search go?",
+        text: `Hey,
 
-If TheMapScraper's been useful and you want to unlock more leads + email enrichment, I'll give you 20% off your first month.
+Saw you searched for ${businessType} in ${location} -- did the list look useful? Were there emails on most of them?
 
-Just reply 'upgrade' and I'll send you the link.
+Curious what you're working on. Just reply if you want to share.
 
-— Jose`,
+-- Jose`,
+      };
+
+    case "activated_2":
+      return {
+        subject: "what people do with these lists",
+        text: `Hey,
+
+Most people who search ${businessType} in ${location} are doing one of two things: cold email outreach or building a prospect list for a client.
+
+If that's you, the free 25 leads is usually enough to test whether it works. When you're ready to scale, paid plans start at €9 for 500 leads.
+
+https://themapscraper.com/pricing
+
+-- Jose`,
+      };
+
+    case "activated_3":
+      return {
+        subject: "when your leads run out",
+        text: `Hey,
+
+You've got a few free leads left. When they run out you'll hit a wall -- just wanted to give you a heads up before that happens.
+
+If the tool's been useful, upgrading to 500 leads is €9. No subscription -- leads never expire.
+
+https://themapscraper.com/pricing
+
+-- Jose`,
+      };
+
+    // ── Branch C: Exhausted (credits hit 0) ───────────────────────────────────
+
+    case "exhausted_1":
+      return {
+        subject: "you just ran out of leads",
+        text: `Hey,
+
+You just used your last leads searching for ${businessType} in ${location}.
+
+If the list was useful and you need more -- ${location} has hundreds more ${businessType} businesses on Google Maps.
+
+500 more leads for €9, no subscription: https://themapscraper.com/pricing
+
+-- Jose`,
+      };
+
+    case "exhausted_2":
+      return {
+        subject: "what stopped you?",
+        text: `Hey,
+
+You ran out of leads a couple days ago and didn't upgrade. No pressure -- just curious what held you back.
+
+Price? Don't need more leads right now? Something didn't work as expected?
+
+A quick reply helps me a lot.
+
+-- Jose`,
+      };
+
+    case "exhausted_3":
+      return {
+        subject: "20% off -- last time I'll mention it",
+        text: `Hey,
+
+Last email on this. If TheMapScraper was useful for your ${businessType} search and you want more leads, here's 20% off your first purchase:
+
+https://themapscraper.com/pricing?coupon=promo_1TncfaRgzkWTYE9PiRLmusy1
+
+After this I'll leave you alone.
+
+-- Jose`,
       };
 
     default:
@@ -64,9 +158,9 @@ serve(async (req: Request) => {
     return new Response("Method not allowed", { status: 405 });
   }
 
-  let body: { user_id?: string; email?: string; template?: string };
+  let payload: NurturePayload;
   try {
-    body = await req.json();
+    payload = await req.json();
   } catch {
     return new Response(JSON.stringify({ error: "Invalid JSON" }), {
       status: 400,
@@ -74,7 +168,7 @@ serve(async (req: Request) => {
     });
   }
 
-  const { email, template } = body;
+  const { email, template } = payload;
 
   if (!email || !template) {
     return new Response(JSON.stringify({ error: "email and template are required" }), {
@@ -83,7 +177,7 @@ serve(async (req: Request) => {
     });
   }
 
-  const nurtureEmail = getEmail(template);
+  const nurtureEmail = getEmail(template, payload);
   if (!nurtureEmail) {
     return new Response(JSON.stringify({ error: `Unknown nurture template: ${template}` }), {
       status: 400,

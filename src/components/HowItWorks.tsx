@@ -20,7 +20,7 @@ const STEPS = [
     number: '03',
     title: 'Download your CSV\nwith one click',
     description:
-      'Unlock all results with credits. Your CSV arrives immediately with phone, address, email, website, and more. Ready to open in Excel.',
+      'Unlock all results. Your CSV arrives immediately with phone, address, email, website, and more. Ready to open in Excel.',
     code: 'name,phone,address,website\n"Sunrise Dental",+1 512...\n"Austin Family",+1 512...',
   },
 ]
@@ -140,7 +140,7 @@ export default function HowItWorks() {
               Why Choose TheMapScraper?
             </h2>
             <p className="font-sans text-sm text-[rgba(252,252,252,0.5)] m-0">
-              A Google Maps scraper built for non-technical users. Credits never expire, one credit = one lead, no subscriptions. Most tools require browser extensions that break on updates or complex API setup. TheMapScraper works directly in your browser — type a search, click extract, download your leads.
+              A Google Maps scraper built for non-technical users. Leads never expire, pay per lead, no subscriptions. Most tools require browser extensions that break on updates or complex API setup. TheMapScraper works directly in your browser — type a search, click extract, download your leads.
             </p>
           </div>
 
@@ -148,7 +148,7 @@ export default function HowItWorks() {
           <div className="flex flex-col gap-4 items-start md:items-end">
             <div className="flex gap-2 flex-nowrap items-start">
               {[
-                { label: 'Free', price: '$0', leads: '50/mo', featured: false },
+                { label: 'Free', price: '$0', leads: '25/mo', featured: false },
                 { label: 'Starter', price: '€9', leads: '500', featured: false },
                 { label: 'Growth', price: '€29', leads: '2,000', featured: true },
                 { label: 'Pro', price: '€69', leads: '6,000', featured: false },

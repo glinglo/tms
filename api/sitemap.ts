@@ -25,6 +25,8 @@ const STATIC_PAGES: UrlEntry[] = [
   { loc: '/blog/', lastmod: '2026-05-31', changefreq: 'weekly', priority: '0.9' },
   // Transactional landing pages
   { loc: '/google-maps-lead-extractor/', lastmod: '2026-05-31', changefreq: 'monthly', priority: '0.9' },
+  { loc: '/buy-local-business-leads/', lastmod: '2026-06-30', changefreq: 'monthly', priority: '0.9' },
+  { loc: '/cold-email-lead-list-builder/', lastmod: '2026-06-30', changefreq: 'monthly', priority: '0.9' },
   { loc: '/extract-emails-google-maps/', lastmod: '2026-05-31', changefreq: 'monthly', priority: '0.9' },
   { loc: '/google-maps-data-scraper-csv/', lastmod: '2026-05-31', changefreq: 'monthly', priority: '0.9' },
   { loc: '/google-maps-business-scraper-free/', lastmod: '2026-05-31', changefreq: 'monthly', priority: '0.9' },

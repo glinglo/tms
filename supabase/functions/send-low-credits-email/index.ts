@@ -35,14 +35,14 @@ serve(async (req: Request) => {
 
 Looking for more ${business_type} in ${location}?
 
-For just €9 you get 500 credits: https://themapscraper.com/pricing
+For just €9 you get 500 leads: https://themapscraper.com/pricing
 
 Jose`;
     } else {
-      subject = "Your free credits are gone";
+      subject = "Your free leads are gone";
       text = `Hey,
 
-Your free credits are gone. For just €9 you get 500 credits:
+Your free leads are gone. For just €9 you get 500 leads:
 https://themapscraper.com/pricing
 
 Jose`;

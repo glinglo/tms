@@ -20,6 +20,8 @@ const Privacy = lazy(() => import('./pages/Privacy'))
 const Terms = lazy(() => import('./pages/Terms'))
 const Pricing = lazy(() => import('./pages/Pricing'))
 const GoogleMapsLeadExtractor = lazy(() => import('./pages/GoogleMapsLeadExtractor'))
+const BuyLocalBusinessLeads = lazy(() => import('./pages/BuyLocalBusinessLeads'))
+const ColdEmailLeadListBuilder = lazy(() => import('./pages/ColdEmailLeadListBuilder'))
 const ExtractEmailsGoogleMaps = lazy(() => import('./pages/ExtractEmailsGoogleMaps'))
 const GoogleMapsDataScraperCsv = lazy(() => import('./pages/GoogleMapsDataScraperCsv'))
 const GoogleMapsBusinessScraperFree = lazy(() => import('./pages/GoogleMapsBusinessScraperFree'))
@@ -195,6 +197,8 @@ function AppInner() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/google-maps-scraper/" element={<GoogleMapsScraper />} />
           <Route path="/google-maps-lead-extractor/" element={<GoogleMapsLeadExtractor />} />
+          <Route path="/buy-local-business-leads/" element={<BuyLocalBusinessLeads />} />
+          <Route path="/cold-email-lead-list-builder/" element={<ColdEmailLeadListBuilder />} />
           <Route path="/extract-emails-google-maps/" element={<ExtractEmailsGoogleMaps />} />
           <Route path="/google-maps-data-scraper-csv/" element={<GoogleMapsDataScraperCsv />} />
           <Route path="/google-maps-business-scraper-free/" element={<GoogleMapsBusinessScraperFree />} />

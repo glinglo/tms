@@ -33,7 +33,7 @@ function InlineCTA() {
       <div>
         <p className="font-sans text-base font-semibold text-ink m-0">Get the review overview first</p>
         <p className="font-sans text-sm text-ink-muted m-0 mt-1">
-          50 free leads with ratings, review counts, and review tags. No credit card.
+          25 free leads with ratings, review counts, and review tags. No credit card.
         </p>
       </div>
       {user ? (
@@ -350,7 +350,7 @@ export default function ScrapeGoogleMapsReviews() {
           run a search
         </Link>{' '}
         and get review counts, ratings, and tags for every business in your target market in
-        under three minutes. The first 50 leads are free with no credit card required.
+        under three minutes. The first 25 leads are free with no credit card required.
       </p>
     </BlogPost>
   )
