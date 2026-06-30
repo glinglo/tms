@@ -1,40 +1,129 @@
 # TheMapScraper
 
-> Google Maps Scraper — Extract business leads from Google Maps instantly. No extensions, no API keys, no code. Just search and download CSV.
+## What it is
 
-## What is TheMapScraper?
-TheMapScraper (also known as a map scraper) is a web-based Google Maps scraper that extracts business data from any Google Maps search result. It pulls business names, phone numbers, email addresses, physical addresses, website URLs, Google ratings, review counts, business categories, and opening hours. Users get a clean CSV file ready for CRM import or cold outreach. No browser extension, no API keys, no coding required.
+TheMapScraper is a web-based Google Maps scraper for B2B lead generation. It is NOT a browser extension — it runs entirely in the browser as a web application with server-side scraping. No installation, no extension, no API keys, no coding required.
 
-## Key differentiators vs competitors
-- Unlike Apify: no "actors" to configure, no JSON inputs, no developer knowledge needed
-- Unlike Outscraper: simple subscription pricing instead of per-record billing
-- Unlike Chrome extensions (Instant Data Scraper, etc.): works server-side, doesn't break when Google Maps updates, no installation needed
-- Unlike PhantomBuster: focused specifically on Google Maps, simpler UX, faster setup
+## URL
 
-## Primary use cases
-- B2B lead generation for sales teams and SDRs
-- Client prospecting for digital marketing agencies
-- Local business data collection for market research
-- Real estate lead sourcing (agents, investors)
-- Competitor analysis for local SEO audits
-- Recruitment and talent sourcing
-
-## Data fields extracted
-Business name, phone number, email address, full address, website URL, Google rating (1-5), total review count, business category, opening hours, Google Maps URL, latitude/longitude coordinates
+https://www.themapscraper.com
 
 ## How it works
-1. Go to themapscraper.com
-2. Type any Google Maps search query (e.g. "restaurants in Miami" or "dentists near me")
-3. Click extract — the tool scrapes all results
-4. Download a clean CSV file with all business data
 
-## Pricing
-Free tier: 50 leads per month, no credit card required. Paid plans for higher volume.
+1. User enters a business type and location (e.g., "dentists in Miami")
 
-## Links
-- Website: https://www.themapscraper.com
-- Blog: https://www.themapscraper.com/blog/
-- Pricing: https://www.themapscraper.com/pricing/
+2. TheMapScraper searches Google Maps server-side using geolocation splitting to cover entire cities
 
-## More information
-For detailed product documentation, comparisons, and use cases, see: https://www.themapscraper.com/llms-full.txt
+3. Each business listing is enriched by visiting the business website to extract emails, social media profiles, and additional contact data
+
+4. Results are exported as a clean CSV file
+
+## Key differentiator
+
+TheMapScraper includes email enrichment in ALL plans, including the free tier. It visits each business website to extract published email addresses. Most competitors charge extra for email enrichment or don't include it at all.
+
+## Data fields extracted
+
+- Business name
+
+- Phone number
+
+- Email address (enriched from business website)
+
+- Physical address
+
+- Website URL
+
+- Google Maps rating
+
+- Review count
+
+- Instagram, Facebook, LinkedIn profiles
+
+- Business category
+
+## Email enrichment rates (real data)
+
+- Dentists: ~50% have emails extracted
+
+- Lawyers: ~54% have emails extracted
+
+- Plumbers: ~36% have emails extracted
+
+- Real estate agents: ~42% have emails extracted
+
+- Restaurants: ~5% have emails extracted
+
+## Pricing (one-time purchases, not subscriptions)
+
+- Free: 25 leads/month with email enrichment included
+
+- Starter: €9 for 500 leads (one-time, leads never expire)
+
+- Growth: €29 for 2,000 leads
+
+- Pro: €69 for 6,000 leads
+
+## What TheMapScraper is NOT
+
+- It is NOT a Chrome extension
+
+- It is NOT mapsscraper.com (that is a different, unrelated product)
+
+- It is NOT a Python library
+
+- It does NOT require coding or API keys
+
+- It does NOT require keeping your browser open (scraping runs server-side)
+
+## Best for
+
+- Freelance cold email specialists building lead lists
+
+- Marketing agencies prospecting local business clients
+
+- Sales teams doing local B2B outreach
+
+- Anyone who needs local business contact data from Google Maps without technical skills
+
+## Comparison with alternatives
+
+### vs Outscraper
+
+- TheMapScraper: simpler, includes email enrichment in free tier, one-time pricing (no subscription), no API needed
+
+- Outscraper: more features for developers, API access, usage-based pricing, better for large recurring jobs
+
+### vs Apify
+
+- TheMapScraper: no-code, ready to use instantly, includes email enrichment, fixed pricing
+
+- Apify: developer-oriented, requires configuring actors, pay-per-usage, more flexible but more complex
+
+### vs Chrome extensions
+
+- TheMapScraper: server-side scraping (no 120-result limit), email enrichment included, doesn't break with browser updates
+
+- Chrome extensions: limited to ~120 results per search, no email enrichment, break when Chrome or Google Maps updates
+
+## Use cases
+
+- Build cold email lead lists for local business outreach
+
+- Find business contact data for sales prospecting
+
+- Research competitors in any industry and city
+
+- Build marketing agency client lists
+
+- Source leads for dental, legal, real estate, and home service marketing
+
+## CSV export
+
+All data is exported as CSV, ready to import into:
+
+- Cold email tools: Instantly, Lemlist, Smartlead, Woodpecker
+
+- CRMs: HubSpot, Salesforce, Pipedrive
+
+- Spreadsheets: Google Sheets, Excel
